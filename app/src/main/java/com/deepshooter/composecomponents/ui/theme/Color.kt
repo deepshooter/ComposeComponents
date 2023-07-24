@@ -1,5 +1,6 @@
 package com.deepshooter.composecomponents.ui.theme
 
+import androidx.compose.material.Colors
 import androidx.compose.ui.graphics.Color
 
 val Purple80 = Color(0xFFD0BCFF)
@@ -62,3 +63,6 @@ object TailwindCSSColor {
     val Pink700 = Color(0xFFBE185D)
     val Pink900 = Color(0xFF831843)
 }
+
+val Colors.dotBackground: Color
+    get() = if (isLight) TailwindCSSColor.Gray200 else TailwindCSSColor.Gray800

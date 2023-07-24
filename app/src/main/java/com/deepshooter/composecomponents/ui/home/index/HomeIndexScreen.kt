@@ -1,4 +1,4 @@
-package com.deepshooter.composecomponents.ui.home
+package com.deepshooter.composecomponents.ui.home.index
 
 import android.content.res.Configuration
 import androidx.annotation.DrawableRes
@@ -79,7 +79,7 @@ private val menuItems = listOf(
 )
 
 @Composable
-fun HomeScreen(
+fun HomeIndexScreen(
     navigate: (Screen) -> Unit = {},
     turnOnDarkMode: (Boolean) -> Unit = {}
 ) {
@@ -232,7 +232,7 @@ fun ModuleButton(
 @Composable
 fun HomeIndexScreenPreview() {
     ComposeComponentsTheme {
-        HomeScreen()
+        HomeIndexScreen()
     }
 }
 
@@ -240,6 +240,6 @@ fun HomeIndexScreenPreview() {
 @Composable
 fun HomeIndexScreenPreviewDark() {
     ComposeComponentsTheme {
-        HomeScreen()
+        HomeIndexScreen()
     }
 }

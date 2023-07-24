@@ -1,4 +1,4 @@
-package com.deepshooter.composecomponents.ui.home
+package com.deepshooter.composecomponents.ui.home.index
 
 import androidx.annotation.DrawableRes
 import androidx.compose.ui.graphics.Color
