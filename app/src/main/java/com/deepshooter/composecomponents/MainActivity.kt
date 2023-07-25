@@ -8,15 +8,22 @@ import androidx.compose.runtime.getValue
 import androidx.core.view.WindowCompat
 import com.deepshooter.composecomponents.ui.MainScreen
 import com.deepshooter.composecomponents.ui.theme.ComposeComponentsTheme
+import com.deepshooter.composecomponents.utils.SharedPreferenceHelper
 import com.deepshooter.composecomponents.utils.UIThemeController
+import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
+
+    @Inject
+    lateinit var sharedPreferenceHelper: SharedPreferenceHelper
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         WindowCompat.setDecorFitsSystemWindows(window, false)
 
-        UIThemeController.updateUITheme(false)
+        UIThemeController.updateUITheme(sharedPreferenceHelper.getDarkMode())
 
         setContent {
             val isDarkMode by UIThemeController.isDarkMode.collectAsState()
@@ -25,6 +32,7 @@ class MainActivity : ComponentActivity() {
                 MainScreen(
                     turnOnDarkMode = { turnOn ->
                         UIThemeController.updateUITheme(turnOn)
+                        sharedPreferenceHelper.setDarkMode(turnOn)
                     }
                 )
             }
