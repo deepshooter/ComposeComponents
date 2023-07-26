@@ -14,9 +14,8 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Scaffold
-import androidx.compose.material.Text
+import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
@@ -48,7 +47,7 @@ fun SplashScreen(
 ) {
 
     val density = LocalDensity.current
-    val dotBackground = MaterialTheme.colors.dotBackground
+    val dotBackground = dotBackground
 
     LaunchedEffect(Unit) {
         delay(3000)

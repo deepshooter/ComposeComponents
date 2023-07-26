@@ -25,13 +25,13 @@ import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.GridItemSpan
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
-import androidx.compose.material.Button
-import androidx.compose.material.ButtonDefaults
-import androidx.compose.material.Icon
-import androidx.compose.material.LocalContentColor
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Scaffold
-import androidx.compose.material.Text
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.Icon
+import androidx.compose.material3.LocalContentColor
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -48,8 +48,12 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.deepshooter.composecomponents.R
 import com.deepshooter.composecomponents.ui.Screen
+import com.deepshooter.composecomponents.ui.theme.Blue500
 import com.deepshooter.composecomponents.ui.theme.ComposeComponentsTheme
-import com.deepshooter.composecomponents.ui.theme.TailwindCSSColor
+import com.deepshooter.composecomponents.ui.theme.Green500
+import com.deepshooter.composecomponents.ui.theme.Purple500
+import com.deepshooter.composecomponents.ui.theme.Red500
+import com.deepshooter.composecomponents.ui.theme.Yellow500
 import com.deepshooter.composecomponents.utils.shadow
 
 
@@ -57,25 +61,25 @@ private val menuItems = listOf(
     MenuItem(
         name = "Animations",
         icon = R.drawable.ic_round_animation_24,
-        color = TailwindCSSColor.Yellow500,
+        color = Yellow500,
         route = Screen.Animations
     ),
     MenuItem(
         name = "Compositions",
         icon = R.drawable.ic_round_widgets_24,
-        color = TailwindCSSColor.Red500,
+        color = Red500,
         route = Screen.Compositions
     ),
     MenuItem(
         name = "UIs",
         icon = R.drawable.ic_round_grid_view_24,
-        color = TailwindCSSColor.Blue500,
+        color = Blue500,
         route = Screen.UIs
     ),
     MenuItem(
         name = "Tutorials",
         icon = R.drawable.ic_round_sticky_note_2_24,
-        color = TailwindCSSColor.Purple500,
+        color = Purple500,
         route = Screen.Tutorials
     )
 )
@@ -128,7 +132,7 @@ fun HomeIndexScreen(
                                     )
                                     .fillMaxWidth(),
                                 text = stringResource(id = R.string.app_name),
-                                style = MaterialTheme.typography.h5,
+                                style = MaterialTheme.typography.titleMedium,
                                 textAlign = TextAlign.Center
                             )
                         }
@@ -142,7 +146,7 @@ fun HomeIndexScreen(
                             } else {
                                 R.drawable.ic_brightness_high
                             },
-                            color = TailwindCSSColor.Green500,
+                            color = Green500,
                             onClick = {
                                 onDarkModeStateChange(!darkModeState)
                                 turnOnDarkMode(!darkModeState)
@@ -171,7 +175,7 @@ fun HomeIndexScreen(
                         .background(
                             Brush.verticalGradient(
                                 0f to Color.Transparent,
-                                1f to MaterialTheme.colors.background
+                                1f to MaterialTheme.colorScheme.background
                             )
                         )
                 )
@@ -200,7 +204,7 @@ fun ModuleButton(
             ),
         shape = MaterialTheme.shapes.medium,
         colors = ButtonDefaults.buttonColors(
-            backgroundColor = MaterialTheme.colors.surface,
+            containerColor = MaterialTheme.colorScheme.surface,
             contentColor = color
         ),
         onClick = onClick,

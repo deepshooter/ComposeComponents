@@ -10,33 +10,29 @@ import androidx.compose.ui.graphics.Color
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
 
 private val DarkColorScheme = darkColorScheme(
-    primary = TailwindCSSColor.Green700,
-    //primaryVariant = TailwindCSSColor.Green900,
-    secondary = TailwindCSSColor.Pink700,
-    //secondaryVariant = TailwindCSSColor.Pink900,
-    background = TailwindCSSColor.Gray900,
+    primary = Green700,
+    secondary = Pink700,
+    background = Gray900,
     surface = Color.Black,
-    error = TailwindCSSColor.Red700,
+    error = Red700,
 
-    onPrimary = TailwindCSSColor.Gray50,
-    onSecondary = TailwindCSSColor.Gray50,
-    onBackground = TailwindCSSColor.Gray50,
-    onSurface = TailwindCSSColor.Gray50
+    onPrimary = Gray50,
+    onSecondary = Gray50,
+    onBackground = Gray50,
+    onSurface = Gray50
 )
 
 private val LightColorScheme = lightColorScheme(
-    primary = TailwindCSSColor.Green500,
-    //primaryVariant = TailwindCSSColor.Green700,
-    secondary = TailwindCSSColor.Pink500,
-    //secondaryVariant = TailwindCSSColor.Pink700,
-    background = TailwindCSSColor.Gray50,
+    primary = Green500,
+    secondary = Pink500,
+    background = Gray50,
     surface = Color.White,
-    error = TailwindCSSColor.Red500,
+    error = Red500,
 
-    onPrimary = TailwindCSSColor.Gray50,
-    onSecondary = TailwindCSSColor.Gray50,
-    onBackground = TailwindCSSColor.Gray900,
-    onSurface = TailwindCSSColor.Gray900
+    onPrimary = Gray50,
+    onSecondary = Gray50,
+    onBackground = Gray900,
+    onSurface = Gray900
 )
 
 @Composable
