@@ -1,6 +1,7 @@
 package com.deepshooter.composecomponents.ui.home.index
 
 import android.content.res.Configuration
+import android.widget.Toast
 import androidx.annotation.DrawableRes
 import androidx.compose.foundation.background
 import androidx.compose.foundation.isSystemInDarkTheme
@@ -38,6 +39,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
@@ -84,7 +86,7 @@ fun HomeIndexScreen(
     turnOnDarkMode: (Boolean) -> Unit = {}
 ) {
 
-
+    val context = LocalContext.current
     val isDark = isSystemInDarkTheme()
     val (darkModeState, onDarkModeStateChange) = remember { mutableStateOf(isDark) }
 
@@ -154,7 +156,8 @@ fun HomeIndexScreen(
                             icon = menu.icon,
                             color = menu.color,
                             onClick = {
-                                navigate(menu.route)
+                                //navigate(menu.route)
+                                Toast.makeText(context, "Not Implemented Yet !", Toast.LENGTH_LONG).show()
                             }
                         )
                     }
