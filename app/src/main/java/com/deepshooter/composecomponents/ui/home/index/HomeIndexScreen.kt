@@ -141,8 +141,8 @@ fun HomeIndexScreen(
 
                     item {
                         ModuleButton(
-                            name = if (isDark) "Dark Mode" else "Light Mode",
-                            icon = if (isDark) {
+                            name = if (darkModeState) "Dark Mode" else "Light Mode",
+                            icon = if (darkModeState) {
                                 R.drawable.ic_moon_stars
                             } else {
                                 R.drawable.ic_brightness_high
