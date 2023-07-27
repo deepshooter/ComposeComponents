@@ -42,6 +42,8 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
@@ -132,8 +134,10 @@ fun HomeIndexScreen(
                                     )
                                     .fillMaxWidth(),
                                 text = stringResource(id = R.string.app_name),
-                                style = MaterialTheme.typography.titleMedium,
-                                textAlign = TextAlign.Center
+                                style = MaterialTheme.typography.titleLarge,
+                                textAlign = TextAlign.Center,
+                                fontWeight = FontWeight.SemiBold,
+                                fontFamily = FontFamily.Monospace
                             )
                         }
                     }
