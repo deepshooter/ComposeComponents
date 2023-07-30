@@ -36,8 +36,8 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.deepshooter.composecomponents.R
 import com.deepshooter.composecomponents.ui.theme.ComposeComponentsTheme
+import com.deepshooter.composecomponents.ui.theme.Gray200
 import com.deepshooter.composecomponents.ui.theme.Gray800
-import com.deepshooter.composecomponents.ui.theme.Green700
 import com.deepshooter.composecomponents.utils.UIThemeController
 import kotlinx.coroutines.delay
 import kotlin.math.min
@@ -114,7 +114,7 @@ fun SplashScreen(
 
                     Canvas(modifier = Modifier.fillMaxSize()) {
                         drawCircle(
-                            color = if (isDark) Gray800 else Green700,
+                            color = if (isDark) Gray800 else Gray200,
                             center = Offset(
                                 x = if (i % 2 != 0) centerX * animCenterX else centerX,
                                 y = if (i % 2 == 0) centerY * animCenterY else centerY
