@@ -3,7 +3,6 @@ package com.deepshooter.composecomponents.ui.home.index
 import android.content.res.Configuration
 import android.widget.Toast
 import androidx.annotation.DrawableRes
-import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -31,6 +30,8 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
@@ -53,6 +54,7 @@ import com.deepshooter.composecomponents.ui.theme.Green500
 import com.deepshooter.composecomponents.ui.theme.Purple500
 import com.deepshooter.composecomponents.ui.theme.Red500
 import com.deepshooter.composecomponents.ui.theme.Yellow500
+import com.deepshooter.composecomponents.utils.UIThemeController
 import com.deepshooter.composecomponents.utils.shadow
 
 
@@ -90,7 +92,7 @@ fun HomeIndexScreen(
 ) {
 
     val context = LocalContext.current
-    val isDark = isSystemInDarkTheme()
+    val isDark by UIThemeController.isDarkMode.collectAsState()
     val (darkModeState, onDarkModeStateChange) = remember { mutableStateOf(isDark) }
 
     Scaffold(

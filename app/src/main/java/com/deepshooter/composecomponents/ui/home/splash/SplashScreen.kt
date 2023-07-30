@@ -18,6 +18,7 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -35,7 +36,9 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.deepshooter.composecomponents.R
 import com.deepshooter.composecomponents.ui.theme.ComposeComponentsTheme
-import com.deepshooter.composecomponents.ui.theme.dotBackground
+import com.deepshooter.composecomponents.ui.theme.Gray800
+import com.deepshooter.composecomponents.ui.theme.Green700
+import com.deepshooter.composecomponents.utils.UIThemeController
 import kotlinx.coroutines.delay
 import kotlin.math.min
 import kotlin.random.Random
@@ -47,7 +50,7 @@ fun SplashScreen(
 ) {
 
     val density = LocalDensity.current
-    val dotBackground = dotBackground
+    val isDark by UIThemeController.isDarkMode.collectAsState()
 
     LaunchedEffect(Unit) {
         delay(3000)
@@ -111,7 +114,7 @@ fun SplashScreen(
 
                     Canvas(modifier = Modifier.fillMaxSize()) {
                         drawCircle(
-                            color = dotBackground,
+                            color = if (isDark) Gray800 else Green700,
                             center = Offset(
                                 x = if (i % 2 != 0) centerX * animCenterX else centerX,
                                 y = if (i % 2 == 0) centerY * animCenterY else centerY
