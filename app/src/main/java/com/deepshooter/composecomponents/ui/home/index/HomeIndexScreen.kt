@@ -66,10 +66,10 @@ private val menuItems = listOf(
         route = Screen.Animations
     ),
     MenuItem(
-        name = "Compositions",
+        name = "Components",
         icon = R.drawable.ic_round_widgets_24,
         color = Red500,
-        route = Screen.Compositions
+        route = Screen.Components
     ),
     MenuItem(
         name = "UIs",

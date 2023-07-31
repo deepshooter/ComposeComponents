@@ -13,7 +13,7 @@ import com.deepshooter.composecomponents.ui.home.splash.SplashScreen
 sealed class Screen(val route: String) {
     object Home : Screen("home")
     object Animations : Screen("animation")
-    object Compositions : Screen("composition")
+    object Components : Screen("components")
     object UIs : Screen("ui")
     object Tutorials : Screen("tutorial")
 }
@@ -23,6 +23,12 @@ sealed class HomeScreen(val route: String) {
     object HomeIndex : HomeScreen("home/index")
 }
 
+sealed class ComponentsScreen(val route: String) {
+    object ComponentsIndex : ComponentsScreen("components/index")
+
+    object ComponentsAppBar : ComponentsScreen("components/appbar")
+
+}
 
 @Composable
 fun NavHostMain(
