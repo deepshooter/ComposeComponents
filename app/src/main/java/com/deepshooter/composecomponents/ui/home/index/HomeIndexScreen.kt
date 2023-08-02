@@ -163,8 +163,11 @@ fun HomeIndexScreen(
                             icon = menu.icon,
                             color = menu.color,
                             onClick = {
-                                //navigate(menu.route)
-                                Toast.makeText(context, "Not Implemented Yet !", Toast.LENGTH_LONG).show()
+                                if (menu.route.route == "components") {
+                                    navigate(menu.route)
+                                } else {
+                                    Toast.makeText(context, "Not Implemented Yet !", Toast.LENGTH_LONG).show()
+                                }
                             }
                         )
                     }

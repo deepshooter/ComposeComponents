@@ -7,6 +7,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.composable
 import androidx.navigation.navigation
+import com.deepshooter.composecomponents.ui.components.index.ComponentsIndexScreen
 import com.deepshooter.composecomponents.ui.home.index.HomeIndexScreen
 import com.deepshooter.composecomponents.ui.home.splash.SplashScreen
 
@@ -44,6 +45,9 @@ fun NavHostMain(
         addHomeScreens(
             navController = navController,
             turnOnDarkMode = turnOnDarkMode
+        )
+        addComponentsScreens(
+            navController = navController
         )
     }
 }
@@ -93,6 +97,35 @@ private fun NavGraphBuilder.addHomeIndexScreen(
                 navController.navigate(screen.route)
             },
             turnOnDarkMode = turnOnDarkMode
+        )
+    }
+}
+
+private fun NavGraphBuilder.addComponentsScreens(
+    navController: NavHostController
+) {
+
+    navigation(
+        route = Screen.Components.route,
+        startDestination = ComponentsScreen.ComponentsIndex.route
+    ) {
+        addComponentsIndexScreen(
+            navController = navController
+        )
+    }
+}
+
+private fun NavGraphBuilder.addComponentsIndexScreen(
+    navController: NavHostController
+) {
+    composable(ComponentsScreen.ComponentsIndex.route) {
+        ComponentsIndexScreen(
+            goBack = {
+                navController.popBackStack()
+            },
+            navigate = { screen ->
+                navController.navigate(screen.route)
+            }
         )
     }
 }
