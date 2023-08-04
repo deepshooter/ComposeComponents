@@ -10,25 +10,35 @@ import androidx.navigation.navigation
 import com.deepshooter.composecomponents.ui.components.index.ComponentsIndexScreen
 import com.deepshooter.composecomponents.ui.home.index.HomeIndexScreen
 import com.deepshooter.composecomponents.ui.home.splash.SplashScreen
+import com.deepshooter.composecomponents.utils.AppConstant.ANIMATION_SCREEN
+import com.deepshooter.composecomponents.utils.AppConstant.CLICK_SCREEN
+import com.deepshooter.composecomponents.utils.AppConstant.COMPONENTS_APPBAR_SCREEN
+import com.deepshooter.composecomponents.utils.AppConstant.COMPONENTS_INDEX_SCREEN
+import com.deepshooter.composecomponents.utils.AppConstant.COMPONENTS_SCREEN
+import com.deepshooter.composecomponents.utils.AppConstant.GITHUB_SCREEN
+import com.deepshooter.composecomponents.utils.AppConstant.HOME_INDEX_SCREEN
+import com.deepshooter.composecomponents.utils.AppConstant.HOME_SCREEN
+import com.deepshooter.composecomponents.utils.AppConstant.SPLASH_SCREEN
+import com.deepshooter.composecomponents.utils.AppConstant.TUTORIAL_SCREEN
 
 sealed class Screen(val route: String) {
-    object Home : Screen("home")
-    object Animations : Screen("animation")
-    object Components : Screen("components")
-    object Github : Screen("github")
-    object Tutorials : Screen("tutorial")
-    object Click : Screen("click")
+    object Home : Screen(HOME_SCREEN)
+    object Animations : Screen(ANIMATION_SCREEN)
+    object Components : Screen(COMPONENTS_SCREEN)
+    object Github : Screen(GITHUB_SCREEN)
+    object Tutorials : Screen(TUTORIAL_SCREEN)
+    object Click : Screen(CLICK_SCREEN)
 }
 
 sealed class HomeScreen(val route: String) {
-    object Splash : HomeScreen("splash")
-    object HomeIndex : HomeScreen("home/index")
+    object Splash : HomeScreen(SPLASH_SCREEN)
+    object HomeIndex : HomeScreen(HOME_INDEX_SCREEN)
 }
 
 sealed class ComponentsScreen(val route: String) {
-    object ComponentsIndex : ComponentsScreen("components/index")
+    object ComponentsIndex : ComponentsScreen(COMPONENTS_INDEX_SCREEN)
 
-    object ComponentsAppBar : ComponentsScreen("components/appbar")
+    object ComponentsAppBar : ComponentsScreen(COMPONENTS_APPBAR_SCREEN)
 
 }
 

@@ -56,6 +56,15 @@ import com.deepshooter.composecomponents.ui.theme.Pink500
 import com.deepshooter.composecomponents.ui.theme.Purple500
 import com.deepshooter.composecomponents.ui.theme.Red500
 import com.deepshooter.composecomponents.ui.theme.Yellow500
+import com.deepshooter.composecomponents.utils.AppConstant.ANIMATIONS_TITLE
+import com.deepshooter.composecomponents.utils.AppConstant.CLICK_SCREEN
+import com.deepshooter.composecomponents.utils.AppConstant.CLICK_TITLE
+import com.deepshooter.composecomponents.utils.AppConstant.COMPONENTS_SCREEN
+import com.deepshooter.composecomponents.utils.AppConstant.COMPONENTS_TITLE
+import com.deepshooter.composecomponents.utils.AppConstant.DARK_MODE_TITLE
+import com.deepshooter.composecomponents.utils.AppConstant.GITHUB_TITLE
+import com.deepshooter.composecomponents.utils.AppConstant.LIGHT_MODE_TITLE
+import com.deepshooter.composecomponents.utils.AppConstant.TUTORIALS_TITLE
 import com.deepshooter.composecomponents.utils.UIThemeController
 import com.deepshooter.composecomponents.utils.Utils
 import com.deepshooter.composecomponents.utils.shadow
@@ -63,31 +72,31 @@ import com.deepshooter.composecomponents.utils.shadow
 
 private val menuItems = listOf(
     MenuItem(
-        name = "Components",
+        name = COMPONENTS_TITLE,
         icon = R.drawable.ic_round_widgets_24,
         color = Red500,
         route = Screen.Components
     ),
     MenuItem(
-        name = "Animations",
+        name = ANIMATIONS_TITLE,
         icon = R.drawable.ic_round_animation_24,
         color = Yellow500,
         route = Screen.Animations
     ),
     MenuItem(
-        name = "Tutorials",
+        name = TUTORIALS_TITLE,
         icon = R.drawable.ic_round_sticky_note_2_24,
         color = Purple500,
         route = Screen.Tutorials
     ),
     MenuItem(
-        name = "Github",
+        name = GITHUB_TITLE,
         icon = R.drawable.ic_github,
         color = Blue500,
         route = Screen.Github
     ),
     MenuItem(
-        name = "Click",
+        name = CLICK_TITLE,
         icon = R.drawable.ic_click,
         color = Pink500,
         route = Screen.Click
@@ -153,7 +162,7 @@ fun HomeIndexScreen(
 
                     item {
                         ModuleButton(
-                            name = if (darkModeState) "Dark Mode" else "Light Mode",
+                            name = if (darkModeState) DARK_MODE_TITLE else LIGHT_MODE_TITLE,
                             icon = if (darkModeState) {
                                 R.drawable.ic_moon_stars
                             } else {
@@ -171,18 +180,18 @@ fun HomeIndexScreen(
                         ModuleButton(
                             name = menu.name,
                             icon = menu.icon,
-                            color = if (menu.route.route == "click") {
+                            color = if (menu.route.route == CLICK_SCREEN) {
                                 clickColor
                             } else {
                                 menu.color
                             },
                             onClick = {
                                 when (menu.route.route) {
-                                    "components" -> {
+                                    COMPONENTS_SCREEN -> {
                                         navigate(menu.route)
                                     }
 
-                                    "click" -> {
+                                    CLICK_SCREEN -> {
                                         clickColor = Color(Utils.getRandomColor())
                                     }
 
