@@ -15,8 +15,9 @@ sealed class Screen(val route: String) {
     object Home : Screen("home")
     object Animations : Screen("animation")
     object Components : Screen("components")
-    object UIs : Screen("ui")
+    object Github : Screen("github")
     object Tutorials : Screen("tutorial")
+    object Click : Screen("click")
 }
 
 sealed class HomeScreen(val route: String) {

@@ -51,6 +51,7 @@ import com.deepshooter.composecomponents.ui.Screen
 import com.deepshooter.composecomponents.ui.theme.Blue500
 import com.deepshooter.composecomponents.ui.theme.ComposeComponentsTheme
 import com.deepshooter.composecomponents.ui.theme.Green500
+import com.deepshooter.composecomponents.ui.theme.Pink500
 import com.deepshooter.composecomponents.ui.theme.Purple500
 import com.deepshooter.composecomponents.ui.theme.Red500
 import com.deepshooter.composecomponents.ui.theme.Yellow500
@@ -60,28 +61,34 @@ import com.deepshooter.composecomponents.utils.shadow
 
 private val menuItems = listOf(
     MenuItem(
-        name = "Animations",
-        icon = R.drawable.ic_round_animation_24,
-        color = Yellow500,
-        route = Screen.Animations
-    ),
-    MenuItem(
         name = "Components",
         icon = R.drawable.ic_round_widgets_24,
         color = Red500,
         route = Screen.Components
     ),
     MenuItem(
-        name = "UIs",
-        icon = R.drawable.ic_round_grid_view_24,
-        color = Blue500,
-        route = Screen.UIs
+        name = "Animations",
+        icon = R.drawable.ic_round_animation_24,
+        color = Yellow500,
+        route = Screen.Animations
     ),
     MenuItem(
         name = "Tutorials",
         icon = R.drawable.ic_round_sticky_note_2_24,
         color = Purple500,
         route = Screen.Tutorials
+    ),
+    MenuItem(
+        name = "Github",
+        icon = R.drawable.ic_github,
+        color = Blue500,
+        route = Screen.Github
+    ),
+    MenuItem(
+        name = "Click",
+        icon = R.drawable.ic_click,
+        color = Pink500,
+        route = Screen.Click
     )
 )
 
