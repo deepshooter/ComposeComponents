@@ -34,6 +34,7 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -56,6 +57,7 @@ import com.deepshooter.composecomponents.ui.theme.Purple500
 import com.deepshooter.composecomponents.ui.theme.Red500
 import com.deepshooter.composecomponents.ui.theme.Yellow500
 import com.deepshooter.composecomponents.utils.UIThemeController
+import com.deepshooter.composecomponents.utils.Utils
 import com.deepshooter.composecomponents.utils.shadow
 
 
@@ -101,6 +103,7 @@ fun HomeIndexScreen(
     val context = LocalContext.current
     val isDark by UIThemeController.isDarkMode.collectAsState()
     val (darkModeState, onDarkModeStateChange) = remember { mutableStateOf(isDark) }
+    var clickColor by remember { mutableStateOf(Pink500) }
 
     Scaffold(
         Modifier
@@ -168,12 +171,28 @@ fun HomeIndexScreen(
                         ModuleButton(
                             name = menu.name,
                             icon = menu.icon,
-                            color = menu.color,
+                            color = if (menu.route.route == "click") {
+                                clickColor
+                            } else {
+                                menu.color
+                            },
                             onClick = {
-                                if (menu.route.route == "components") {
-                                    navigate(menu.route)
-                                } else {
-                                    Toast.makeText(context, "Not Implemented Yet !", Toast.LENGTH_LONG).show()
+                                when (menu.route.route) {
+                                    "components" -> {
+                                        navigate(menu.route)
+                                    }
+
+                                    "click" -> {
+                                        clickColor = Color(Utils.getRandomColor())
+                                    }
+
+                                    else -> {
+                                        Toast.makeText(
+                                            context,
+                                            "Not Implemented Yet !",
+                                            Toast.LENGTH_LONG
+                                        ).show()
+                                    }
                                 }
                             }
                         )

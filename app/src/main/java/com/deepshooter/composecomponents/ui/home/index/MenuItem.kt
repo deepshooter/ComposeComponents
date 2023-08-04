@@ -7,6 +7,6 @@ import com.deepshooter.composecomponents.ui.Screen
 data class MenuItem(
     val name: String,
     @DrawableRes val icon: Int,
-    val color: Color,
+    var color: Color,
     val route: Screen
 )
