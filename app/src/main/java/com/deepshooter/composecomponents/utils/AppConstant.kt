@@ -30,5 +30,7 @@ object AppConstant {
     const val COMPONENTS_INDEX_SCREEN = "components/index"
     const val COMPONENTS_APPBAR_SCREEN = "components/appbar"
 
+    /*Github Sub Screens*/
+    const val GITHUB_INDEX_SCREEN = "github/index"
 
 }

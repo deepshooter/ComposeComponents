@@ -2,12 +2,16 @@ package com.deepshooter.composecomponents.ui
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.NavHost
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.composable
 import androidx.navigation.navigation
 import com.deepshooter.composecomponents.ui.components.index.ComponentsIndexScreen
+import com.deepshooter.composecomponents.ui.github.GithubViewModel
+import com.deepshooter.composecomponents.ui.github.GithubWebViewScreen
+import com.deepshooter.composecomponents.ui.github.WebViewTarget
 import com.deepshooter.composecomponents.ui.home.index.HomeIndexScreen
 import com.deepshooter.composecomponents.ui.home.splash.SplashScreen
 import com.deepshooter.composecomponents.utils.AppConstant.ANIMATION_SCREEN
@@ -15,6 +19,7 @@ import com.deepshooter.composecomponents.utils.AppConstant.CLICK_SCREEN
 import com.deepshooter.composecomponents.utils.AppConstant.COMPONENTS_APPBAR_SCREEN
 import com.deepshooter.composecomponents.utils.AppConstant.COMPONENTS_INDEX_SCREEN
 import com.deepshooter.composecomponents.utils.AppConstant.COMPONENTS_SCREEN
+import com.deepshooter.composecomponents.utils.AppConstant.GITHUB_INDEX_SCREEN
 import com.deepshooter.composecomponents.utils.AppConstant.GITHUB_SCREEN
 import com.deepshooter.composecomponents.utils.AppConstant.HOME_INDEX_SCREEN
 import com.deepshooter.composecomponents.utils.AppConstant.HOME_SCREEN
@@ -42,6 +47,11 @@ sealed class ComponentsScreen(val route: String) {
 
 }
 
+sealed class GithubScreen(val route: String) {
+    object GithubIndex : HomeScreen(GITHUB_INDEX_SCREEN)
+}
+
+
 @Composable
 fun NavHostMain(
     modifier: Modifier = Modifier,
@@ -58,6 +68,9 @@ fun NavHostMain(
             turnOnDarkMode = turnOnDarkMode
         )
         addComponentsScreens(
+            navController = navController
+        )
+        addGithubScreens(
             navController = navController
         )
     }
@@ -136,6 +149,38 @@ private fun NavGraphBuilder.addComponentsIndexScreen(
             },
             navigate = { screen ->
                 navController.navigate(screen.route)
+            }
+        )
+    }
+}
+
+
+private fun NavGraphBuilder.addGithubScreens(
+    navController: NavHostController
+) {
+
+    navigation(
+        route = Screen.Github.route,
+        startDestination = GithubScreen.GithubIndex.route
+    ) {
+        addGithubWebViewScreen(
+            navController = navController
+        )
+    }
+}
+
+
+private fun NavGraphBuilder.addGithubWebViewScreen(
+    navController: NavHostController
+) {
+    composable(GithubScreen.GithubIndex.route) {
+        val viewModel: GithubViewModel = hiltViewModel()
+
+        GithubWebViewScreen(
+            viewModel = viewModel,
+            target = WebViewTarget.Github,
+            goBack = {
+                navController.popBackStack()
             }
         )
     }

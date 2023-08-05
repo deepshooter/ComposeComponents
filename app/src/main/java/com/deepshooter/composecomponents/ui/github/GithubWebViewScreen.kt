@@ -1,5 +1,6 @@
 package com.deepshooter.composecomponents.ui.github
 
+import android.annotation.SuppressLint
 import android.content.res.Configuration
 import android.util.Log
 import android.view.ViewGroup
@@ -64,14 +65,14 @@ import kotlinx.coroutines.launch
 private const val TAG = "GithubScreen"
 
 sealed class WebViewTarget(val name: String, val url: String) {
-    object AboutMe : WebViewTarget(
+    object Github : WebViewTarget(
         name = "Github",
         url = "https://github.com/deepshooter"
     )
 }
 
 @Composable
-fun GithubScreen(
+fun GithubWebViewScreen(
     viewModel: GithubViewModel,
     target: WebViewTarget,
     goBack: () -> Unit
@@ -107,6 +108,7 @@ fun GithubScreen(
 
 }
 
+@SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun WebViewSkeleton(
@@ -122,10 +124,9 @@ fun WebViewSkeleton(
             .navigationBarsPadding()
             .imePadding()
             .statusBarsPadding()
-    ) { innerPadding ->
+    ) {
         Column(
             Modifier
-                .padding(innerPadding)
                 .fillMaxSize()
         ) {
             TopAppBar(
@@ -312,7 +313,7 @@ fun LoadingContainerPreview() {
 fun WebViewSkeletonPreview() {
     ComposeComponentsTheme() {
         WebViewSkeleton(
-            title = WebViewTarget.AboutMe.name,
+            title = WebViewTarget.Github.name,
             goBack = {},
             webView = {
                 Box(
@@ -330,7 +331,7 @@ fun WebViewSkeletonPreview() {
 fun WebViewSkeletonPreviewDark() {
     ComposeComponentsTheme {
         WebViewSkeleton(
-            title = WebViewTarget.AboutMe.name,
+            title = WebViewTarget.Github.name,
             goBack = {},
             webView = {
                 Box(
