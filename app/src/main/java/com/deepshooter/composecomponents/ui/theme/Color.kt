@@ -51,6 +51,7 @@ val Indigo700 = Color(0xFF4338CA)
 val Indigo900 = Color(0xFF312E81)
 
 // colors.violet
+val Purple200 = Color(0xFFB39DDB)
 val Purple500 = Color(0xFF8B5CF6)
 val Purple700 = Color(0xFF6D28D9)
 val Purple900 = Color(0xFF4C1D95)
@@ -59,6 +60,9 @@ val Purple900 = Color(0xFF4C1D95)
 val Pink500 = Color(0xFFEC4899)
 val Pink700 = Color(0xFFBE185D)
 val Pink900 = Color(0xFF831843)
+
+// colors.teal
+val Teal300 = Color(0xFF4DB6AC)
 
 
 val dotBackground: Color
