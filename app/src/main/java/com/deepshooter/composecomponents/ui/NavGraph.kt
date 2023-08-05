@@ -42,12 +42,11 @@ sealed class HomeScreen(val route: String) {
 
 sealed class ComponentsScreen(val route: String) {
     object ComponentsIndex : ComponentsScreen(COMPONENTS_INDEX_SCREEN)
-
     object ComponentsAppBar : ComponentsScreen(COMPONENTS_APPBAR_SCREEN)
 
 }
 
-sealed class GithubScreen(val route: String) {
+sealed class GithubScreen {
     object GithubIndex : HomeScreen(GITHUB_INDEX_SCREEN)
 }
 
