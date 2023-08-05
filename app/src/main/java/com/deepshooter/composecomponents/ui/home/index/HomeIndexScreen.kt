@@ -65,7 +65,7 @@ import com.deepshooter.composecomponents.utils.AppConstant.DARK_MODE_TITLE
 import com.deepshooter.composecomponents.utils.AppConstant.GITHUB_SCREEN
 import com.deepshooter.composecomponents.utils.AppConstant.GITHUB_TITLE
 import com.deepshooter.composecomponents.utils.AppConstant.LIGHT_MODE_TITLE
-import com.deepshooter.composecomponents.utils.AppConstant.TUTORIALS_TITLE
+import com.deepshooter.composecomponents.utils.AppConstant.TICTACTOE_TITLE
 import com.deepshooter.composecomponents.utils.UIThemeController
 import com.deepshooter.composecomponents.utils.Utils
 import com.deepshooter.composecomponents.utils.shadow
@@ -85,10 +85,10 @@ private val menuItems = listOf(
         route = Screen.Animations
     ),
     MenuItem(
-        name = TUTORIALS_TITLE,
-        icon = R.drawable.ic_round_sticky_note_2_24,
+        name = TICTACTOE_TITLE,
+        icon = R.drawable.ic_tic_tac_toe,
         color = Purple500,
-        route = Screen.Tutorials
+        route = Screen.TicTacToe
     ),
     MenuItem(
         name = GITHUB_TITLE,

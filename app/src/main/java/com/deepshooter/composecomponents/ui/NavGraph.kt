@@ -24,14 +24,14 @@ import com.deepshooter.composecomponents.utils.AppConstant.GITHUB_SCREEN
 import com.deepshooter.composecomponents.utils.AppConstant.HOME_INDEX_SCREEN
 import com.deepshooter.composecomponents.utils.AppConstant.HOME_SCREEN
 import com.deepshooter.composecomponents.utils.AppConstant.SPLASH_SCREEN
-import com.deepshooter.composecomponents.utils.AppConstant.TUTORIAL_SCREEN
+import com.deepshooter.composecomponents.utils.AppConstant.TICTACTOE_SCREEN
 
 sealed class Screen(val route: String) {
     object Home : Screen(HOME_SCREEN)
     object Animations : Screen(ANIMATION_SCREEN)
     object Components : Screen(COMPONENTS_SCREEN)
     object Github : Screen(GITHUB_SCREEN)
-    object Tutorials : Screen(TUTORIAL_SCREEN)
+    object TicTacToe : Screen(TICTACTOE_SCREEN)
     object Click : Screen(CLICK_SCREEN)
 }
 

@@ -7,7 +7,7 @@ object AppConstant {
     const val DARK_MODE_TITLE = "Dark Mode"
     const val COMPONENTS_TITLE = "Components"
     const val ANIMATIONS_TITLE = "Animations"
-    const val TUTORIALS_TITLE = "Tutorials"
+    const val TICTACTOE_TITLE = "TicTacToe"
     const val GITHUB_TITLE = "Github"
     const val CLICK_TITLE = "Click"
 
@@ -17,7 +17,7 @@ object AppConstant {
     const val ANIMATION_SCREEN = "animation"
     const val COMPONENTS_SCREEN = "components"
     const val GITHUB_SCREEN = "github"
-    const val TUTORIAL_SCREEN = "tutorial"
+    const val TICTACTOE_SCREEN = "tictactoe"
     const val CLICK_SCREEN = "click"
 
 
