@@ -40,8 +40,22 @@ class SharedPreferenceHelper @Inject constructor(@ApplicationContext context: Co
         return getSharedPreferences().getBoolean(PREF_DARK_MODE, false)
     }
 
+    fun setTicTacToeWin(data: Set<String>) {
+        getSharedPreferences()
+            .edit()
+            .apply {
+                putStringSet(PREF_TICTACTOE_WIN, data)
+                apply()
+            }
+    }
+
+    fun getTicTacToeWin(): Set<String> {
+        return getSharedPreferences().getStringSet(PREF_TICTACTOE_WIN, emptySet()) ?: emptySet()
+    }
+
     companion object {
         private const val PREF_DARK_MODE = "dark_mode"
+        private const val PREF_TICTACTOE_WIN = "tictactoe_win"
     }
 
 }
