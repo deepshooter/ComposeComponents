@@ -1,5 +1,6 @@
 package com.deepshooter.composecomponents.ui.tictactoe
 
+import android.annotation.SuppressLint
 import android.content.res.Configuration
 import android.widget.Toast
 import androidx.compose.animation.AnimatedContent
@@ -58,6 +59,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.deepshooter.composecomponents.R
 import com.deepshooter.composecomponents.ui.theme.ComposeComponentsTheme
+import com.deepshooter.composecomponents.ui.theme.Green500
 import com.deepshooter.composecomponents.utils.AppComponent
 
 
@@ -99,6 +101,7 @@ fun TicTacToeIndexScreen(
 }
 
 
+@SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
 fun TicTacToeScreenSkeleton(
     loading: Boolean = false,
@@ -140,7 +143,6 @@ fun TicTacToeScreenSkeleton(
 
         Column(
             Modifier
-                .padding(it)
                 .fillMaxSize()
                 .verticalScroll(rememberScrollState())
         ) {
@@ -294,7 +296,7 @@ fun RowScope.Block(
 
     val backgroundColor by animateColorAsState(
         targetValue = if (isMarked) {
-            MaterialTheme.colorScheme.error
+            Green500
         } else {
             MaterialTheme.colorScheme.background
         }
