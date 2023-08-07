@@ -33,4 +33,7 @@ object AppConstant {
     /*Github Sub Screens*/
     const val GITHUB_INDEX_SCREEN = "github/index"
 
+    /*TicTacToe Sub Screens*/
+    const val TICTACTOE_INDEX_SCREEN = "tictactoe/index"
+
 }

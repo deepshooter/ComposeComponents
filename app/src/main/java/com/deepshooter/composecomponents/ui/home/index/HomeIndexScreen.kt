@@ -65,6 +65,7 @@ import com.deepshooter.composecomponents.utils.AppConstant.DARK_MODE_TITLE
 import com.deepshooter.composecomponents.utils.AppConstant.GITHUB_SCREEN
 import com.deepshooter.composecomponents.utils.AppConstant.GITHUB_TITLE
 import com.deepshooter.composecomponents.utils.AppConstant.LIGHT_MODE_TITLE
+import com.deepshooter.composecomponents.utils.AppConstant.TICTACTOE_SCREEN
 import com.deepshooter.composecomponents.utils.AppConstant.TICTACTOE_TITLE
 import com.deepshooter.composecomponents.utils.UIThemeController
 import com.deepshooter.composecomponents.utils.Utils
@@ -188,7 +189,7 @@ fun HomeIndexScreen(
                             },
                             onClick = {
                                 when (menu.route.route) {
-                                    COMPONENTS_SCREEN, GITHUB_SCREEN -> {
+                                    COMPONENTS_SCREEN, GITHUB_SCREEN, TICTACTOE_SCREEN -> {
                                         navigate(menu.route)
                                     }
 

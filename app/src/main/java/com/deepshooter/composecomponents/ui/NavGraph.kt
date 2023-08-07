@@ -14,6 +14,8 @@ import com.deepshooter.composecomponents.ui.github.GithubWebViewScreen
 import com.deepshooter.composecomponents.ui.github.WebViewTarget
 import com.deepshooter.composecomponents.ui.home.index.HomeIndexScreen
 import com.deepshooter.composecomponents.ui.home.splash.SplashScreen
+import com.deepshooter.composecomponents.ui.tictactoe.TicTacToeIndexScreen
+import com.deepshooter.composecomponents.ui.tictactoe.TicTacToeViewModel
 import com.deepshooter.composecomponents.utils.AppConstant.ANIMATION_SCREEN
 import com.deepshooter.composecomponents.utils.AppConstant.CLICK_SCREEN
 import com.deepshooter.composecomponents.utils.AppConstant.COMPONENTS_APPBAR_SCREEN
@@ -24,6 +26,7 @@ import com.deepshooter.composecomponents.utils.AppConstant.GITHUB_SCREEN
 import com.deepshooter.composecomponents.utils.AppConstant.HOME_INDEX_SCREEN
 import com.deepshooter.composecomponents.utils.AppConstant.HOME_SCREEN
 import com.deepshooter.composecomponents.utils.AppConstant.SPLASH_SCREEN
+import com.deepshooter.composecomponents.utils.AppConstant.TICTACTOE_INDEX_SCREEN
 import com.deepshooter.composecomponents.utils.AppConstant.TICTACTOE_SCREEN
 
 sealed class Screen(val route: String) {
@@ -50,6 +53,10 @@ sealed class GithubScreen {
     object GithubIndex : HomeScreen(GITHUB_INDEX_SCREEN)
 }
 
+sealed class TicTacToeScreen {
+    object TicTacToeIndex : HomeScreen(TICTACTOE_INDEX_SCREEN)
+}
+
 
 @Composable
 fun NavHostMain(
@@ -70,6 +77,9 @@ fun NavHostMain(
             navController = navController
         )
         addGithubScreens(
+            navController = navController
+        )
+        addTicTacToeScreens(
             navController = navController
         )
     }
@@ -178,6 +188,34 @@ private fun NavGraphBuilder.addGithubWebViewScreen(
         GithubWebViewScreen(
             viewModel = viewModel,
             target = WebViewTarget.Github,
+            goBack = {
+                navController.popBackStack()
+            }
+        )
+    }
+}
+
+
+private fun NavGraphBuilder.addTicTacToeScreens(
+    navController: NavHostController
+) {
+    navigation(
+        route = Screen.TicTacToe.route,
+        startDestination = TicTacToeScreen.TicTacToeIndex.route
+    ) {
+        addTicTacToeScreen(
+            navController = navController
+        )
+    }
+}
+
+private fun NavGraphBuilder.addTicTacToeScreen(
+    navController: NavHostController
+) {
+    composable(TicTacToeScreen.TicTacToeIndex.route) {
+        val viewModel: TicTacToeViewModel = hiltViewModel()
+        TicTacToeIndexScreen(
+            viewModel = viewModel,
             goBack = {
                 navController.popBackStack()
             }

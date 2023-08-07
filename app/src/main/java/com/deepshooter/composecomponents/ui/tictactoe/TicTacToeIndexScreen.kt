@@ -62,7 +62,7 @@ import com.deepshooter.composecomponents.utils.AppComponent
 
 
 @Composable
-fun TicTacToeScreen(
+fun TicTacToeIndexScreen(
     viewModel: TicTacToeViewModel,
     goBack: () -> Unit
 ) {
