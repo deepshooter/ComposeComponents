@@ -86,7 +86,7 @@ fun TicTacToeIndexScreen(
         userWinCount = state.userWinCount,
         aiWinCount = state.aiWinCount,
         currentPlayingMoves = state.currentPlayingMoves,
-        totalNeurons = state.totalNeurons,
+        totalGames = state.totalGames,
         winPosition = state.winPosition,
         goBack = goBack,
         onBoxClicked = { position ->
@@ -111,7 +111,7 @@ fun TicTacToeScreenSkeleton(
     userWinCount: Int = 0,
     aiWinCount: Int = 0,
     currentPlayingMoves: String = "",
-    totalNeurons: Int = 0,
+    totalGames: Int = 0,
     winPosition: WinPosition? = null,
     goBack: () -> Unit = {},
     onBoxClicked: (position: Int) -> Unit = {},
@@ -251,10 +251,10 @@ fun TicTacToeScreenSkeleton(
                     .padding(start = 32.dp, end = 32.dp)
                     .fillMaxWidth(),
                 text = buildAnnotatedString {
-                    append("Total Neurons: ")
+                    append("Total Games: ")
 
                     withStyle(SpanStyle(fontWeight = FontWeight.Bold)) {
-                        append("$totalNeurons")
+                        append("$totalGames")
                     }
                 },
                 textAlign = TextAlign.Center

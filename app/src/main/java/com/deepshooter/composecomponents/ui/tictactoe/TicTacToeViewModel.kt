@@ -26,7 +26,7 @@ class TicTacToeViewModel @Inject constructor(private val sharedPreferenceHelper:
     private val _userWinCount = MutableStateFlow(0)
     private val _aiWinCount = MutableStateFlow(0)
     private val _currentPlayingMoves = MutableStateFlow("")
-    private val _totalNeurons = MutableStateFlow(0)
+    private val _totalGames = MutableStateFlow(0)
     private val _winPosition = MutableStateFlow<WinPosition?>(null)
     private val _youWin = MutableStateFlow(false)
 
@@ -45,12 +45,12 @@ class TicTacToeViewModel @Inject constructor(private val sharedPreferenceHelper:
                 _userWinCount,
                 _aiWinCount,
                 _currentPlayingMoves,
-                _totalNeurons,
+                _totalGames,
                 _winPosition,
                 _youWin
             ) { showLoading, showMessage, showToast,
                 paused, userWinCount, aiWinCount,
-                currentPlayingMoves, totalNeurons, winPosition, youWin ->
+                currentPlayingMoves, totalGames, winPosition, youWin ->
                 UiState(
                     loading = showLoading,
                     message = showMessage,
@@ -59,7 +59,7 @@ class TicTacToeViewModel @Inject constructor(private val sharedPreferenceHelper:
                     userWinCount = userWinCount,
                     aiWinCount = aiWinCount,
                     currentPlayingMoves = currentPlayingMoves,
-                    totalNeurons = totalNeurons,
+                    totalGames = totalGames,
                     winPosition = winPosition,
                     youWin = youWin
                 )
@@ -73,7 +73,7 @@ class TicTacToeViewModel @Inject constructor(private val sharedPreferenceHelper:
 
         winPlayingMoves.addAll(sharedPreferenceHelper.getTicTacToeWin())
 
-        _totalNeurons.value = winPlayingMoves.size
+        _totalGames.value = winPlayingMoves.size
     }
 
     fun act(position: Int) = viewModelScope.launch {
@@ -92,7 +92,7 @@ class TicTacToeViewModel @Inject constructor(private val sharedPreferenceHelper:
 
             // Save the win moves (We will call them Neuron ;) )
             winPlayingMoves.add(_currentPlayingMoves.value)
-            _totalNeurons.value = winPlayingMoves.size
+            _totalGames.value = winPlayingMoves.size
 
             notifyWon(winPosition)
 
@@ -191,7 +191,7 @@ data class UiState(
     val userWinCount: Int = 0,
     val aiWinCount: Int = 0,
     val currentPlayingMoves: String = "",
-    val totalNeurons: Int = 0,
+    val totalGames: Int = 0,
     val winPosition: WinPosition? = null,
     val youWin: Boolean = false
 )
