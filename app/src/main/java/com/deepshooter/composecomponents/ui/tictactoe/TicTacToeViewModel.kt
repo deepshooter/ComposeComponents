@@ -28,6 +28,7 @@ class TicTacToeViewModel @Inject constructor(private val sharedPreferenceHelper:
     private val _currentPlayingMoves = MutableStateFlow("")
     private val _totalNeurons = MutableStateFlow(0)
     private val _winPosition = MutableStateFlow<WinPosition?>(null)
+    private val _youWin = MutableStateFlow(false)
 
     private val _state = MutableStateFlow(UiState())
     val state: StateFlow<UiState>
@@ -45,10 +46,11 @@ class TicTacToeViewModel @Inject constructor(private val sharedPreferenceHelper:
                 _aiWinCount,
                 _currentPlayingMoves,
                 _totalNeurons,
-                _winPosition
+                _winPosition,
+                _youWin
             ) { showLoading, showMessage, showToast,
                 paused, userWinCount, aiWinCount,
-                currentPlayingMoves, totalNeurons, winPosition ->
+                currentPlayingMoves, totalNeurons, winPosition, youWin ->
                 UiState(
                     loading = showLoading,
                     message = showMessage,
@@ -58,7 +60,8 @@ class TicTacToeViewModel @Inject constructor(private val sharedPreferenceHelper:
                     aiWinCount = aiWinCount,
                     currentPlayingMoves = currentPlayingMoves,
                     totalNeurons = totalNeurons,
-                    winPosition = winPosition
+                    winPosition = winPosition,
+                    youWin = youWin
                 )
             }.catch { throwable ->
                 // TODO: emit a UI error here. For now we'll just rethrow
@@ -156,9 +159,11 @@ class TicTacToeViewModel @Inject constructor(private val sharedPreferenceHelper:
         if (winPiece == Piece.X) {
             _eventShowMessage.value = Event("You won!")
             _userWinCount.value++
+            _youWin.value = true
         } else {
             _eventShowMessage.value = Event("AI won!")
             _aiWinCount.value++
+            _youWin.value = false
         }
 
         _winPosition.value = winPosition
@@ -187,5 +192,6 @@ data class UiState(
     val aiWinCount: Int = 0,
     val currentPlayingMoves: String = "",
     val totalNeurons: Int = 0,
-    val winPosition: WinPosition? = null
+    val winPosition: WinPosition? = null,
+    val youWin: Boolean = false
 )

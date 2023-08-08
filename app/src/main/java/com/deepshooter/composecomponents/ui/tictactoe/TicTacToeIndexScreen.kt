@@ -96,7 +96,8 @@ fun TicTacToeIndexScreen(
         },
         onRestartClicked = {
             viewModel.restart()
-        }
+        },
+        youWin = state.youWin
     )
 }
 
@@ -114,7 +115,8 @@ fun TicTacToeScreenSkeleton(
     winPosition: WinPosition? = null,
     goBack: () -> Unit = {},
     onBoxClicked: (position: Int) -> Unit = {},
-    onRestartClicked: () -> Unit = {}
+    onRestartClicked: () -> Unit = {},
+    youWin: Boolean = false,
 ) {
 
     val snackBarHostState: SnackbarHostState = remember { SnackbarHostState() }
@@ -206,7 +208,8 @@ fun TicTacToeScreenSkeleton(
                                 isMarked = winPosition != null && i in winPosition.places,
                                 onClick = {
                                     onBoxClicked(i)
-                                }
+                                },
+                                youWin = youWin
                             )
                         }
                     }
@@ -219,7 +222,8 @@ fun TicTacToeScreenSkeleton(
                                 isMarked = winPosition != null && i in winPosition.places,
                                 onClick = {
                                     onBoxClicked(i)
-                                }
+                                },
+                                youWin = youWin
                             )
                         }
                     }
@@ -232,7 +236,8 @@ fun TicTacToeScreenSkeleton(
                                 isMarked = winPosition != null && i in winPosition.places,
                                 onClick = {
                                     onBoxClicked(i)
-                                }
+                                },
+                                youWin = youWin
                             )
                         }
                     }
@@ -285,7 +290,8 @@ fun RowScope.Block(
     currentPlayingMoves: String,
     enabled: Boolean,
     isMarked: Boolean,
-    onClick: () -> Unit = {}
+    onClick: () -> Unit = {},
+    youWin: Boolean
 ) {
 
     var currentPiece by remember { mutableStateOf<String?>(null) }
@@ -295,8 +301,10 @@ fun RowScope.Block(
     }
 
     val backgroundColor by animateColorAsState(
-        targetValue = if (isMarked) {
+        targetValue = if (isMarked && youWin) {
             Green500
+        } else if (isMarked && !youWin) {
+            MaterialTheme.colorScheme.error
         } else {
             MaterialTheme.colorScheme.background
         }
