@@ -158,7 +158,7 @@ fun TicTacToeScreenSkeleton(
             Divider()
             AppComponent.MediumSpacer()
 
-            Row(Modifier.padding(start = 16.dp, end = 16.dp)) {
+            Row(Modifier.padding(start = 16.dp, end = 16.dp, top = 32.dp)) {
                 Column(
                     Modifier.weight(1f),
                     horizontalAlignment = Alignment.CenterHorizontally
@@ -249,7 +249,7 @@ fun TicTacToeScreenSkeleton(
 
             Text(
                 modifier = Modifier
-                    .padding(start = 32.dp, end = 32.dp)
+                    .padding(start = 32.dp, end = 32.dp, top = 32.dp)
                     .fillMaxWidth(),
                 text = buildAnnotatedString {
                     append("Your Total Win Count: ")
