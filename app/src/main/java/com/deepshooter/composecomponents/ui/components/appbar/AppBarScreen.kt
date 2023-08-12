@@ -1,5 +1,6 @@
 package com.deepshooter.composecomponents.ui.components.appbar
 
+import android.annotation.SuppressLint
 import android.content.res.Configuration
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -39,6 +40,7 @@ fun AppBarScreen(
     )
 }
 
+@SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
 fun AppBarScreenSkeleton(
     goBack: () -> Unit = {}
@@ -48,10 +50,9 @@ fun AppBarScreenSkeleton(
             .navigationBarsPadding()
             .imePadding()
             .statusBarsPadding()
-    ) { innerPadding ->
+    ) {
         Column(
             Modifier
-                .padding(innerPadding)
                 .fillMaxSize()
         ) {
             Header(

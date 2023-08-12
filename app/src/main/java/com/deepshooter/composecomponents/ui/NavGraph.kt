@@ -8,6 +8,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.composable
 import androidx.navigation.navigation
+import com.deepshooter.composecomponents.ui.components.appbar.AppBarScreen
 import com.deepshooter.composecomponents.ui.components.index.ComponentsIndexScreen
 import com.deepshooter.composecomponents.ui.github.GithubViewModel
 import com.deepshooter.composecomponents.ui.github.GithubWebViewScreen
@@ -145,6 +146,15 @@ private fun NavGraphBuilder.addComponentsScreens(
         addComponentsIndexScreen(
             navController = navController
         )
+
+        //TopAppBar
+        composable(ComponentsScreen.ComponentsAppBar.route) {
+            AppBarScreen(
+                goBack = {
+                    navController.popBackStack()
+                }
+            )
+        }
     }
 }
 
