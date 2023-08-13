@@ -63,6 +63,7 @@ val Pink900 = Color(0xFF831843)
 
 // colors.teal
 val Teal300 = Color(0xFF4DB6AC)
+val Teal700 = Color(0xFF009688)
 
 
 val dotBackground: Color
