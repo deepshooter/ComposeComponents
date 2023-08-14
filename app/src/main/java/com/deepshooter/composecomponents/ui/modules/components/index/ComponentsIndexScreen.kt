@@ -1,4 +1,4 @@
-package com.deepshooter.composecomponents.ui.animations.index
+package com.deepshooter.composecomponents.ui.modules.components.index
 
 import android.annotation.SuppressLint
 import androidx.compose.foundation.clickable
@@ -18,29 +18,26 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.deepshooter.composecomponents.ui.AnimationsScreen
+import com.deepshooter.composecomponents.ui.ComponentsScreen
 import com.deepshooter.composecomponents.ui.theme.ComposeComponentsTheme
 import com.deepshooter.composecomponents.utils.AppComponent.Header
 
-
 @Composable
-fun AnimationIndexScreen(
+fun ComponentsIndexScreen(
     goBack: () -> Unit,
-    navigate: (AnimationsScreen) -> Unit
+    navigate: (ComponentsScreen) -> Unit
 ) {
-
-    AnimationIndexSkeleton(
+    ComponentsIndexSkeleton(
         goBack = goBack,
         navigate = navigate
     )
-
 }
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
-fun AnimationIndexSkeleton(
+fun ComponentsIndexSkeleton(
     goBack: () -> Unit = {},
-    navigate: (AnimationsScreen) -> Unit = {}
+    navigate: (ComponentsScreen) -> Unit = {}
 ) {
 
     Scaffold(
@@ -49,20 +46,22 @@ fun AnimationIndexSkeleton(
             .imePadding()
             .statusBarsPadding()
     ) {
+
+
         Column(
             Modifier
                 .fillMaxSize()
         ) {
 
             Header(
-                "Animations",
+                "Components",
                 goBack = goBack
             )
 
             Divider()
 
             LazyColumn(Modifier.fillMaxSize()) {
-                itemsIndexed(Animation.animationsList) { index, item ->
+                itemsIndexed(Components.componentsList) { index, item ->
 
                     if (index != 0) {
                         Divider(Modifier.padding(16.dp, 0.dp))
@@ -84,7 +83,6 @@ fun AnimationIndexSkeleton(
                     )
                 }
             }
-
         }
     }
 }
@@ -92,8 +90,8 @@ fun AnimationIndexSkeleton(
 
 @Preview
 @Composable
-fun AnimationIndexSkeletonPreview() {
-    ComposeComponentsTheme() {
-        AnimationIndexSkeleton()
+fun CompositionIndexSkeletonPreview() {
+    ComposeComponentsTheme {
+        ComponentsIndexSkeleton()
     }
 }

@@ -1,4 +1,4 @@
-package com.deepshooter.composecomponents.ui.github
+package com.deepshooter.composecomponents.ui.modules.github
 
 import android.annotation.SuppressLint
 import android.content.res.Configuration

@@ -1,4 +1,4 @@
-package com.deepshooter.composecomponents.ui.animations.index
+package com.deepshooter.composecomponents.ui.modules.animations.index
 
 import com.deepshooter.composecomponents.ui.AnimationsScreen
 

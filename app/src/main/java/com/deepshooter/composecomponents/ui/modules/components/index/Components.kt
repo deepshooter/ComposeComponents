@@ -1,4 +1,4 @@
-package com.deepshooter.composecomponents.ui.components.index
+package com.deepshooter.composecomponents.ui.modules.components.index
 
 import com.deepshooter.composecomponents.ui.ComponentsScreen
 

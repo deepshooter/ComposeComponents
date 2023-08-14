@@ -1,4 +1,4 @@
-package com.deepshooter.composecomponents.ui.components.appbar
+package com.deepshooter.composecomponents.ui.modules.components.appbar
 
 import android.annotation.SuppressLint
 import android.content.res.Configuration

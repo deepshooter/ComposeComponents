@@ -1,4 +1,4 @@
-package com.deepshooter.composecomponents.ui.tictactoe
+package com.deepshooter.composecomponents.ui.modules.tictactoe
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope

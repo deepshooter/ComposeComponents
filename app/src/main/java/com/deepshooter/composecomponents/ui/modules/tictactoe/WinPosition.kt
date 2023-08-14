@@ -1,4 +1,4 @@
-package com.deepshooter.composecomponents.ui.tictactoe
+package com.deepshooter.composecomponents.ui.modules.tictactoe
 
 sealed class WinPosition(val places: List<Int>) {
     object H1 : WinPosition(listOf(1, 2, 3))
