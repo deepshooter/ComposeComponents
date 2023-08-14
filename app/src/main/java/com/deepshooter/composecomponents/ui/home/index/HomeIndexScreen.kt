@@ -189,20 +189,11 @@ fun HomeIndexScreen(
                             },
                             onClick = {
                                 when (menu.route.route) {
-                                    COMPONENTS_SCREEN, GITHUB_SCREEN, TICTACTOE_SCREEN -> {
-                                        navigate(menu.route)
-                                    }
-
                                     CLICK_SCREEN -> {
                                         clickColor = Color(Utils.getRandomColor())
                                     }
-
                                     else -> {
-                                        Toast.makeText(
-                                            context,
-                                            "Not Implemented Yet !",
-                                            Toast.LENGTH_LONG
-                                        ).show()
+                                        navigate(menu.route)
                                     }
                                 }
                             }

@@ -15,6 +15,7 @@ import com.deepshooter.composecomponents.ui.modules.github.GithubWebViewScreen
 import com.deepshooter.composecomponents.ui.modules.github.WebViewTarget
 import com.deepshooter.composecomponents.ui.home.index.HomeIndexScreen
 import com.deepshooter.composecomponents.ui.home.splash.SplashScreen
+import com.deepshooter.composecomponents.ui.modules.animations.index.AnimationIndexScreen
 import com.deepshooter.composecomponents.ui.modules.tictactoe.TicTacToeIndexScreen
 import com.deepshooter.composecomponents.ui.modules.tictactoe.TicTacToeViewModel
 import com.deepshooter.composecomponents.utils.AppConstant.ANIMATIONS_BUBBLES_SCREEN
@@ -89,6 +90,9 @@ fun NavHostMain(
             navController = navController
         )
         addTicTacToeScreens(
+            navController = navController
+        )
+        addAnimationsScreens(
             navController = navController
         )
     }
@@ -236,6 +240,36 @@ private fun NavGraphBuilder.addTicTacToeScreen(
             viewModel = viewModel,
             goBack = {
                 navController.popBackStack()
+            }
+        )
+    }
+}
+
+private fun NavGraphBuilder.addAnimationsScreens(
+    navController: NavHostController
+) {
+
+    navigation(
+        route = Screen.Animations.route,
+        startDestination = AnimationsScreen.AnimationsIndex.route
+    ) {
+        addAnimationsIndexScreen(
+            navController = navController
+        )
+
+    }
+}
+
+private fun NavGraphBuilder.addAnimationsIndexScreen(
+    navController: NavHostController
+) {
+    composable(AnimationsScreen.AnimationsIndex.route) {
+        AnimationIndexScreen(
+            goBack = {
+                navController.popBackStack()
+            },
+            navigate = { screen ->
+                navController.navigate(screen.route)
             }
         )
     }
