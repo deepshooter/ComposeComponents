@@ -17,6 +17,8 @@ import com.deepshooter.composecomponents.ui.home.index.HomeIndexScreen
 import com.deepshooter.composecomponents.ui.home.splash.SplashScreen
 import com.deepshooter.composecomponents.ui.tictactoe.TicTacToeIndexScreen
 import com.deepshooter.composecomponents.ui.tictactoe.TicTacToeViewModel
+import com.deepshooter.composecomponents.utils.AppConstant.ANIMATIONS_BUBBLES_SCREEN
+import com.deepshooter.composecomponents.utils.AppConstant.ANIMATIONS_INDEX_SCREEN
 import com.deepshooter.composecomponents.utils.AppConstant.ANIMATION_SCREEN
 import com.deepshooter.composecomponents.utils.AppConstant.CLICK_SCREEN
 import com.deepshooter.composecomponents.utils.AppConstant.COMPONENTS_APPBAR_SCREEN
@@ -58,6 +60,12 @@ sealed class TicTacToeScreen {
     object TicTacToeIndex : HomeScreen(TICTACTOE_INDEX_SCREEN)
 }
 
+
+sealed class AnimationsScreen(val route: String) {
+    object AnimationsIndex : AnimationsScreen(ANIMATIONS_INDEX_SCREEN)
+    object AnimationsBubbles : AnimationsScreen(ANIMATIONS_BUBBLES_SCREEN)
+
+}
 
 @Composable
 fun NavHostMain(

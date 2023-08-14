@@ -36,4 +36,8 @@ object AppConstant {
     /*TicTacToe Sub Screens*/
     const val TICTACTOE_INDEX_SCREEN = "tictactoe/index"
 
+    /*Animations Sub Screens*/
+    const val ANIMATIONS_INDEX_SCREEN = "animations/index"
+    const val ANIMATIONS_BUBBLES_SCREEN = "animations/bubbles"
+
 }
