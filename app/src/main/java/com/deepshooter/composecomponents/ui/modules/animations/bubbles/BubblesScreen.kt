@@ -21,8 +21,8 @@ import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.tooling.preview.Preview
 import com.deepshooter.composecomponents.ui.theme.ComposeComponentsTheme
-import com.deepshooter.composecomponents.ui.theme.Gray200
-import com.deepshooter.composecomponents.ui.theme.Gray800
+import com.deepshooter.composecomponents.ui.theme.Purple200
+import com.deepshooter.composecomponents.ui.theme.Purple700
 import com.deepshooter.composecomponents.utils.UIThemeController
 import kotlinx.coroutines.delay
 import kotlin.math.min
@@ -97,7 +97,7 @@ fun BubblesScreen() {
 
                     Canvas(modifier = Modifier.fillMaxSize()) {
                         drawCircle(
-                            color = if (isDark) Gray800 else Gray200,
+                            color = if (isDark) Purple700 else Purple200,
                             center = Offset(
                                 x = if (i % 2 != 0) centerX * animCenterX else centerX,
                                 y = if (i % 2 == 0) centerY * animCenterY else centerY
