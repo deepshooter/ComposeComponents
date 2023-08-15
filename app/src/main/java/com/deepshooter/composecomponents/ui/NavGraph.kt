@@ -15,6 +15,7 @@ import com.deepshooter.composecomponents.ui.modules.github.GithubWebViewScreen
 import com.deepshooter.composecomponents.ui.modules.github.WebViewTarget
 import com.deepshooter.composecomponents.ui.home.index.HomeIndexScreen
 import com.deepshooter.composecomponents.ui.home.splash.SplashScreen
+import com.deepshooter.composecomponents.ui.modules.animations.bubbles.BubblesScreen
 import com.deepshooter.composecomponents.ui.modules.animations.index.AnimationIndexScreen
 import com.deepshooter.composecomponents.ui.modules.tictactoe.TicTacToeIndexScreen
 import com.deepshooter.composecomponents.ui.modules.tictactoe.TicTacToeViewModel
@@ -258,6 +259,11 @@ private fun NavGraphBuilder.addAnimationsScreens(
         )
 
     }
+
+    composable(AnimationsScreen.AnimationsBubbles.route) {
+        BubblesScreen()
+    }
+
 }
 
 private fun NavGraphBuilder.addAnimationsIndexScreen(
