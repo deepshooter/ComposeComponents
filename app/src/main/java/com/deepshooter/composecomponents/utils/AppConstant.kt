@@ -39,5 +39,6 @@ object AppConstant {
     /*Animations Sub Screens*/
     const val ANIMATIONS_INDEX_SCREEN = "animations/index"
     const val ANIMATIONS_BUBBLES_SCREEN = "animations/bubbles"
+    const val ANIMATIONS_ANIMATED_TEXT_SCREEN = "animations/animated_text"
 
 }

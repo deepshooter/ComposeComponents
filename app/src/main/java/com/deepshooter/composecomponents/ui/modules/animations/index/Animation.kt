@@ -12,7 +12,11 @@ data class Animation(
             Animation(
                 name = "Bubbles",
                 route = AnimationsScreen.AnimationsBubbles
-            )
+            ),
+            Animation(
+                name = "Animated Text",
+                route = AnimationsScreen.AnimationsAnimatedText
+            ),
         )
     }
 

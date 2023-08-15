@@ -15,10 +15,12 @@ import com.deepshooter.composecomponents.ui.modules.github.GithubWebViewScreen
 import com.deepshooter.composecomponents.ui.modules.github.WebViewTarget
 import com.deepshooter.composecomponents.ui.home.index.HomeIndexScreen
 import com.deepshooter.composecomponents.ui.home.splash.SplashScreen
+import com.deepshooter.composecomponents.ui.modules.animations.animatedtext.AnimatedTextScreen
 import com.deepshooter.composecomponents.ui.modules.animations.bubbles.BubblesScreen
 import com.deepshooter.composecomponents.ui.modules.animations.index.AnimationIndexScreen
 import com.deepshooter.composecomponents.ui.modules.tictactoe.TicTacToeIndexScreen
 import com.deepshooter.composecomponents.ui.modules.tictactoe.TicTacToeViewModel
+import com.deepshooter.composecomponents.utils.AppConstant.ANIMATIONS_ANIMATED_TEXT_SCREEN
 import com.deepshooter.composecomponents.utils.AppConstant.ANIMATIONS_BUBBLES_SCREEN
 import com.deepshooter.composecomponents.utils.AppConstant.ANIMATIONS_INDEX_SCREEN
 import com.deepshooter.composecomponents.utils.AppConstant.ANIMATION_SCREEN
@@ -66,6 +68,7 @@ sealed class TicTacToeScreen {
 sealed class AnimationsScreen(val route: String) {
     object AnimationsIndex : AnimationsScreen(ANIMATIONS_INDEX_SCREEN)
     object AnimationsBubbles : AnimationsScreen(ANIMATIONS_BUBBLES_SCREEN)
+    object AnimationsAnimatedText : AnimationsScreen(ANIMATIONS_ANIMATED_TEXT_SCREEN)
 
 }
 
@@ -262,6 +265,10 @@ private fun NavGraphBuilder.addAnimationsScreens(
 
     composable(AnimationsScreen.AnimationsBubbles.route) {
         BubblesScreen()
+    }
+
+    composable(AnimationsScreen.AnimationsAnimatedText.route) {
+       AnimatedTextScreen()
     }
 
 }
