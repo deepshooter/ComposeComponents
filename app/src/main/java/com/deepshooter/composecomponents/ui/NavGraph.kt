@@ -15,11 +15,13 @@ import com.deepshooter.composecomponents.ui.modules.github.GithubWebViewScreen
 import com.deepshooter.composecomponents.ui.modules.github.WebViewTarget
 import com.deepshooter.composecomponents.ui.home.index.HomeIndexScreen
 import com.deepshooter.composecomponents.ui.home.splash.SplashScreen
+import com.deepshooter.composecomponents.ui.modules.animations.animatedimage.AnimatedImageScreen
 import com.deepshooter.composecomponents.ui.modules.animations.animatedtext.AnimatedTextScreen
 import com.deepshooter.composecomponents.ui.modules.animations.bubbles.BubblesScreen
 import com.deepshooter.composecomponents.ui.modules.animations.index.AnimationIndexScreen
 import com.deepshooter.composecomponents.ui.modules.tictactoe.TicTacToeIndexScreen
 import com.deepshooter.composecomponents.ui.modules.tictactoe.TicTacToeViewModel
+import com.deepshooter.composecomponents.utils.AppConstant.ANIMATIONS_ANIMATED_IMAGE_SCREEN
 import com.deepshooter.composecomponents.utils.AppConstant.ANIMATIONS_ANIMATED_TEXT_SCREEN
 import com.deepshooter.composecomponents.utils.AppConstant.ANIMATIONS_BUBBLES_SCREEN
 import com.deepshooter.composecomponents.utils.AppConstant.ANIMATIONS_INDEX_SCREEN
@@ -69,6 +71,7 @@ sealed class AnimationsScreen(val route: String) {
     object AnimationsIndex : AnimationsScreen(ANIMATIONS_INDEX_SCREEN)
     object AnimationsBubbles : AnimationsScreen(ANIMATIONS_BUBBLES_SCREEN)
     object AnimationsAnimatedText : AnimationsScreen(ANIMATIONS_ANIMATED_TEXT_SCREEN)
+    object AnimationsAnimatedImage : AnimationsScreen(ANIMATIONS_ANIMATED_IMAGE_SCREEN)
 
 }
 
@@ -271,6 +274,9 @@ private fun NavGraphBuilder.addAnimationsScreens(
        AnimatedTextScreen()
     }
 
+    composable(AnimationsScreen.AnimationsAnimatedImage.route) {
+        AnimatedImageScreen()
+    }
 }
 
 private fun NavGraphBuilder.addAnimationsIndexScreen(

@@ -17,6 +17,10 @@ data class Animation(
                 name = "Animated Text",
                 route = AnimationsScreen.AnimationsAnimatedText
             ),
+            Animation(
+                name = "Animated Image",
+                route = AnimationsScreen.AnimationsAnimatedImage
+            ),
         )
     }
 
