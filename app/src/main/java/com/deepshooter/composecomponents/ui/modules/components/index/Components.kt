@@ -11,6 +11,10 @@ data class Components(
             Components(
                 name = "App Bar",
                 route = ComponentsScreen.ComponentsAppBar
+            ),
+            Components(
+                name = "Navigation Bar",
+                route = ComponentsScreen.ComponentsNavigationBar
             )
         )
     }
