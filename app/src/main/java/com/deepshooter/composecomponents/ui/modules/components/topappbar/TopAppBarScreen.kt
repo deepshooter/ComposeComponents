@@ -1,4 +1,4 @@
-package com.deepshooter.composecomponents.ui.modules.components.appbar
+package com.deepshooter.composecomponents.ui.modules.components.topappbar
 
 import android.annotation.SuppressLint
 import android.content.res.Configuration
@@ -38,17 +38,17 @@ import com.deepshooter.composecomponents.utils.AppComponent.Header
 import com.deepshooter.composecomponents.utils.UIThemeController
 
 @Composable
-fun AppBarScreen(
+fun TopAppBarScreen(
     goBack: () -> Unit
 ) {
-    AppBarScreenSkeleton(
+    TopAppBarScreenSkeleton(
         goBack = goBack
     )
 }
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
-fun AppBarScreenSkeleton(
+fun TopAppBarScreenSkeleton(
     goBack: () -> Unit = {}
 ) {
     Scaffold(
@@ -62,7 +62,7 @@ fun AppBarScreenSkeleton(
                 .fillMaxSize()
         ) {
             Header(
-                "App Bar",
+                "TopAppBar",
                 goBack = goBack
             )
 
@@ -162,16 +162,16 @@ fun CustomTopAppBar() {
 
 @Preview
 @Composable
-fun AppBarScreenSkeletonPreview() {
+fun TopAppBarScreenSkeletonPreview() {
     ComposeComponentsTheme {
-        AppBarScreenSkeleton()
+        TopAppBarScreenSkeleton()
     }
 }
 
 @Preview(uiMode = Configuration.UI_MODE_NIGHT_YES)
 @Composable
-fun AppBarScreenSkeletonPreviewDark() {
+fun TopAppBarScreenSkeletonPreviewDark() {
     ComposeComponentsTheme {
-        AppBarScreenSkeleton()
+        TopAppBarScreenSkeleton()
     }
 }

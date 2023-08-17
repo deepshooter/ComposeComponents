@@ -1,4 +1,4 @@
-package com.deepshooter.composecomponents.ui.modules.components.bottomnavigation
+package com.deepshooter.composecomponents.ui.modules.components.navigationbar
 
 import android.annotation.SuppressLint
 import android.content.res.Configuration
@@ -61,7 +61,7 @@ fun NavigationBarScreenSkeleton(
         ) {
 
             AppComponent.Header(
-                "Navigation Bar",
+                "NavigationBar",
                 goBack = goBack
             )
 

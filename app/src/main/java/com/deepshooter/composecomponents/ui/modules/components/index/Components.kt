@@ -9,11 +9,11 @@ data class Components(
     companion object {
         val componentsList = listOf(
             Components(
-                name = "App Bar",
-                route = ComponentsScreen.ComponentsAppBar
+                name = "TopAppBar",
+                route = ComponentsScreen.ComponentsTopAppBar
             ),
             Components(
-                name = "Navigation Bar",
+                name = "NavigationBar",
                 route = ComponentsScreen.ComponentsNavigationBar
             )
         )

@@ -8,7 +8,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.composable
 import androidx.navigation.navigation
-import com.deepshooter.composecomponents.ui.modules.components.appbar.AppBarScreen
+import com.deepshooter.composecomponents.ui.modules.components.topappbar.TopAppBarScreen
 import com.deepshooter.composecomponents.ui.modules.components.index.ComponentsIndexScreen
 import com.deepshooter.composecomponents.ui.modules.github.GithubViewModel
 import com.deepshooter.composecomponents.ui.modules.github.GithubWebViewScreen
@@ -19,7 +19,7 @@ import com.deepshooter.composecomponents.ui.modules.animations.animatedimage.Ani
 import com.deepshooter.composecomponents.ui.modules.animations.animatedtext.AnimatedTextScreen
 import com.deepshooter.composecomponents.ui.modules.animations.bubbles.BubblesScreen
 import com.deepshooter.composecomponents.ui.modules.animations.index.AnimationIndexScreen
-import com.deepshooter.composecomponents.ui.modules.components.bottomnavigation.NavigationBarScreen
+import com.deepshooter.composecomponents.ui.modules.components.navigationbar.NavigationBarScreen
 import com.deepshooter.composecomponents.ui.modules.tictactoe.TicTacToeIndexScreen
 import com.deepshooter.composecomponents.ui.modules.tictactoe.TicTacToeViewModel
 import com.deepshooter.composecomponents.utils.AppConstant.ANIMATIONS_ANIMATED_IMAGE_SCREEN
@@ -28,7 +28,7 @@ import com.deepshooter.composecomponents.utils.AppConstant.ANIMATIONS_BUBBLES_SC
 import com.deepshooter.composecomponents.utils.AppConstant.ANIMATIONS_INDEX_SCREEN
 import com.deepshooter.composecomponents.utils.AppConstant.ANIMATION_SCREEN
 import com.deepshooter.composecomponents.utils.AppConstant.CLICK_SCREEN
-import com.deepshooter.composecomponents.utils.AppConstant.COMPONENTS_APPBAR_SCREEN
+import com.deepshooter.composecomponents.utils.AppConstant.COMPONENTS_TOP_APPBAR_SCREEN
 import com.deepshooter.composecomponents.utils.AppConstant.COMPONENTS_INDEX_SCREEN
 import com.deepshooter.composecomponents.utils.AppConstant.COMPONENTS_NAVIGATION_BAR
 import com.deepshooter.composecomponents.utils.AppConstant.COMPONENTS_SCREEN
@@ -56,7 +56,7 @@ sealed class HomeScreen(val route: String) {
 
 sealed class ComponentsScreen(val route: String) {
     object ComponentsIndex : ComponentsScreen(COMPONENTS_INDEX_SCREEN)
-    object ComponentsAppBar : ComponentsScreen(COMPONENTS_APPBAR_SCREEN)
+    object ComponentsTopAppBar : ComponentsScreen(COMPONENTS_TOP_APPBAR_SCREEN)
     object ComponentsNavigationBar : ComponentsScreen(COMPONENTS_NAVIGATION_BAR)
 
 }
@@ -170,8 +170,8 @@ private fun NavGraphBuilder.addComponentsScreens(
         )
 
         //TopAppBar
-        composable(ComponentsScreen.ComponentsAppBar.route) {
-            AppBarScreen(
+        composable(ComponentsScreen.ComponentsTopAppBar.route) {
+            TopAppBarScreen(
                 goBack = {
                     navController.popBackStack()
                 }
