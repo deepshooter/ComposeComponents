@@ -21,6 +21,7 @@ import androidx.compose.ui.unit.dp
 import com.deepshooter.composecomponents.ui.ComponentsScreen
 import com.deepshooter.composecomponents.ui.theme.ComposeComponentsTheme
 import com.deepshooter.composecomponents.utils.AppComponent.Header
+import com.deepshooter.composecomponents.utils.AppConstant.COMPONENTS_TITLE
 
 @Composable
 fun ComponentsIndexScreen(
@@ -54,7 +55,7 @@ fun ComponentsIndexSkeleton(
         ) {
 
             Header(
-                "Components",
+                COMPONENTS_TITLE,
                 goBack = goBack
             )
 

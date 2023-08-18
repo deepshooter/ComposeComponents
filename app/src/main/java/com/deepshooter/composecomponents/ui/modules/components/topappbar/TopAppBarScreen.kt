@@ -35,6 +35,7 @@ import com.deepshooter.composecomponents.ui.theme.ComposeComponentsTheme
 import com.deepshooter.composecomponents.ui.theme.Purple200
 import com.deepshooter.composecomponents.utils.AppComponent
 import com.deepshooter.composecomponents.utils.AppComponent.Header
+import com.deepshooter.composecomponents.utils.AppConstant.TOP_APP_BAR
 import com.deepshooter.composecomponents.utils.UIThemeController
 
 @Composable
@@ -62,7 +63,7 @@ fun TopAppBarScreenSkeleton(
                 .fillMaxSize()
         ) {
             Header(
-                "TopAppBar",
+                TOP_APP_BAR,
                 goBack = goBack
             )
 

@@ -31,6 +31,7 @@ import com.deepshooter.composecomponents.ui.theme.ComposeComponentsTheme
 import com.deepshooter.composecomponents.ui.theme.Purple80
 import com.deepshooter.composecomponents.ui.theme.Teal300
 import com.deepshooter.composecomponents.utils.AppComponent
+import com.deepshooter.composecomponents.utils.AppConstant.NAVIGATION_BAR
 import com.deepshooter.composecomponents.utils.UIThemeController
 
 @Composable
@@ -61,7 +62,7 @@ fun NavigationBarScreenSkeleton(
         ) {
 
             AppComponent.Header(
-                "NavigationBar",
+                NAVIGATION_BAR,
                 goBack = goBack
             )
 

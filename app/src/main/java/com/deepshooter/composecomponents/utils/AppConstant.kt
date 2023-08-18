@@ -48,5 +48,8 @@ object AppConstant {
 
     /*Components Screens Constant*/
     const val TEXT = "Text"
+    const val TOP_APP_BAR = "TopAppBar"
+    const val NAVIGATION_BAR = "NavigationBar"
+    const val BADGE = "Badge"
 
 }

@@ -1,7 +1,10 @@
 package com.deepshooter.composecomponents.ui.modules.components.index
 
 import com.deepshooter.composecomponents.ui.ComponentsScreen
-import com.deepshooter.composecomponents.utils.AppConstant
+import com.deepshooter.composecomponents.utils.AppConstant.BADGE
+import com.deepshooter.composecomponents.utils.AppConstant.NAVIGATION_BAR
+import com.deepshooter.composecomponents.utils.AppConstant.TEXT
+import com.deepshooter.composecomponents.utils.AppConstant.TOP_APP_BAR
 
 data class Components(
     val name: String,
@@ -10,19 +13,19 @@ data class Components(
     companion object {
         val componentsList = listOf(
             Components(
-                name = AppConstant.TEXT,
+                name = TEXT,
                 route = ComponentsScreen.ComponentsText
             ),
             Components(
-                name = "TopAppBar",
+                name = TOP_APP_BAR,
                 route = ComponentsScreen.ComponentsTopAppBar
             ),
             Components(
-                name = "NavigationBar",
+                name = NAVIGATION_BAR,
                 route = ComponentsScreen.ComponentsNavigationBar
             ),
             Components(
-                name = "Badge",
+                name = BADGE,
                 route = ComponentsScreen.ComponentsBadge
             )
         )

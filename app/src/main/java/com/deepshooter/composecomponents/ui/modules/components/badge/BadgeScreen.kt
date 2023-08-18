@@ -34,6 +34,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import com.deepshooter.composecomponents.ui.theme.ComposeComponentsTheme
 import com.deepshooter.composecomponents.ui.theme.Purple80
 import com.deepshooter.composecomponents.utils.AppComponent
+import com.deepshooter.composecomponents.utils.AppConstant.BADGE
 import com.deepshooter.composecomponents.utils.UIThemeController
 
 
@@ -65,7 +66,7 @@ fun BadgeScreenSkeleton(
         ) {
 
             AppComponent.Header(
-                "Badge",
+                BADGE,
                 goBack = goBack
             )
 
