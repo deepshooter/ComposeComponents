@@ -28,6 +28,7 @@ object AppConstant {
 
     /*Components Sub Screens*/
     const val COMPONENTS_INDEX_SCREEN = "components/index"
+    const val COMPONENTS_TEXT_SCREEN = "components/text"
     const val COMPONENTS_TOP_APPBAR_SCREEN = "components/top_appbar"
     const val COMPONENTS_NAVIGATION_BAR = "components/navigation_bar"
     const val COMPONENTS_BADGE = "components/badge"
@@ -43,5 +44,9 @@ object AppConstant {
     const val ANIMATIONS_BUBBLES_SCREEN = "animations/bubbles"
     const val ANIMATIONS_ANIMATED_TEXT_SCREEN = "animations/animated_text"
     const val ANIMATIONS_ANIMATED_IMAGE_SCREEN = "animations/animated_image"
+
+
+    /*Components Screens Constant*/
+    const val TEXT = "Text"
 
 }

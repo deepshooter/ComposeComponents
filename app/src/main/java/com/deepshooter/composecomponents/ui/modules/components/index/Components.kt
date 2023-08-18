@@ -1,6 +1,7 @@
 package com.deepshooter.composecomponents.ui.modules.components.index
 
 import com.deepshooter.composecomponents.ui.ComponentsScreen
+import com.deepshooter.composecomponents.utils.AppConstant
 
 data class Components(
     val name: String,
@@ -8,6 +9,10 @@ data class Components(
 ) {
     companion object {
         val componentsList = listOf(
+            Components(
+                name = AppConstant.TEXT,
+                route = ComponentsScreen.ComponentsText
+            ),
             Components(
                 name = "TopAppBar",
                 route = ComponentsScreen.ComponentsTopAppBar
