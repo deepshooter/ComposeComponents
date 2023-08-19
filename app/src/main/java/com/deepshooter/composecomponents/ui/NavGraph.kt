@@ -22,6 +22,7 @@ import com.deepshooter.composecomponents.ui.modules.animations.index.AnimationIn
 import com.deepshooter.composecomponents.ui.modules.components.badge.BadgeScreen
 import com.deepshooter.composecomponents.ui.modules.components.navigationbar.NavigationBarScreen
 import com.deepshooter.composecomponents.ui.modules.components.text.TextScreen
+import com.deepshooter.composecomponents.ui.modules.components.textfield.TextFieldScreen
 import com.deepshooter.composecomponents.ui.modules.tictactoe.TicTacToeIndexScreen
 import com.deepshooter.composecomponents.ui.modules.tictactoe.TicTacToeViewModel
 import com.deepshooter.composecomponents.utils.AppConstant.ANIMATIONS_ANIMATED_IMAGE_SCREEN
@@ -35,6 +36,7 @@ import com.deepshooter.composecomponents.utils.AppConstant.COMPONENTS_TOP_APPBAR
 import com.deepshooter.composecomponents.utils.AppConstant.COMPONENTS_INDEX_SCREEN
 import com.deepshooter.composecomponents.utils.AppConstant.COMPONENTS_NAVIGATION_BAR
 import com.deepshooter.composecomponents.utils.AppConstant.COMPONENTS_SCREEN
+import com.deepshooter.composecomponents.utils.AppConstant.COMPONENTS_TEXT_FIELD_SCREEN
 import com.deepshooter.composecomponents.utils.AppConstant.COMPONENTS_TEXT_SCREEN
 import com.deepshooter.composecomponents.utils.AppConstant.GITHUB_INDEX_SCREEN
 import com.deepshooter.composecomponents.utils.AppConstant.GITHUB_SCREEN
@@ -61,6 +63,7 @@ sealed class HomeScreen(val route: String) {
 sealed class ComponentsScreen(val route: String) {
     object ComponentsIndex : ComponentsScreen(COMPONENTS_INDEX_SCREEN)
     object ComponentsText : ComponentsScreen(COMPONENTS_TEXT_SCREEN)
+    object ComponentsTextField : ComponentsScreen(COMPONENTS_TEXT_FIELD_SCREEN)
     object ComponentsTopAppBar : ComponentsScreen(COMPONENTS_TOP_APPBAR_SCREEN)
     object ComponentsNavigationBar : ComponentsScreen(COMPONENTS_NAVIGATION_BAR)
     object ComponentsBadge : ComponentsScreen(COMPONENTS_BADGE)
@@ -178,6 +181,15 @@ private fun NavGraphBuilder.addComponentsScreens(
         //Text
         composable(ComponentsScreen.ComponentsText.route) {
             TextScreen(
+                goBack = {
+                    navController.popBackStack()
+                }
+            )
+        }
+
+        //TextField
+        composable(ComponentsScreen.ComponentsTextField.route) {
+            TextFieldScreen(
                 goBack = {
                     navController.popBackStack()
                 }
