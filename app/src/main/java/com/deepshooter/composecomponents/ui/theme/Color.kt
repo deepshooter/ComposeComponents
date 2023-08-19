@@ -51,6 +51,7 @@ val Indigo700 = Color(0xFF4338CA)
 val Indigo900 = Color(0xFF312E81)
 
 // colors.violet
+val Purple100 = Color(0xFFC5CAE9)
 val Purple200 = Color(0xFFB39DDB)
 val Purple500 = Color(0xFF8B5CF6)
 val Purple700 = Color(0xFF6D28D9)
