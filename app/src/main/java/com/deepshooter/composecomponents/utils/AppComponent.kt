@@ -80,7 +80,7 @@ object AppComponent {
                 )
                 .fillMaxWidth(),
             text = text,
-            style = MaterialTheme.typography.headlineMedium,
+            style = MaterialTheme.typography.titleMedium,
             textAlign = TextAlign.Center
         )
     }
