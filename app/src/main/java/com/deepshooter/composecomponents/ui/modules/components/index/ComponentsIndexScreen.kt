@@ -28,9 +28,11 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.deepshooter.composecomponents.ui.ComponentsScreen
+import com.deepshooter.composecomponents.ui.theme.Blue500
 import com.deepshooter.composecomponents.ui.theme.ComposeComponentsTheme
-import com.deepshooter.composecomponents.ui.theme.Gray800
-import com.deepshooter.composecomponents.ui.theme.Purple200
+import com.deepshooter.composecomponents.ui.theme.Purple700
+import com.deepshooter.composecomponents.ui.theme.Teal300
+import com.deepshooter.composecomponents.ui.theme.Yellow500
 import com.deepshooter.composecomponents.utils.AppComponent.Header
 import com.deepshooter.composecomponents.utils.AppConstant.COMPONENTS_TITLE
 import com.deepshooter.composecomponents.utils.UIThemeController
@@ -78,7 +80,7 @@ fun ComponentsIndexSkeleton(
                     .fillMaxSize()
                     .padding(top = 4.dp)) {
                 itemsIndexed(Components.componentsList) { index, item ->
-                    ComponentsListItem(components = item, navigate)
+                    ComponentsListItem(components = item, index, navigate)
                 }
             }
         }
@@ -86,7 +88,11 @@ fun ComponentsIndexSkeleton(
 }
 
 @Composable
-fun ComponentsListItem(components: Components, navigate: (ComponentsScreen) -> Unit = {}) {
+fun ComponentsListItem(
+    components: Components,
+    index: Int,
+    navigate: (ComponentsScreen) -> Unit = {}
+) {
 
     val isDark by UIThemeController.isDarkMode.collectAsState()
 
@@ -104,7 +110,19 @@ fun ComponentsListItem(components: Components, navigate: (ComponentsScreen) -> U
         elevation = CardDefaults.cardElevation(
             defaultElevation = 8.dp,
         ),
-        colors = CardDefaults.cardColors(containerColor = if (isDark) Color.Black else Purple200),
+        colors = CardDefaults.cardColors(
+            containerColor = if (isDark) {
+                if (index % 2 == 0)
+                    Yellow500
+                else
+                    Purple700
+            } else {
+                if (index % 2 == 0)
+                    Teal300
+                else
+                    Blue500
+            }
+        ),
         shape = RoundedCornerShape(4.dp)
     ) {
 
@@ -116,7 +134,7 @@ fun ComponentsListItem(components: Components, navigate: (ComponentsScreen) -> U
                 .fillMaxWidth(),
             text = components.name,
             fontSize = 18.sp,
-            color = if (isDark) Color.White else Gray800
+            color = Color.White
         )
     }
 }
