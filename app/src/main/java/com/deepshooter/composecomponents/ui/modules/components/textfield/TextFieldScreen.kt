@@ -12,12 +12,16 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.text.KeyboardActions
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.Info
+import androidx.compose.material.icons.filled.Visibility
+import androidx.compose.material.icons.filled.VisibilityOff
 import androidx.compose.material3.Divider
 import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
@@ -28,9 +32,17 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.semantics.semantics
+import androidx.compose.ui.text.TextRange
+import androidx.compose.ui.text.input.ImeAction
+import androidx.compose.ui.text.input.KeyboardType
+import androidx.compose.ui.text.input.PasswordVisualTransformation
+import androidx.compose.ui.text.input.TextFieldValue
+import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.deepshooter.composecomponents.ui.theme.ComposeComponentsTheme
@@ -87,6 +99,13 @@ fun TextFieldScreenSkeleton(
                 AppComponent.MediumSpacer()
                 TextFieldWithHelperMessage()
                 AppComponent.MediumSpacer()
+                PasswordTextField()
+                AppComponent.MediumSpacer()
+                TextFieldSample()
+                AppComponent.MediumSpacer()
+                OutlinedTextFieldSample()
+                AppComponent.MediumSpacer()
+                TextFieldWithHideKeyboardOnImeAction()
 
             }
 
@@ -199,6 +218,79 @@ fun TextFieldWithHelperMessage() {
             modifier = Modifier.padding(start = 16.dp)
         )
     }
+}
+
+@Composable
+fun PasswordTextField() {
+    var password by rememberSaveable { mutableStateOf("") }
+    var passwordHidden by rememberSaveable { mutableStateOf(true) }
+    TextField(
+        modifier = Modifier.fillMaxWidth(),
+        value = password,
+        onValueChange = { password = it },
+        label = { Text("Enter password") },
+        visualTransformation =
+        if (passwordHidden) PasswordVisualTransformation() else VisualTransformation.None,
+        keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
+        trailingIcon = {
+            IconButton(onClick = { passwordHidden = !passwordHidden }) {
+                val visibilityIcon =
+                    if (passwordHidden) Icons.Filled.Visibility else Icons.Filled.VisibilityOff
+                // Please provide localized description for accessibility services
+                val description = if (passwordHidden) "Show password" else "Hide password"
+                Icon(imageVector = visibilityIcon, contentDescription = description)
+            }
+        }
+    )
+}
+
+@Composable
+fun TextFieldSample() {
+    var text by rememberSaveable(stateSaver = TextFieldValue.Saver) {
+        mutableStateOf(TextFieldValue("example", TextRange(0, 7)))
+    }
+
+    TextField(
+        modifier = Modifier.fillMaxWidth(),
+        value = text,
+        onValueChange = { text = it },
+        label = { Text("Label") }
+    )
+}
+
+@Composable
+fun OutlinedTextFieldSample() {
+    var text by rememberSaveable(stateSaver = TextFieldValue.Saver) {
+        mutableStateOf(TextFieldValue("example", TextRange(0, 7)))
+    }
+
+    OutlinedTextField(
+        modifier = Modifier.fillMaxWidth(),
+        value = text,
+        onValueChange = { text = it },
+        label = { Text("Label") }
+    )
+}
+
+@OptIn(ExperimentalComposeUiApi::class)
+@Composable
+fun TextFieldWithHideKeyboardOnImeAction() {
+    val keyboardController = LocalSoftwareKeyboardController.current
+    var text by rememberSaveable { mutableStateOf("") }
+
+    TextField(
+        modifier = Modifier.fillMaxWidth(),
+        value = text,
+        onValueChange = { text = it },
+        label = { Text("Label") },
+        keyboardOptions = KeyboardOptions(imeAction = ImeAction.Done),
+        keyboardActions = KeyboardActions(
+            onDone = {
+                keyboardController?.hide()
+                // do something here
+            }
+        )
+    )
 }
 
 @Preview
