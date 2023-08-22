@@ -2,4 +2,11 @@
     <string name="app_name">Compose Components</string>
     <string name="android_love">Android is Love!</string>
     <string name="android">Android</string>
+    <string name="random_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</string>
+    <string name="i_am_a_multi_line_placeholder_here_is_another_line">I am a multi-line placeholder.\nHere is another line.</string>
+    <string name="i_am_a_placeholder">I am  a placeholder</string>
+    <string name="lorem_ipsum_dolor_sit_amet">Lorem ipsum dolor sit amet</string>
+    <string name="custom_type_one">Custom Type One</string>
+    <string name="cut_copy_paste_disabled">Cut-Copy-Paste Disabled</string>
+    <string name="official_samples">Official Samples</string>
 </resources>
