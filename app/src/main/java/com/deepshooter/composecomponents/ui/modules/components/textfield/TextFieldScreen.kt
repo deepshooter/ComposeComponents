@@ -28,14 +28,20 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.geometry.Rect
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
+import androidx.compose.ui.platform.LocalTextToolbar
+import androidx.compose.ui.platform.TextToolbar
+import androidx.compose.ui.platform.TextToolbarStatus
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.TextRange
 import androidx.compose.ui.text.input.ImeAction
@@ -106,8 +112,21 @@ fun TextFieldScreenSkeleton(
                 OutlinedTextFieldSample()
                 AppComponent.MediumSpacer()
                 TextFieldWithHideKeyboardOnImeAction()
+                AppComponent.MediumSpacer()
 
             }
+
+            Divider()
+
+            Column(Modifier.padding(start = 16.dp, end = 16.dp)) {
+
+                AppComponent.SubHeader("Cut-Copy-Paste Disabled")
+                TextFieldWithCutCopyPasteDisabled()
+                AppComponent.MediumSpacer()
+
+            }
+
+            Divider()
 
 
         }
@@ -291,6 +310,38 @@ fun TextFieldWithHideKeyboardOnImeAction() {
             }
         )
     )
+}
+
+object EmptyTextToolbar : TextToolbar {
+    override val status: TextToolbarStatus = TextToolbarStatus.Hidden
+    override fun hide() {}
+    override fun showMenu(
+        rect: Rect,
+        onCopyRequested: (() -> Unit)?,
+        onPasteRequested: (() -> Unit)?,
+        onCutRequested: (() -> Unit)?,
+        onSelectAllRequested: (() -> Unit)?
+    ) {
+    }
+}
+
+@Composable
+fun TextFieldWithCutCopyPasteDisabled() {
+    var textValue by remember { mutableStateOf(TextFieldValue()) }
+
+    CompositionLocalProvider(LocalTextToolbar provides EmptyTextToolbar) {
+        TextField(
+            modifier = Modifier.fillMaxWidth(),
+            value = textValue,
+            onValueChange = { newValue ->
+                textValue = if (newValue.selection.length > 0) {
+                    newValue.copy(selection = textValue.selection)
+                } else {
+                    newValue
+                }
+            }
+        )
+    }
 }
 
 @Preview
