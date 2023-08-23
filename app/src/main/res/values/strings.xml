@@ -9,4 +9,15 @@
     <string name="custom_type_one">Custom Type One</string>
     <string name="cut_copy_paste_disabled">Cut-Copy-Paste Disabled</string>
     <string name="official_samples">Official Samples</string>
+    <string name="label">Label</string>
+    <string name="placeholder">Placeholder</string>
+    <string name="localized_description">Localized description</string>
+    <string name="email">Email</string>
+    <string name="example_gmail_com">example@gmail.com</string>
+    <string name="email_asterisk">Email*</string>
+    <string name="email_format_is_invalid">Email format is invalid.</string>
+    <string name="enter_password">Enter password</string>
+    <string name="show_password">Show password</string>
+    <string name="hide_password">Hide password</string>
+    <string name="example">example</string>
 </resources>

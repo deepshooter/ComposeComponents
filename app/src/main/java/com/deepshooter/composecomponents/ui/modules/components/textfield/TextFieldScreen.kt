@@ -255,7 +255,7 @@ fun SimpleTextFieldSample() {
         modifier = Modifier.fillMaxWidth(),
         value = text,
         onValueChange = { text = it },
-        label = { Text("Label") },
+        label = { Text(stringResource(R.string.label)) },
         singleLine = true
     )
 }
@@ -268,7 +268,7 @@ fun SimpleOutlinedTextFieldSample() {
         modifier = Modifier.fillMaxWidth(),
         value = text,
         onValueChange = { text = it },
-        label = { Text("Label") }
+        label = { Text(stringResource(R.string.label)) }
     )
 }
 
@@ -280,9 +280,9 @@ fun TextFieldWithIcons() {
         modifier = Modifier.fillMaxWidth(),
         value = text,
         onValueChange = { text = it },
-        placeholder = { Text("Placeholder") },
-        leadingIcon = { Icon(Icons.Filled.Favorite, contentDescription = "Localized description") },
-        trailingIcon = { Icon(Icons.Filled.Info, contentDescription = "Localized description") }
+        placeholder = { Text(stringResource(R.string.placeholder)) },
+        leadingIcon = { Icon(Icons.Filled.Favorite, contentDescription = stringResource(R.string.localized_description)) },
+        trailingIcon = { Icon(Icons.Filled.Info, contentDescription =  stringResource(R.string.localized_description)) }
     )
 }
 
@@ -294,8 +294,8 @@ fun TextFieldWithPlaceholder() {
         modifier = Modifier.fillMaxWidth(),
         value = text,
         onValueChange = { text = it },
-        label = { Text("Email") },
-        placeholder = { Text("example@gmail.com") }
+        label = { Text(stringResource(R.string.email)) },
+        placeholder = { Text(stringResource(R.string.example_gmail_com)) }
     )
 }
 
@@ -316,7 +316,7 @@ fun TextFieldWithErrorState() {
             isError = false
         },
         singleLine = true,
-        label = { Text(if (isError) "Email*" else "Email") },
+        label = { Text(if (isError) stringResource(R.string.email_asterisk) else stringResource(R.string.email)) },
         isError = isError,
         keyboardActions = KeyboardActions { validate(text) },
         modifier = Modifier
@@ -325,7 +325,11 @@ fun TextFieldWithErrorState() {
                 // Provide localized description of the error
                 if (isError) {
                     Toast
-                        .makeText(context, "Email format is invalid.", Toast.LENGTH_SHORT)
+                        .makeText(
+                            context,
+                            context.getString(R.string.email_format_is_invalid),
+                            Toast.LENGTH_SHORT
+                        )
                         .show()
                 }
             }
@@ -341,7 +345,7 @@ fun TextFieldWithHelperMessage() {
             modifier = Modifier.fillMaxWidth(),
             value = text,
             onValueChange = { text = it },
-            label = { Text("Label") }
+            label = { Text(stringResource(id = R.string.label)) }
         )
         Text(
             text = "Helper message",
@@ -360,7 +364,7 @@ fun PasswordTextField() {
         modifier = Modifier.fillMaxWidth(),
         value = password,
         onValueChange = { password = it },
-        label = { Text("Enter password") },
+        label = { Text(stringResource(R.string.enter_password)) },
         visualTransformation =
         if (passwordHidden) PasswordVisualTransformation() else VisualTransformation.None,
         keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
@@ -369,7 +373,7 @@ fun PasswordTextField() {
                 val visibilityIcon =
                     if (passwordHidden) Icons.Filled.Visibility else Icons.Filled.VisibilityOff
                 // Please provide localized description for accessibility services
-                val description = if (passwordHidden) "Show password" else "Hide password"
+                val description = if (passwordHidden) stringResource(R.string.show_password) else stringResource(R.string.hide_password)
                 Icon(imageVector = visibilityIcon, contentDescription = description)
             }
         }
@@ -378,8 +382,9 @@ fun PasswordTextField() {
 
 @Composable
 fun TextFieldSample() {
+    val context = LocalContext.current
     var text by rememberSaveable(stateSaver = TextFieldValue.Saver) {
-        mutableStateOf(TextFieldValue("example", TextRange(0, 7)))
+        mutableStateOf(TextFieldValue(context.getString(R.string.example), TextRange(0, 7)))
     }
 
     TextField(
@@ -392,15 +397,16 @@ fun TextFieldSample() {
 
 @Composable
 fun OutlinedTextFieldSample() {
+    val context = LocalContext.current
     var text by rememberSaveable(stateSaver = TextFieldValue.Saver) {
-        mutableStateOf(TextFieldValue("example", TextRange(0, 7)))
+        mutableStateOf(TextFieldValue(context.getString(R.string.example), TextRange(0, 7)))
     }
 
     OutlinedTextField(
         modifier = Modifier.fillMaxWidth(),
         value = text,
         onValueChange = { text = it },
-        label = { Text("Label") }
+        label = { Text(stringResource(id = R.string.label)) }
     )
 }
 
@@ -414,7 +420,7 @@ fun TextFieldWithHideKeyboardOnImeAction() {
         modifier = Modifier.fillMaxWidth(),
         value = text,
         onValueChange = { text = it },
-        label = { Text("Label") },
+        label = { Text(stringResource(id = R.string.label)) },
         keyboardOptions = KeyboardOptions(imeAction = ImeAction.Done),
         keyboardActions = KeyboardActions(
             onDone = {
