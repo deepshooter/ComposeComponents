@@ -3,6 +3,9 @@ package com.deepshooter.composecomponents.ui.modules.components.textfield
 import android.annotation.SuppressLint
 import android.content.res.Configuration
 import android.widget.Toast
+import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.fadeOut
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
 import androidx.compose.foundation.interaction.MutableInteractionSource
@@ -10,6 +13,8 @@ import androidx.compose.foundation.interaction.collectIsFocusedAsState
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ExperimentalLayoutApi
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -19,6 +24,7 @@ import androidx.compose.foundation.layout.isImeVisible
 import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.statusBarsPadding
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.relocation.BringIntoViewRequester
 import androidx.compose.foundation.relocation.bringIntoViewRequester
 import androidx.compose.foundation.rememberScrollState
@@ -62,6 +68,7 @@ import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.platform.LocalTextToolbar
 import androidx.compose.ui.platform.TextToolbar
 import androidx.compose.ui.platform.TextToolbarStatus
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.TextRange
@@ -239,8 +246,22 @@ fun TextFieldScreenSkeleton(
 
                 AppComponent.MediumSpacer()
 
+                PasswordInputFieldOne(
+                    textFieldValue = remember { mutableStateOf(TextFieldValue()) }
+                )
+
+                AppComponent.MediumSpacer()
+
+                PasswordInputFieldOne(
+                    textFieldValue = remember { mutableStateOf(TextFieldValue()) },
+                    isError = true
+                )
+
+                AppComponent.MediumSpacer()
             }
 
+
+            Divider()
 
         }
     }
@@ -559,6 +580,141 @@ fun TextInputFieldOne(
                             fontSize = fontSize,
                             maxLines = if (singleLine) 1 else Int.MAX_VALUE,
                             overflow = TextOverflow.Ellipsis
+                        )
+                    }
+                }
+            }
+        }
+    )
+}
+
+
+@OptIn(ExperimentalLayoutApi::class, ExperimentalFoundationApi::class)
+@Composable
+fun PasswordInputFieldOne(
+    modifier: Modifier = Modifier,
+    textFieldValue: MutableState<TextFieldValue>,
+    placeholder: String = "●●●●●●",
+    readOnly: Boolean = false,
+    fontSize: TextUnit = 16.sp,
+    imeAction: ImeAction = ImeAction.Done,
+    keyboardActions: KeyboardActions? = null,
+    height: Dp = ELEMENT_HEIGHT,
+    isError: Boolean = false,
+    onValueChange: (TextFieldValue) -> Unit = {}
+) {
+    val focusManager = LocalFocusManager.current
+    var passwordVisibility by remember { mutableStateOf(false) }
+    val bringIntoViewRequester = remember { BringIntoViewRequester() }
+    val interactionSource = remember { MutableInteractionSource() }
+    val interactionSourceState = interactionSource.collectIsFocusedAsState()
+    val scope = rememberCoroutineScope()
+    val isImeVisible = WindowInsets.isImeVisible
+
+    // Bring the composable into view (visible to user).
+    LaunchedEffect(isImeVisible, interactionSourceState.value) {
+        if (isImeVisible && interactionSourceState.value) {
+            scope.launch {
+                delay(300)
+                bringIntoViewRequester.bringIntoView()
+            }
+        }
+    }
+
+    val isDark by UIThemeController.isDarkMode.collectAsState()
+
+
+    BasicTextField(
+        value = textFieldValue.value,
+        singleLine = true,
+        visualTransformation =
+        if (passwordVisibility) {
+            VisualTransformation.None
+        } else {
+            PasswordVisualTransformation(mask = '●')
+        },
+        onValueChange = {
+            textFieldValue.value = it
+
+            onValueChange(it)
+        },
+        keyboardActions = keyboardActions ?: KeyboardActions(
+            onDone = { focusManager.clearFocus() },
+            onNext = { focusManager.moveFocus(FocusDirection.Down) }
+        ),
+        keyboardOptions = KeyboardOptions(
+            keyboardType = KeyboardType.NumberPassword,
+            imeAction = imeAction
+        ),
+        interactionSource = interactionSource,
+        modifier = modifier
+            .bringIntoViewRequester(bringIntoViewRequester)
+            .fillMaxWidth(),
+        readOnly = readOnly,
+        textStyle = TextStyle(
+            fontFamily = MaterialTheme.typography.bodyMedium.fontFamily,
+            fontSize = fontSize,
+            color = if (isDark) Gray50 else Gray900
+        ),
+        decorationBox = { innerTextField ->
+            Row(
+                Modifier
+                    .clip(MaterialTheme.shapes.medium)
+                    .background(
+                        if (isError) {
+                            if (isDark) Red900.copy(.95f) else Red500.copy(.1f)
+                        } else {
+                            if (isDark) Gray800 else Gray100
+                        }
+                    )
+                    .height(height),
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                Box(
+                    Modifier
+                        .weight(1f)
+                        .padding(start = 12.dp, bottom = 2.dp),
+                    contentAlignment = Alignment.CenterStart
+                ) {
+                    innerTextField()
+
+                    if (textFieldValue.value.text.isEmpty()) {
+                        Text(
+                            modifier = Modifier.padding(bottom = 2.dp),
+                            text = placeholder,
+                            color = if (isDark) Gray50.copy(.35f) else Gray900.copy(.35f),
+                            fontSize = fontSize
+                        )
+                    }
+                }
+
+                Spacer(Modifier.width(16.dp))
+
+                IconButton(
+                    modifier = Modifier.align(Alignment.CenterVertically),
+                    onClick = {
+                        passwordVisibility = !passwordVisibility
+                    }
+                ) {
+                    AnimatedVisibility(
+                        visible = passwordVisibility,
+                        enter = fadeIn(),
+                        exit = fadeOut()
+                    ) {
+                        Icon(
+                            painter = painterResource(id = R.drawable.ic_hide),
+                            "Show Password"
+                        )
+                    }
+
+                    AnimatedVisibility(
+                        visible = !passwordVisibility,
+                        enter = fadeIn(),
+                        exit = fadeOut()
+                    ) {
+                        Icon(
+                            painter = painterResource(id = R.drawable.ic_show),
+                            "Hide Password"
                         )
                     }
                 }
