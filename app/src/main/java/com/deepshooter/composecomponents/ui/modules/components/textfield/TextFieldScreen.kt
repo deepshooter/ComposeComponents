@@ -3,10 +3,14 @@ package com.deepshooter.composecomponents.ui.modules.components.textfield
 import android.annotation.SuppressLint
 import android.content.res.Configuration
 import android.widget.Toast
+import androidx.annotation.DrawableRes
 import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.core.animateDpAsState
+import androidx.compose.animation.core.animateIntAsState
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
 import androidx.compose.foundation.ExperimentalFoundationApi
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.interaction.collectIsFocusedAsState
@@ -16,6 +20,7 @@ import androidx.compose.foundation.layout.ExperimentalLayoutApi
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -23,6 +28,7 @@ import androidx.compose.foundation.layout.imePadding
 import androidx.compose.foundation.layout.isImeVisible
 import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.relocation.BringIntoViewRequester
@@ -61,7 +67,13 @@ import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.focus.FocusDirection
+import androidx.compose.ui.focus.FocusRequester
+import androidx.compose.ui.focus.focusRequester
+import androidx.compose.ui.focus.onFocusChanged
 import androidx.compose.ui.geometry.Rect
+import androidx.compose.ui.graphics.ColorFilter
+import androidx.compose.ui.graphics.Shape
+import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
@@ -73,6 +85,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.TextRange
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
@@ -260,6 +273,55 @@ fun TextFieldScreenSkeleton(
                 AppComponent.MediumSpacer()
             }
 
+            //Custom Type Two
+            Column(Modifier.padding(start = 16.dp, end = 16.dp)) {
+
+                AppComponent.SubHeader(stringResource(R.string.custom_type_two))
+
+                TextInputFieldTwo(
+                    textFieldValue = remember { mutableStateOf(TextFieldValue()) },
+                    placeholder = stringResource(id = R.string.i_am_a_placeholder),
+                    keyboardType = KeyboardType.Text
+                )
+
+                AppComponent.MediumSpacer()
+
+                TextInputFieldTwo(
+                    textFieldValue = remember {
+                        mutableStateOf(TextFieldValue(context.getString(R.string.lorem_ipsum_dolor_sit_amet)))
+                    },
+                    placeholder = stringResource(id = R.string.i_am_a_placeholder)
+                )
+
+                AppComponent.MediumSpacer()
+
+                TextInputFieldTwo(
+                    modifier = Modifier
+                        .height(128.dp),
+                    textFieldValue = remember { mutableStateOf(TextFieldValue()) },
+                    placeholder = stringResource(id = R.string.i_am_a_placeholder),
+                    keyboardType = KeyboardType.Text,
+                    singleLine = false
+                )
+
+                AppComponent.MediumSpacer()
+
+                TextInputFieldTwo(
+                    modifier = Modifier
+                        .height(128.dp),
+                    textFieldValue = remember {
+                        mutableStateOf(
+                            TextFieldValue(context.getString(R.string.random_text))
+                        )
+                    },
+                    placeholder = stringResource(id = R.string.i_am_a_placeholder),
+                    keyboardType = KeyboardType.Text,
+                    singleLine = false
+                )
+
+                AppComponent.MediumSpacer()
+
+            }
 
             Divider()
 
@@ -716,6 +778,147 @@ fun PasswordInputFieldOne(
                             painter = painterResource(id = R.drawable.ic_show),
                             "Hide Password"
                         )
+                    }
+                }
+            }
+        }
+    )
+}
+
+@OptIn(ExperimentalFoundationApi::class, ExperimentalLayoutApi::class)
+@Composable
+fun TextInputFieldTwo(
+    modifier: Modifier = Modifier,
+    textFieldValue: MutableState<TextFieldValue>,
+    shape: Shape = MaterialTheme.shapes.medium,
+    placeholder: String,
+    keyboardType: KeyboardType = KeyboardType.Text,
+    readOnly: Boolean = false,
+    singleLine: Boolean = true,
+    maxLength: Int = Int.MAX_VALUE,
+    imeAction: ImeAction = ImeAction.Done,
+    keyboardActions: KeyboardActions? = null,
+    height: Dp = ELEMENT_HEIGHT,
+    @DrawableRes icon: Int? = null,
+    onValueChange: (TextFieldValue) -> Unit = {}
+) {
+    val focusManager = LocalFocusManager.current
+    val bringIntoViewRequester = remember { BringIntoViewRequester() }
+    val interactionSource = remember { MutableInteractionSource() }
+    val interactionSourceState = interactionSource.collectIsFocusedAsState()
+    val scope = rememberCoroutineScope()
+    val isImeVisible = WindowInsets.isImeVisible
+
+    // Bring the composable into view (visible to user).
+    LaunchedEffect(isImeVisible, interactionSourceState.value) {
+        if (isImeVisible && interactionSourceState.value) {
+            scope.launch {
+                delay(300)
+                bringIntoViewRequester.bringIntoView()
+            }
+        }
+    }
+
+    val isDark by UIThemeController.isDarkMode.collectAsState()
+
+
+    val focusRequester = FocusRequester()
+    val isFocused = remember { mutableStateOf(false) }
+
+    BasicTextField(
+        modifier = modifier
+            .focusRequester(focusRequester)
+            .bringIntoViewRequester(bringIntoViewRequester)
+            .onFocusChanged {
+                isFocused.value = it.isFocused
+            }
+            .fillMaxWidth(),
+        interactionSource = interactionSource,
+        value = textFieldValue.value,
+        singleLine = singleLine,
+        textStyle = TextStyle(
+            fontSize = 14.sp,
+            fontFamily = MaterialTheme.typography.bodyMedium.fontFamily,
+            fontWeight = FontWeight.Medium,
+            color = if (isDark) Gray50 else Gray900
+        ),
+        onValueChange = {
+            if (it.text.length <= maxLength) {
+                textFieldValue.value = it
+
+                onValueChange(it)
+            }
+        },
+        keyboardActions = keyboardActions ?: KeyboardActions(
+            onDone = { focusManager.clearFocus() },
+            onNext = { focusManager.moveFocus(FocusDirection.Down) },
+            onSearch = { focusManager.clearFocus() }
+        ),
+        keyboardOptions = KeyboardOptions(
+            keyboardType = keyboardType,
+            imeAction = imeAction
+        ),
+        readOnly = readOnly,
+        decorationBox = { innerTextField ->
+            Box(
+                Modifier
+                    .clip(shape)
+                    .background(if (isDark) Gray800 else Gray100)
+                    .height(height)
+            ) {
+                Row(
+                    Modifier.fillMaxSize()
+                ) {
+                    icon?.let {
+                        Image(
+                            modifier = Modifier
+                                .size(48.dp)
+                                .padding(15.dp),
+                            painter = painterResource(id = icon),
+                            contentDescription = null,
+                            colorFilter = ColorFilter.tint(if (isDark) Gray50 else Gray900)
+                        )
+                    }
+
+                    Box(
+                        Modifier
+                            .weight(1f)
+                            .fillMaxHeight()
+                            .padding(
+                                start = if (icon == null) 15.dp else 0.dp,
+                                bottom = 0.dp,
+                                end = 15.dp
+                            )
+                    ) {
+                        val hasText = textFieldValue.value.text.isNotEmpty()
+
+                        val animPlaceholder: Dp by animateDpAsState(
+                            if (isFocused.value || hasText) 6.dp else 14.dp
+                        )
+                        val animPlaceHolderFontSize: Int by animateIntAsState(
+                            if (isFocused.value || hasText) 12 else 14
+                        )
+
+                        Text(
+                            modifier = Modifier
+                                .graphicsLayer {
+                                    translationY = animPlaceholder.toPx()
+                                },
+                            text = placeholder,
+                            color = if (isDark) Gray50.copy(alpha = .35f) else Gray900.copy(alpha = .35f),
+                            fontSize = animPlaceHolderFontSize.sp,
+                            fontFamily = MaterialTheme.typography.bodyMedium.fontFamily,
+                            maxLines = if (singleLine) 1 else Int.MAX_VALUE,
+                            overflow = TextOverflow.Ellipsis
+                        )
+
+                        Box(
+                            Modifier
+                                .padding(top = 21.dp)
+                                .fillMaxWidth()
+                        ) {
+                            innerTextField()
+                        }
                     }
                 }
             }

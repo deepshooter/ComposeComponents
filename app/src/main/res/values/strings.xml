@@ -20,4 +20,5 @@
     <string name="show_password">Show password</string>
     <string name="hide_password">Hide password</string>
     <string name="example">example</string>
+    <string name="custom_type_two">Custom Type Two</string>
 </resources>
