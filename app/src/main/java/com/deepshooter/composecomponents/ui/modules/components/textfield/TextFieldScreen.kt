@@ -321,9 +321,21 @@ fun TextFieldScreenSkeleton(
 
                 AppComponent.MediumSpacer()
 
+                PasswordInputFieldTwo(
+                    textFieldValue = remember { mutableStateOf(TextFieldValue()) },
+                    placeholder = stringResource(R.string.password)
+                )
+
+
+                AppComponent.MediumSpacer()
+
+                PasswordInputFieldTwo(
+                    textFieldValue = remember { mutableStateOf(TextFieldValue("123456")) },
+                    placeholder = stringResource(R.string.password)
+                )
             }
 
-            Divider()
+            AppComponent.BigSpacer()
 
         }
     }
@@ -919,6 +931,178 @@ fun TextInputFieldTwo(
                         ) {
                             innerTextField()
                         }
+                    }
+                }
+            }
+        }
+    )
+}
+
+@OptIn(ExperimentalFoundationApi::class, ExperimentalLayoutApi::class)
+@Composable
+fun PasswordInputFieldTwo(
+    modifier: Modifier = Modifier,
+    textFieldValue: MutableState<TextFieldValue>,
+    placeholder: String = "●●●●●●",
+    readOnly: Boolean = false,
+    imeAction: ImeAction = ImeAction.Done,
+    keyboardActions: KeyboardActions? = null,
+    @DrawableRes icon: Int? = null,
+    onValueChange: (TextFieldValue) -> Unit = {}
+) {
+    val focusManager = LocalFocusManager.current
+    val passwordVisibility = remember { mutableStateOf(false) }
+    val bringIntoViewRequester = remember { BringIntoViewRequester() }
+    val interactionSource = remember { MutableInteractionSource() }
+    val interactionSourceState = interactionSource.collectIsFocusedAsState()
+    val scope = rememberCoroutineScope()
+    val isImeVisible = WindowInsets.isImeVisible
+
+    // Bring the composable into view (visible to user).
+    LaunchedEffect(isImeVisible, interactionSourceState.value) {
+        if (isImeVisible && interactionSourceState.value) {
+            scope.launch {
+                delay(300)
+                bringIntoViewRequester.bringIntoView()
+            }
+        }
+    }
+
+    val focusRequester = FocusRequester()
+    val isFocused = remember { mutableStateOf(false) }
+
+    val fontSize = if (passwordVisibility.value) 14.sp else 18.sp
+
+    val isDark by UIThemeController.isDarkMode.collectAsState()
+
+
+    BasicTextField(
+        modifier = modifier
+            .focusRequester(focusRequester)
+            .onFocusChanged {
+                isFocused.value = it.isFocused
+            }
+            .bringIntoViewRequester(bringIntoViewRequester)
+            .fillMaxWidth(),
+        interactionSource = interactionSource,
+        value = textFieldValue.value,
+        singleLine = true,
+        visualTransformation =
+        if (passwordVisibility.value) {
+            VisualTransformation.None
+        } else {
+            PasswordVisualTransformation(mask = '*')
+        },
+        onValueChange = {
+            textFieldValue.value = it
+
+            onValueChange(it)
+        },
+        keyboardActions = keyboardActions ?: KeyboardActions(
+            onDone = { focusManager.clearFocus() },
+            onNext = { focusManager.moveFocus(FocusDirection.Down) }
+        ),
+        keyboardOptions = KeyboardOptions(
+            keyboardType = KeyboardType.Password,
+            imeAction = imeAction
+        ),
+        readOnly = readOnly,
+        textStyle = TextStyle(
+            fontSize = fontSize,
+            fontFamily = MaterialTheme.typography.bodyMedium.fontFamily,
+            fontWeight = FontWeight.Medium,
+            color = if (isDark) Gray50 else Gray900
+        ),
+        decorationBox = { innerTextField ->
+            Row(
+                Modifier
+                    .clip(MaterialTheme.shapes.medium)
+                    .background(if (isDark) Gray800 else Gray100)
+                    .height(ELEMENT_HEIGHT)
+            ) {
+                icon?.let {
+                    Image(
+                        modifier = Modifier
+                            .size(48.dp)
+                            .padding(15.dp),
+                        painter = painterResource(id = icon),
+                        contentDescription = null,
+                        colorFilter = ColorFilter.tint(if (isDark) Gray50 else Gray900)
+                    )
+                }
+
+                Box(
+                    Modifier
+                        .weight(1f)
+                        .fillMaxHeight()
+                        .padding(
+                            start = if (icon == null) 15.dp else 0.dp,
+                            bottom = 0.dp,
+                            end = 15.dp
+                        )
+                ) {
+                    val hasText = textFieldValue.value.text.isNotEmpty()
+
+                    val animPlaceholder: Dp by animateDpAsState(
+                        if (isFocused.value || hasText) 6.dp else 14.dp
+                    )
+                    val animPlaceHolderFontSize: Int by animateIntAsState(
+                        if (isFocused.value || hasText) 12 else 14
+                    )
+
+                    Text(
+                        modifier = Modifier
+                            .graphicsLayer {
+                                translationY = animPlaceholder.toPx()
+                            },
+                        text = placeholder,
+                        color = if (isDark) Gray50.copy(alpha = .35f) else Gray900.copy(alpha = .35f),
+                        fontSize = animPlaceHolderFontSize.sp,
+                        fontFamily = MaterialTheme.typography.bodyMedium.fontFamily,
+                        maxLines = 1,
+                        overflow = TextOverflow.Ellipsis
+                    )
+
+                    Box(
+                        Modifier
+                            .padding(top = 21.dp)
+                            .fillMaxWidth()
+                            .height(18.dp)
+                    ) {
+                        innerTextField()
+                    }
+                }
+
+                Spacer(Modifier.width(16.dp))
+
+                IconButton(
+                    modifier = Modifier.align(Alignment.CenterVertically),
+                    onClick = {
+                        passwordVisibility.value = !passwordVisibility.value
+                    }
+                ) {
+                    AnimatedVisibility(
+                        visible = passwordVisibility.value,
+                        enter = fadeIn(),
+                        exit = fadeOut()
+                    ) {
+                        Icon(
+                            modifier = Modifier.padding(15.dp),
+                            painter = painterResource(id = R.drawable.ic_hide),
+                            contentDescription = stringResource(id = R.string.show_password)
+                        )
+                    }
+
+                    AnimatedVisibility(
+                        visible = !passwordVisibility.value,
+                        enter = fadeIn(),
+                        exit = fadeOut()
+                    ) {
+                        Icon(
+                            modifier = Modifier.padding(15.dp),
+                            painter = painterResource(id = R.drawable.ic_show),
+                            contentDescription = stringResource(id = R.string.hide_password)
+                        )
                     }
                 }
             }
