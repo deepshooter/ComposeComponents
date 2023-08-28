@@ -20,6 +20,7 @@ import com.deepshooter.composecomponents.ui.modules.animations.animatedtext.Anim
 import com.deepshooter.composecomponents.ui.modules.animations.bubbles.BubblesScreen
 import com.deepshooter.composecomponents.ui.modules.animations.index.AnimationIndexScreen
 import com.deepshooter.composecomponents.ui.modules.components.badge.BadgeScreen
+import com.deepshooter.composecomponents.ui.modules.components.button.ButtonScreen
 import com.deepshooter.composecomponents.ui.modules.components.navigationbar.NavigationBarScreen
 import com.deepshooter.composecomponents.ui.modules.components.text.TextScreen
 import com.deepshooter.composecomponents.ui.modules.components.textfield.TextFieldScreen
@@ -32,6 +33,7 @@ import com.deepshooter.composecomponents.utils.AppConstant.ANIMATIONS_INDEX_SCRE
 import com.deepshooter.composecomponents.utils.AppConstant.ANIMATION_SCREEN
 import com.deepshooter.composecomponents.utils.AppConstant.CLICK_SCREEN
 import com.deepshooter.composecomponents.utils.AppConstant.COMPONENTS_BADGE
+import com.deepshooter.composecomponents.utils.AppConstant.COMPONENTS_BUTTON_SCREEN
 import com.deepshooter.composecomponents.utils.AppConstant.COMPONENTS_TOP_APPBAR_SCREEN
 import com.deepshooter.composecomponents.utils.AppConstant.COMPONENTS_INDEX_SCREEN
 import com.deepshooter.composecomponents.utils.AppConstant.COMPONENTS_NAVIGATION_BAR
@@ -64,6 +66,7 @@ sealed class ComponentsScreen(val route: String) {
     object ComponentsIndex : ComponentsScreen(COMPONENTS_INDEX_SCREEN)
     object ComponentsText : ComponentsScreen(COMPONENTS_TEXT_SCREEN)
     object ComponentsTextField : ComponentsScreen(COMPONENTS_TEXT_FIELD_SCREEN)
+    object ComponentsButton : ComponentsScreen(COMPONENTS_BUTTON_SCREEN)
     object ComponentsTopAppBar : ComponentsScreen(COMPONENTS_TOP_APPBAR_SCREEN)
     object ComponentsNavigationBar : ComponentsScreen(COMPONENTS_NAVIGATION_BAR)
     object ComponentsBadge : ComponentsScreen(COMPONENTS_BADGE)
@@ -190,6 +193,15 @@ private fun NavGraphBuilder.addComponentsScreens(
         //TextField
         composable(ComponentsScreen.ComponentsTextField.route) {
             TextFieldScreen(
+                goBack = {
+                    navController.popBackStack()
+                }
+            )
+        }
+
+        //Button
+        composable(ComponentsScreen.ComponentsButton.route) {
+            ButtonScreen(
                 goBack = {
                     navController.popBackStack()
                 }

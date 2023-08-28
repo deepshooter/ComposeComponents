@@ -16,6 +16,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.deepshooter.composecomponents.ui.theme.ComposeComponentsTheme
 import com.deepshooter.composecomponents.utils.AppComponent
+import com.deepshooter.composecomponents.utils.AppConstant.BUTTON
 
 
 @Composable
@@ -46,7 +47,7 @@ fun ButtonScreenSkeleton(
         ) {
 
             AppComponent.Header(
-                "Button",
+                BUTTON,
                 goBack = goBack
             )
 

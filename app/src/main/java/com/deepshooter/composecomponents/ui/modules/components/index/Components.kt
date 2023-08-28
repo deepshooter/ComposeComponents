@@ -2,6 +2,7 @@ package com.deepshooter.composecomponents.ui.modules.components.index
 
 import com.deepshooter.composecomponents.ui.ComponentsScreen
 import com.deepshooter.composecomponents.utils.AppConstant.BADGE
+import com.deepshooter.composecomponents.utils.AppConstant.BUTTON
 import com.deepshooter.composecomponents.utils.AppConstant.NAVIGATION_BAR
 import com.deepshooter.composecomponents.utils.AppConstant.TEXT
 import com.deepshooter.composecomponents.utils.AppConstant.TEXT_FIELD
@@ -20,6 +21,10 @@ data class Components(
             Components(
                 name = TEXT_FIELD,
                 route = ComponentsScreen.ComponentsTextField
+            ),
+            Components(
+                name = BUTTON,
+                route = ComponentsScreen.ComponentsButton
             ),
             Components(
                 name = TOP_APP_BAR,
