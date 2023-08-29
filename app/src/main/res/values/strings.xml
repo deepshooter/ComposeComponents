@@ -22,4 +22,7 @@
     <string name="example">example</string>
     <string name="custom_type_two">Custom Type Two</string>
     <string name="password">Password</string>
+    <string name="button">Button</string>
+    <string name="outlined_button">Outlined Button</string>
+    <string name="text_button">Text Button</string>
 </resources>
