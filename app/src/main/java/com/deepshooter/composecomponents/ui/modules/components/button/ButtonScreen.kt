@@ -122,7 +122,7 @@ fun ButtonScreenSkeleton(
                     )
                     Spacer(Modifier.size(ButtonDefaults.IconSpacing))
                     Text(
-                        "Like",
+                        stringResource(R.string.like),
                         color = Color.White
                     )
                 }
@@ -131,7 +131,10 @@ fun ButtonScreenSkeleton(
 
                 //IconButton
                 IconButton(onClick = { /* doSomething() */ }) {
-                    Icon(Icons.Filled.Favorite, contentDescription = "Localized description")
+                    Icon(
+                        Icons.Filled.Favorite,
+                        contentDescription = stringResource(R.string.localized_description)
+                    )
                 }
 
                 AppComponent.MediumSpacer()
@@ -146,7 +149,7 @@ fun ButtonScreenSkeleton(
                     )
                     Icon(
                         Icons.Filled.Favorite,
-                        contentDescription = "Localized description",
+                        contentDescription = stringResource(R.string.localized_description),
                         tint = tint
                     )
                 }
@@ -162,12 +165,12 @@ fun ButtonScreenSkeleton(
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
 
-                AppComponent.SubHeader("Solid Buttons")
+                AppComponent.SubHeader(stringResource(R.string.solid_buttons))
 
                 AppComponent.MediumSpacer()
 
                 SolidButton(
-                    text = "Like",
+                    text = stringResource(R.string.like),
                     onClick = {}
                 )
 
@@ -175,7 +178,7 @@ fun ButtonScreenSkeleton(
                 AppComponent.MediumSpacer()
 
                 SolidButton(
-                    text = "Like",
+                    text = stringResource(R.string.like),
                     startIcon = R.drawable.ic_danger_circle,
                     onClick = {}
                 )
