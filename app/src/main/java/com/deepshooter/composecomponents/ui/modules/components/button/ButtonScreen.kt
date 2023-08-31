@@ -1,10 +1,12 @@
 package com.deepshooter.composecomponents.ui.modules.components.button
 
 import android.annotation.SuppressLint
+import androidx.annotation.DrawableRes
 import androidx.compose.animation.animateColorAsState
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.imePadding
 import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
@@ -20,6 +22,7 @@ import androidx.compose.material3.Divider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.IconToggleButton
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
@@ -32,9 +35,15 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.Shape
+import androidx.compose.ui.platform.LocalFocusManager
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.Dp
+import androidx.compose.ui.unit.TextUnit
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.deepshooter.composecomponents.R
 import com.deepshooter.composecomponents.ui.theme.ComposeComponentsTheme
 import com.deepshooter.composecomponents.utils.AppComponent
@@ -144,14 +153,93 @@ fun ButtonScreenSkeleton(
 
                 AppComponent.MediumSpacer()
 
-
             }
 
+            Divider()
+
+            Column(
+                Modifier.padding(start = 16.dp, end = 16.dp),
+                horizontalAlignment = Alignment.CenterHorizontally
+            ) {
+
+                AppComponent.SubHeader("Solid Buttons")
+
+                AppComponent.MediumSpacer()
+
+                SolidButton(
+                    text = "Like",
+                    onClick = {}
+                )
+
+
+                AppComponent.MediumSpacer()
+
+                SolidButton(
+                    text = "Like",
+                    startIcon = R.drawable.ic_danger_circle,
+                    onClick = {}
+                )
+
+                AppComponent.MediumSpacer()
+
+            }
         }
     }
-
 }
 
+
+@Composable
+fun SolidButton(
+    modifier: Modifier = Modifier,
+    text: String,
+    @DrawableRes startIcon: Int? = null,
+    @DrawableRes endIcon: Int? = null,
+    height: Dp = ButtonDefaults.MinHeight,
+    fontSize: TextUnit = 16.sp,
+    backgroundColor: Color = MaterialTheme.colorScheme.primary,
+    shape: Shape = MaterialTheme.shapes.medium,
+    onClick: () -> Unit
+) {
+    val currentFocus = LocalFocusManager.current
+
+    Button(
+        modifier = modifier.height(height),
+        shape = shape,
+        colors = ButtonDefaults.buttonColors(containerColor = backgroundColor),
+        onClick = {
+            currentFocus.clearFocus()
+
+            onClick()
+        }
+    ) {
+        if (startIcon != null) {
+            Icon(
+                painterResource(id = startIcon),
+                contentDescription = text,
+                modifier = Modifier.size(ButtonDefaults.IconSize),
+                tint = Color.White
+            )
+            Spacer(Modifier.size(ButtonDefaults.IconSpacing))
+        }
+
+        Text(
+            text,
+            style = MaterialTheme.typography.displayMedium,
+            color = Color.White,
+            fontSize = fontSize
+        )
+
+        if (endIcon != null) {
+            Spacer(Modifier.size(ButtonDefaults.IconSpacing))
+            Icon(
+                painterResource(id = endIcon),
+                contentDescription = text,
+                modifier = Modifier.size(ButtonDefaults.IconSize),
+                tint = Color.White
+            )
+        }
+    }
+}
 
 @Preview
 @Composable
