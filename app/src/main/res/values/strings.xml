@@ -27,4 +27,5 @@
     <string name="text_button">Text Button</string>
     <string name="like">Like</string>
     <string name="solid_buttons">Solid Buttons</string>
+    <string name="solid_wide_buttons">Solid Wide Buttons</string>
 </resources>

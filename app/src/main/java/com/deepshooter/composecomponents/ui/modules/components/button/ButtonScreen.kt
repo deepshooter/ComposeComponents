@@ -6,6 +6,7 @@ import androidx.compose.animation.animateColorAsState
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.imePadding
 import androidx.compose.foundation.layout.navigationBarsPadding
@@ -39,6 +40,8 @@ import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.TextUnit
@@ -206,7 +209,52 @@ fun ButtonScreenSkeleton(
 
             Divider()
 
+            Column(
+                Modifier.padding(start = 16.dp, end = 16.dp),
+                horizontalAlignment = Alignment.CenterHorizontally
+            ) {
 
+                AppComponent.SubHeader(stringResource(R.string.solid_wide_buttons))
+
+                AppComponent.MediumSpacer()
+
+                SolidWideButton(
+                    modifier = Modifier.fillMaxWidth(),
+                    text = stringResource(R.string.like),
+                    onClick = {}
+                )
+
+                AppComponent.MediumSpacer()
+
+                SolidWideButton(
+                    modifier = Modifier.fillMaxWidth(),
+                    text = stringResource(R.string.like),
+                    startIcon = R.drawable.ic_danger_circle,
+                    onClick = {}
+                )
+
+                AppComponent.MediumSpacer()
+
+                SolidWideButton(
+                    modifier = Modifier.fillMaxWidth(),
+                    text = stringResource(R.string.like),
+                    endIcon = R.drawable.ic_danger_circle,
+                    onClick = {}
+                )
+
+                AppComponent.MediumSpacer()
+
+                SolidWideButton(
+                    modifier = Modifier.fillMaxWidth(),
+                    text = stringResource(R.string.like),
+                    startIcon = R.drawable.ic_danger_circle,
+                    endIcon = R.drawable.ic_danger_circle,
+                    onClick = {}
+                )
+
+                AppComponent.MediumSpacer()
+
+            }
         }
     }
 }
@@ -260,6 +308,70 @@ fun SolidButton(
                 contentDescription = text,
                 modifier = Modifier.size(ButtonDefaults.IconSize),
                 tint = Color.White
+            )
+        }
+    }
+}
+
+@Composable
+fun SolidWideButton(
+    modifier: Modifier = Modifier,
+    text: String,
+    @DrawableRes startIcon: Int? = null,
+    @DrawableRes endIcon: Int? = null,
+    height: Dp = ButtonDefaults.MinHeight,
+    fontSize: TextUnit = 16.sp,
+    horizontalPadding: Dp = ButtonDefaults.IconSpacing,
+    backgroundColor: Color = MaterialTheme.colorScheme.primary,
+    shape: Shape = MaterialTheme.shapes.medium,
+    onClick: () -> Unit
+) {
+    val currentFocus = LocalFocusManager.current
+
+    Button(
+        modifier = modifier
+            .height(height),
+        shape = shape,
+        colors = ButtonDefaults.buttonColors(
+            containerColor = backgroundColor,
+            contentColor = Color.White
+        ),
+        onClick = {
+            currentFocus.clearFocus()
+
+            onClick()
+        }
+    ) {
+        if (startIcon != null) {
+            Icon(
+                modifier = Modifier.size(ButtonDefaults.IconSize),
+                painter = painterResource(id = startIcon),
+                contentDescription = text
+            )
+            Spacer(Modifier.size(horizontalPadding))
+        }
+
+        Text(
+            modifier = Modifier
+                .padding(
+                    start = if (startIcon != null) 0.dp else ButtonDefaults.IconSize + horizontalPadding,
+                    end = if (endIcon != null) 0.dp else ButtonDefaults.IconSize + horizontalPadding
+                )
+                .weight(1f),
+            text = text,
+            fontSize = fontSize,
+            style = MaterialTheme.typography.displayMedium,
+            textAlign = TextAlign.Center,
+            maxLines = 1,
+            overflow = TextOverflow.Ellipsis
+        )
+
+        if (endIcon != null) {
+            Spacer(Modifier.size(horizontalPadding))
+            Icon(
+                modifier = Modifier.size(ButtonDefaults.IconSize),
+                painter = painterResource(id = endIcon),
+                contentDescription = text
             )
         }
     }
