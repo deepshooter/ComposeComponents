@@ -185,7 +185,28 @@ fun ButtonScreenSkeleton(
 
                 AppComponent.MediumSpacer()
 
+                SolidButton(
+                    text = stringResource(R.string.like),
+                    endIcon = R.drawable.ic_danger_circle,
+                    onClick = {}
+                )
+
+                AppComponent.MediumSpacer()
+
+                SolidButton(
+                    text = stringResource(R.string.like),
+                    startIcon = R.drawable.ic_danger_circle,
+                    endIcon = R.drawable.ic_danger_circle,
+                    onClick = {}
+                )
+
+                AppComponent.MediumSpacer()
+
             }
+
+            Divider()
+
+
         }
     }
 }
