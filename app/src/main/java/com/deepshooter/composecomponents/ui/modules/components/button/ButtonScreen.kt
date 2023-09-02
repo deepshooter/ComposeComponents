@@ -396,6 +396,55 @@ fun ButtonScreenSkeleton(
                 AppComponent.MediumSpacer()
 
             }
+
+            Divider()
+
+            Column(
+                Modifier.padding(start = 16.dp, end = 16.dp),
+                horizontalAlignment = Alignment.CenterHorizontally
+            ) {
+                AppComponent.SubHeader(stringResource(R.string.bordered_wide_buttons))
+
+                AppComponent.MediumSpacer()
+
+                BorderedWideButton(
+                    modifier = Modifier.fillMaxWidth(),
+                    text = stringResource(R.string.like),
+                    onClick = {}
+                )
+
+
+                AppComponent.MediumSpacer()
+
+                BorderedWideButton(
+                    modifier = Modifier.fillMaxWidth(),
+                    text = stringResource(R.string.like),
+                    startIcon = R.drawable.ic_danger_circle,
+                    onClick = {}
+                )
+
+                AppComponent.MediumSpacer()
+
+                BorderedWideButton(
+                    modifier = Modifier.fillMaxWidth(),
+                    text = stringResource(R.string.like),
+                    endIcon = R.drawable.ic_danger_circle,
+                    onClick = {}
+                )
+
+                AppComponent.MediumSpacer()
+
+                BorderedWideButton(
+                    modifier = Modifier.fillMaxWidth(),
+                    text = stringResource(R.string.like),
+                    startIcon = R.drawable.ic_danger_circle,
+                    endIcon = R.drawable.ic_danger_circle,
+                    onClick = {}
+                )
+
+                AppComponent.MediumSpacer()
+
+            }
         }
     }
 }
@@ -705,6 +754,75 @@ fun BorderedButton(
                 painterResource(id = endIcon),
                 contentDescription = text,
                 modifier = Modifier.size(ButtonDefaults.IconSize),
+                tint = MaterialTheme.colorScheme.primary
+            )
+        }
+    }
+}
+
+@Composable
+fun BorderedWideButton(
+    modifier: Modifier = Modifier,
+    text: String,
+    @DrawableRes startIcon: Int? = null,
+    @DrawableRes endIcon: Int? = null,
+    height: Dp = ButtonDefaults.MinHeight,
+    fontSize: TextUnit = 16.sp,
+    horizontalPadding: Dp = ButtonDefaults.IconSpacing,
+    borderGradient: Brush = defaultButtonBackgroundBrush(.3f),
+    shape: Shape = MaterialTheme.shapes.medium,
+    onClick: () -> Unit
+) {
+    val currentFocus = LocalFocusManager.current
+
+    OutlinedButton(
+        modifier = modifier
+            .height(height),
+        border = BorderStroke(
+            width = 2.dp,
+            brush = borderGradient
+        ),
+        shape = shape,
+        colors = ButtonDefaults.outlinedButtonColors(
+            containerColor = Color.Transparent
+        ),
+        onClick = {
+            currentFocus.clearFocus()
+
+            onClick()
+        }
+    ) {
+        if (startIcon != null) {
+            Icon(
+                modifier = Modifier.size(ButtonDefaults.IconSize),
+                painter = painterResource(id = startIcon),
+                contentDescription = text,
+                tint = MaterialTheme.colorScheme.primary
+            )
+            Spacer(Modifier.size(ButtonDefaults.IconSpacing))
+        }
+
+        Text(
+            modifier = Modifier
+                .padding(
+                    start = if (startIcon != null) 0.dp else ButtonDefaults.IconSize + horizontalPadding,
+                    end = if (endIcon != null) 0.dp else ButtonDefaults.IconSize + horizontalPadding
+                )
+                .weight(1f),
+            text = text,
+            fontSize = fontSize,
+            style = MaterialTheme.typography.displayMedium,
+            textAlign = TextAlign.Center,
+            maxLines = 1,
+            overflow = TextOverflow.Ellipsis
+        )
+
+        if (endIcon != null) {
+            Spacer(Modifier.size(ButtonDefaults.IconSpacing))
+            Icon(
+                modifier = Modifier.size(ButtonDefaults.IconSize),
+                painter = painterResource(id = endIcon),
+                contentDescription = text,
                 tint = MaterialTheme.colorScheme.primary
             )
         }
