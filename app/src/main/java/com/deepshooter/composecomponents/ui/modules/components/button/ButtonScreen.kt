@@ -3,6 +3,7 @@ package com.deepshooter.composecomponents.ui.modules.components.button
 import android.annotation.SuppressLint
 import androidx.annotation.DrawableRes
 import androidx.compose.animation.animateColorAsState
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -35,6 +36,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.platform.LocalFocusManager
@@ -49,6 +51,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.deepshooter.composecomponents.R
 import com.deepshooter.composecomponents.ui.theme.ComposeComponentsTheme
+import com.deepshooter.composecomponents.ui.theme.Green900
 import com.deepshooter.composecomponents.utils.AppComponent
 import com.deepshooter.composecomponents.utils.AppConstant.BUTTON
 
@@ -255,6 +258,51 @@ fun ButtonScreenSkeleton(
                 AppComponent.MediumSpacer()
 
             }
+
+            Divider()
+
+            Column(
+                Modifier.padding(start = 16.dp, end = 16.dp),
+                horizontalAlignment = Alignment.CenterHorizontally
+            ) {
+
+                AppComponent.SubHeader(stringResource(R.string.gradient_buttons))
+
+                AppComponent.MediumSpacer()
+
+                GradientButton(
+                    text = stringResource(R.string.like),
+                    onClick = {}
+                )
+
+                AppComponent.MediumSpacer()
+
+                GradientButton(
+                    text = stringResource(R.string.like),
+                    startIcon = R.drawable.ic_danger_circle,
+                    onClick = {}
+                )
+
+                AppComponent.MediumSpacer()
+
+                GradientButton(
+                    text = stringResource(R.string.like),
+                    endIcon = R.drawable.ic_danger_circle,
+                    onClick = {}
+                )
+
+                AppComponent.MediumSpacer()
+
+                GradientButton(
+                    text = stringResource(R.string.like),
+                    startIcon = R.drawable.ic_danger_circle,
+                    endIcon = R.drawable.ic_danger_circle,
+                    onClick = {}
+                )
+
+                AppComponent.MediumSpacer()
+
+            }
         }
     }
 }
@@ -376,6 +424,76 @@ fun SolidWideButton(
         }
     }
 }
+
+@Composable
+fun GradientButton(
+    modifier: Modifier = Modifier,
+    text: String,
+    @DrawableRes startIcon: Int? = null,
+    @DrawableRes endIcon: Int? = null,
+    height: Dp = ButtonDefaults.MinHeight,
+    fontSize: TextUnit = 16.sp,
+    backgroundGradient: Brush = defaultButtonBackgroundBrush(),
+    shape: Shape = MaterialTheme.shapes.medium,
+    onClick: () -> Unit
+) {
+    val currentFocus = LocalFocusManager.current
+
+    TextButton(
+        modifier = modifier
+            .height(height)
+            .background(
+                brush = backgroundGradient,
+                shape = shape
+            ),
+        shape = shape,
+        onClick = {
+            currentFocus.clearFocus()
+
+            onClick()
+        }
+    ) {
+        if (startIcon != null) {
+            Spacer(Modifier.size(ButtonDefaults.IconSpacing))
+            Icon(
+                painterResource(id = startIcon),
+                contentDescription = text,
+                modifier = Modifier.size(ButtonDefaults.IconSize),
+                tint = Color.White
+            )
+        }
+
+        Spacer(Modifier.size(ButtonDefaults.IconSpacing))
+
+        Text(
+            text,
+            style = MaterialTheme.typography.displayMedium,
+            color = Color.White,
+            fontSize = fontSize
+        )
+
+        Spacer(Modifier.size(ButtonDefaults.IconSpacing))
+
+        if (endIcon != null) {
+            Icon(
+                painterResource(id = endIcon),
+                contentDescription = text,
+                modifier = Modifier.size(ButtonDefaults.IconSize),
+                tint = Color.White
+            )
+            Spacer(Modifier.size(ButtonDefaults.IconSpacing))
+        }
+    }
+}
+
+
+@Composable
+fun defaultButtonBackgroundBrush(
+    alpha: Float = 1f
+) = Brush.verticalGradient(
+    0.0f to MaterialTheme.colorScheme.primary.copy(alpha),
+    1.0f to Green900.copy(alpha)
+)
 
 @Preview
 @Composable

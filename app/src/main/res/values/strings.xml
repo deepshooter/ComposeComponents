@@ -28,4 +28,5 @@
     <string name="like">Like</string>
     <string name="solid_buttons">Solid Buttons</string>
     <string name="solid_wide_buttons">Solid Wide Buttons</string>
+    <string name="gradient_buttons">Gradient Buttons</string>
 </resources>
