@@ -30,4 +30,5 @@
     <string name="solid_wide_buttons">Solid Wide Buttons</string>
     <string name="gradient_buttons">Gradient Buttons</string>
     <string name="gradient_wide_buttons">Gradient Wide Buttons</string>
+    <string name="bordered_buttons">Bordered Buttons</string>
 </resources>

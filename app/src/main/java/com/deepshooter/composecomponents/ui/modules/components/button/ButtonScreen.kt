@@ -3,6 +3,7 @@ package com.deepshooter.composecomponents.ui.modules.components.button
 import android.annotation.SuppressLint
 import androidx.annotation.DrawableRes
 import androidx.compose.animation.animateColorAsState
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -350,6 +351,49 @@ fun ButtonScreenSkeleton(
                 )
 
                 AppComponent.MediumSpacer()
+            }
+
+            Divider()
+
+            Column(
+                Modifier.padding(start = 16.dp, end = 16.dp),
+                horizontalAlignment = Alignment.CenterHorizontally
+            ) {
+                AppComponent.SubHeader(stringResource(R.string.bordered_buttons))
+
+                AppComponent.MediumSpacer()
+
+                BorderedButton(
+                    text = stringResource(R.string.like),
+                    onClick = {}
+                )
+
+                AppComponent.MediumSpacer()
+
+                BorderedButton(
+                    text = stringResource(R.string.like),
+                    startIcon = R.drawable.ic_danger_circle,
+                    onClick = {}
+                )
+
+                AppComponent.MediumSpacer()
+
+                BorderedButton(
+                    text = stringResource(R.string.like),
+                    endIcon = R.drawable.ic_danger_circle,
+                    onClick = {}
+                )
+
+                AppComponent.MediumSpacer()
+
+                BorderedButton(
+                    text = stringResource(R.string.like),
+                    startIcon = R.drawable.ic_danger_circle,
+                    endIcon = R.drawable.ic_danger_circle,
+                    onClick = {}
+                )
+
+                AppComponent.MediumSpacer()
 
             }
         }
@@ -604,6 +648,65 @@ fun GradientWideButton(
                 tint = Color.White
             )
             Spacer(Modifier.size(ButtonDefaults.IconSpacing))
+        }
+    }
+}
+
+@Composable
+fun BorderedButton(
+    modifier: Modifier = Modifier,
+    text: String,
+    @DrawableRes startIcon: Int? = null,
+    @DrawableRes endIcon: Int? = null,
+    height: Dp = ButtonDefaults.MinHeight,
+    fontSize: TextUnit = 16.sp,
+    borderGradient: Brush = defaultButtonBackgroundBrush(.3f),
+    shape: Shape = MaterialTheme.shapes.medium,
+    onClick: () -> Unit
+) {
+    val currentFocus = LocalFocusManager.current
+
+    OutlinedButton(
+        modifier = modifier
+            .height(height),
+        border = BorderStroke(
+            width = 2.dp,
+            brush = borderGradient
+        ),
+        shape = shape,
+        colors = ButtonDefaults.outlinedButtonColors(
+            containerColor = Color.Transparent
+        ),
+        onClick = {
+            currentFocus.clearFocus()
+
+            onClick()
+        }
+    ) {
+        if (startIcon != null) {
+            Icon(
+                painterResource(id = startIcon),
+                contentDescription = text,
+                modifier = Modifier.size(ButtonDefaults.IconSize),
+                tint = MaterialTheme.colorScheme.primary
+            )
+            Spacer(Modifier.size(ButtonDefaults.IconSpacing))
+        }
+
+        Text(
+            text,
+            style = MaterialTheme.typography.displayMedium,
+            fontSize = fontSize
+        )
+
+        if (endIcon != null) {
+            Spacer(Modifier.size(ButtonDefaults.IconSpacing))
+            Icon(
+                painterResource(id = endIcon),
+                contentDescription = text,
+                modifier = Modifier.size(ButtonDefaults.IconSize),
+                tint = MaterialTheme.colorScheme.primary
+            )
         }
     }
 }
