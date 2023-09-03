@@ -443,6 +443,50 @@ fun ButtonScreenSkeleton(
                 )
 
                 AppComponent.MediumSpacer()
+            }
+
+            Divider()
+
+            Column(
+                Modifier.padding(start = 16.dp, end = 16.dp),
+                horizontalAlignment = Alignment.CenterHorizontally
+            ) {
+
+                AppComponent.SubHeader(stringResource(R.string.borderless_buttons))
+
+                AppComponent.MediumSpacer()
+
+                BorderlessButton(
+                    text = stringResource(R.string.like),
+                    onClick = {}
+                )
+
+                AppComponent.MediumSpacer()
+
+                BorderlessButton(
+                    text = stringResource(R.string.like),
+                    startIcon = R.drawable.ic_danger_circle,
+                    onClick = {}
+                )
+
+                AppComponent.MediumSpacer()
+
+                BorderlessButton(
+                    text = stringResource(R.string.like),
+                    endIcon = R.drawable.ic_danger_circle,
+                    onClick = {}
+                )
+
+                AppComponent.MediumSpacer()
+
+                BorderlessButton(
+                    text = stringResource(R.string.like),
+                    startIcon = R.drawable.ic_danger_circle,
+                    endIcon = R.drawable.ic_danger_circle,
+                    onClick = {}
+                )
+
+                AppComponent.MediumSpacer()
 
             }
         }
@@ -829,6 +873,58 @@ fun BorderedWideButton(
     }
 }
 
+@Composable
+fun BorderlessButton(
+    modifier: Modifier = Modifier,
+    text: String,
+    @DrawableRes startIcon: Int? = null,
+    @DrawableRes endIcon: Int? = null,
+    height: Dp = ButtonDefaults.MinHeight,
+    fontSize: TextUnit = 16.sp,
+    shape: Shape = MaterialTheme.shapes.medium,
+    onClick: () -> Unit
+) {
+    val currentFocus = LocalFocusManager.current
+
+    TextButton(
+        modifier = modifier
+            .height(height),
+        shape = shape,
+        onClick = {
+            currentFocus.clearFocus()
+
+            onClick()
+        }
+    ) {
+        if (startIcon != null) {
+            Spacer(Modifier.size(ButtonDefaults.IconSpacing))
+            Icon(
+                painterResource(id = startIcon),
+                contentDescription = text,
+                modifier = Modifier.size(ButtonDefaults.IconSize)
+            )
+        }
+
+        Spacer(Modifier.size(ButtonDefaults.IconSpacing))
+
+        Text(
+            text,
+            style = MaterialTheme.typography.displayMedium,
+            fontSize = fontSize
+        )
+
+        Spacer(Modifier.size(ButtonDefaults.IconSpacing))
+
+        if (endIcon != null) {
+            Icon(
+                painterResource(id = endIcon),
+                contentDescription = text,
+                modifier = Modifier.size(ButtonDefaults.IconSize)
+            )
+            Spacer(Modifier.size(ButtonDefaults.IconSpacing))
+        }
+    }
+}
 
 @Composable
 fun defaultButtonBackgroundBrush(
