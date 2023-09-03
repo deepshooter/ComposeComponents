@@ -33,4 +33,5 @@
     <string name="bordered_buttons">Bordered Buttons</string>
     <string name="bordered_wide_buttons">Bordered Wide Buttons</string>
     <string name="borderless_buttons">Borderless Buttons</string>
+    <string name="borderless_wide_buttons">Borderless Wide Buttons</string>
 </resources>

@@ -489,6 +489,54 @@ fun ButtonScreenSkeleton(
                 AppComponent.MediumSpacer()
 
             }
+
+            Divider()
+
+            Column(
+                Modifier.padding(start = 16.dp, end = 16.dp),
+                horizontalAlignment = Alignment.CenterHorizontally
+            ) {
+                AppComponent.SubHeader(stringResource(R.string.borderless_wide_buttons))
+
+                AppComponent.MediumSpacer()
+
+                BorderlessWideButton(
+                    modifier = Modifier.fillMaxWidth(),
+                    text = stringResource(R.string.like),
+                    onClick = {}
+                )
+
+                AppComponent.MediumSpacer()
+
+                BorderlessWideButton(
+                    modifier = Modifier.fillMaxWidth(),
+                    text = stringResource(R.string.like),
+                    startIcon = R.drawable.ic_danger_circle,
+                    onClick = {}
+                )
+
+                AppComponent.MediumSpacer()
+
+                BorderlessWideButton(
+                    modifier = Modifier.fillMaxWidth(),
+                    text = stringResource(R.string.like),
+                    endIcon = R.drawable.ic_danger_circle,
+                    onClick = {}
+                )
+
+                AppComponent.MediumSpacer()
+
+                BorderlessWideButton(
+                    modifier = Modifier.fillMaxWidth(),
+                    text = stringResource(R.string.like),
+                    startIcon = R.drawable.ic_danger_circle,
+                    endIcon = R.drawable.ic_danger_circle,
+                    onClick = {}
+                )
+
+                AppComponent.MediumSpacer()
+
+            }
         }
     }
 }
@@ -920,6 +968,70 @@ fun BorderlessButton(
                 painterResource(id = endIcon),
                 contentDescription = text,
                 modifier = Modifier.size(ButtonDefaults.IconSize)
+            )
+            Spacer(Modifier.size(ButtonDefaults.IconSpacing))
+        }
+    }
+}
+
+
+@Composable
+fun BorderlessWideButton(
+    modifier: Modifier = Modifier,
+    text: String,
+    @DrawableRes startIcon: Int? = null,
+    @DrawableRes endIcon: Int? = null,
+    height: Dp = ButtonDefaults.MinHeight,
+    fontSize: TextUnit = 16.sp,
+    horizontalPadding: Dp = ButtonDefaults.IconSpacing,
+    shape: Shape = MaterialTheme.shapes.medium,
+    onClick: () -> Unit
+) {
+    val currentFocus = LocalFocusManager.current
+
+    TextButton(
+        modifier = modifier
+            .height(height),
+        shape = shape,
+        onClick = {
+            currentFocus.clearFocus()
+
+            onClick()
+        }
+    ) {
+        if (startIcon != null) {
+            Spacer(Modifier.size(ButtonDefaults.IconSpacing))
+            Icon(
+                modifier = Modifier.size(ButtonDefaults.IconSize),
+                painter = painterResource(id = startIcon),
+                contentDescription = text
+            )
+        }
+
+        Spacer(Modifier.size(ButtonDefaults.IconSpacing))
+
+        Text(
+            modifier = Modifier
+                .padding(
+                    start = if (startIcon != null) 0.dp else ButtonDefaults.IconSize + horizontalPadding,
+                    end = if (endIcon != null) 0.dp else ButtonDefaults.IconSize + horizontalPadding
+                )
+                .weight(1f),
+            text = text,
+            fontSize = fontSize,
+            style = MaterialTheme.typography.displayMedium,
+            textAlign = TextAlign.Center,
+            maxLines = 1,
+            overflow = TextOverflow.Ellipsis
+        )
+
+        Spacer(Modifier.size(ButtonDefaults.IconSpacing))
+
+        if (endIcon != null) {
+            Icon(
+                modifier = Modifier.size(ButtonDefaults.IconSize),
+                painter = painterResource(id = endIcon),
+                contentDescription = text
             )
             Spacer(Modifier.size(ButtonDefaults.IconSpacing))
         }
