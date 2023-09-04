@@ -6,6 +6,7 @@ import androidx.compose.animation.animateColorAsState
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -537,6 +538,42 @@ fun ButtonScreenSkeleton(
                 AppComponent.MediumSpacer()
 
             }
+
+            Divider()
+
+            Column(
+                Modifier.padding(start = 16.dp, end = 16.dp),
+                horizontalAlignment = Alignment.CenterHorizontally
+            ) {
+                AppComponent.SubHeader(stringResource(R.string.icon_buttons))
+
+                AppComponent.MediumSpacer()
+
+                SolidIconButton(
+                    icon = R.drawable.ic_danger_circle,
+                    contentDescription = null,
+                    onClick = {}
+                )
+
+                AppComponent.MediumSpacer()
+
+                GradientIconButton(
+                    icon = R.drawable.ic_danger_circle,
+                    contentDescription = null,
+                    onClick = {}
+                )
+
+                AppComponent.MediumSpacer()
+
+                BorderlessIconButton(
+                    icon = R.drawable.ic_danger_circle,
+                    contentDescription = null,
+                    onClick = {}
+                )
+
+                AppComponent.BigSpacer()
+
+            }
         }
     }
 }
@@ -1035,6 +1072,110 @@ fun BorderlessWideButton(
             )
             Spacer(Modifier.size(ButtonDefaults.IconSpacing))
         }
+    }
+}
+
+
+@Composable
+fun SolidIconButton(
+    modifier: Modifier = Modifier,
+    @DrawableRes icon: Int,
+    contentDescription: String?,
+    backgroundColor: Color = MaterialTheme.colorScheme.primary,
+    size: Dp = ButtonDefaults.MinHeight,
+    shape: Shape = MaterialTheme.shapes.medium,
+    onClick: () -> Unit
+) {
+    val currentFocus = LocalFocusManager.current
+
+    Button(
+        modifier = modifier
+            .size(size),
+        shape = shape,
+        colors = ButtonDefaults.textButtonColors(
+            contentColor = Color.White,
+            containerColor = backgroundColor
+        ),
+        contentPadding = PaddingValues(0.dp),
+        onClick = {
+            currentFocus.clearFocus()
+
+            onClick()
+        }
+    ) {
+        Icon(
+            modifier = Modifier.size(ButtonDefaults.IconSize),
+            painter = painterResource(id = icon),
+            contentDescription = contentDescription
+        )
+    }
+}
+
+@Composable
+fun GradientIconButton(
+    modifier: Modifier = Modifier,
+    @DrawableRes icon: Int,
+    contentDescription: String?,
+    backgroundGradient: Brush = defaultButtonBackgroundBrush(),
+    size: Dp = ButtonDefaults.MinHeight,
+    shape: Shape = MaterialTheme.shapes.medium,
+    onClick: () -> Unit
+) {
+    val currentFocus = LocalFocusManager.current
+
+    TextButton(
+        modifier = modifier
+            .background(
+                brush = backgroundGradient,
+                shape = shape
+            )
+            .size(size),
+        contentPadding = PaddingValues(0.dp),
+        shape = shape,
+        colors = ButtonDefaults.textButtonColors(
+            contentColor = Color.White
+        ),
+        onClick = {
+            currentFocus.clearFocus()
+
+            onClick()
+        }
+    ) {
+        Icon(
+            modifier = Modifier.size(ButtonDefaults.IconSize),
+            painter = painterResource(id = icon),
+            contentDescription = contentDescription
+        )
+    }
+}
+
+@Composable
+fun BorderlessIconButton(
+    modifier: Modifier = Modifier,
+    @DrawableRes icon: Int,
+    contentDescription: String?,
+    size: Dp = ButtonDefaults.MinHeight,
+    shape: Shape = MaterialTheme.shapes.medium,
+    onClick: () -> Unit
+) {
+    val currentFocus = LocalFocusManager.current
+
+    TextButton(
+        modifier = modifier
+            .size(size),
+        shape = shape,
+        contentPadding = PaddingValues(0.dp),
+        onClick = {
+            currentFocus.clearFocus()
+
+            onClick()
+        }
+    ) {
+        Icon(
+            modifier = Modifier.size(ButtonDefaults.IconSize),
+            painter = painterResource(id = icon),
+            contentDescription = contentDescription
+        )
     }
 }
 
