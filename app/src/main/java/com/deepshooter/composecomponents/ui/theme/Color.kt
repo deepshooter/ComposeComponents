@@ -67,6 +67,10 @@ val Teal300 = Color(0xFF4DB6AC)
 val Teal700 = Color(0xFF009688)
 
 
+//Gradient Colors
+val Reddish = Color(0XFFDC2424)
+val Bluish = Color(0XFF4A569D)
+
 val dotBackground: Color
     @Composable
     get() = if (isSystemInDarkTheme()) Gray800 else Gray200
