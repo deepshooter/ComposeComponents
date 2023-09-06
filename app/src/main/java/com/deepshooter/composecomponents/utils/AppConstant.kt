@@ -31,6 +31,7 @@ object AppConstant {
     const val COMPONENTS_TEXT_SCREEN = "components/text"
     const val COMPONENTS_TEXT_FIELD_SCREEN = "components/text_field"
     const val COMPONENTS_BUTTON_SCREEN = "components/button"
+    const val COMPONENTS_FLOATING_ACTION_BUTTON_SCREEN = "components/floating_action_button"
     const val COMPONENTS_TOP_APPBAR_SCREEN = "components/top_appbar"
     const val COMPONENTS_NAVIGATION_BAR = "components/navigation_bar"
     const val COMPONENTS_BADGE = "components/badge"
