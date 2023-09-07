@@ -35,4 +35,7 @@
     <string name="borderless_buttons">Borderless Buttons</string>
     <string name="borderless_wide_buttons">Borderless Wide Buttons</string>
     <string name="icon_buttons">Icon Buttons</string>
+    <string name="extended">EXTENDED</string>
+    <string name="add_to_basket">ADD TO BASKET</string>
+    <string name="fluid_fab">FLUID FAB</string>
 </resources>
