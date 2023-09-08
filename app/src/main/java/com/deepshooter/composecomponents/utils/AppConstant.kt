@@ -54,6 +54,7 @@ object AppConstant {
     const val TEXT_FIELD = "TextField"
     const val BUTTON = "Button"
     const val FLOATING_ACTION_BUTTON = "FloatingActionButton"
+    const val CARD = "Card"
     const val TOP_APP_BAR = "TopAppBar"
     const val NAVIGATION_BAR = "NavigationBar"
     const val BADGE = "Badge"
