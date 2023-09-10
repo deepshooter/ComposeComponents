@@ -59,5 +59,6 @@ object AppConstant {
     const val TOP_APP_BAR = "TopAppBar"
     const val NAVIGATION_BAR = "NavigationBar"
     const val BADGE = "Badge"
+    const val SLIDER = "Slider"
 
 }
