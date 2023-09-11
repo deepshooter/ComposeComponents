@@ -43,4 +43,5 @@
     <string name="how_are_you">How are you?</string>
     <string name="you_clicked_this_card">You Clicked This Card</string>
     <string name="s">s</string>
+    <string name="_2f">%.2f</string>
 </resources>
