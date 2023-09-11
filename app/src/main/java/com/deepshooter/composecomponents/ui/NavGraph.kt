@@ -24,6 +24,7 @@ import com.deepshooter.composecomponents.ui.modules.components.button.ButtonScre
 import com.deepshooter.composecomponents.ui.modules.components.card.CardScreen
 import com.deepshooter.composecomponents.ui.modules.components.floatingactionbutton.FloatingActionButtonScreen
 import com.deepshooter.composecomponents.ui.modules.components.navigationbar.NavigationBarScreen
+import com.deepshooter.composecomponents.ui.modules.components.slider.SliderScreen
 import com.deepshooter.composecomponents.ui.modules.components.text.TextScreen
 import com.deepshooter.composecomponents.ui.modules.components.textfield.TextFieldScreen
 import com.deepshooter.composecomponents.ui.modules.tictactoe.TicTacToeIndexScreen
@@ -42,6 +43,7 @@ import com.deepshooter.composecomponents.utils.AppConstant.COMPONENTS_TOP_APPBAR
 import com.deepshooter.composecomponents.utils.AppConstant.COMPONENTS_INDEX_SCREEN
 import com.deepshooter.composecomponents.utils.AppConstant.COMPONENTS_NAVIGATION_BAR
 import com.deepshooter.composecomponents.utils.AppConstant.COMPONENTS_SCREEN
+import com.deepshooter.composecomponents.utils.AppConstant.COMPONENTS_SLIDER
 import com.deepshooter.composecomponents.utils.AppConstant.COMPONENTS_TEXT_FIELD_SCREEN
 import com.deepshooter.composecomponents.utils.AppConstant.COMPONENTS_TEXT_SCREEN
 import com.deepshooter.composecomponents.utils.AppConstant.GITHUB_INDEX_SCREEN
@@ -76,6 +78,7 @@ sealed class ComponentsScreen(val route: String) {
     object ComponentsTopAppBar : ComponentsScreen(COMPONENTS_TOP_APPBAR_SCREEN)
     object ComponentsNavigationBar : ComponentsScreen(COMPONENTS_NAVIGATION_BAR)
     object ComponentsBadge : ComponentsScreen(COMPONENTS_BADGE)
+    object ComponentsSlider : ComponentsScreen(COMPONENTS_SLIDER)
 
 }
 
@@ -253,6 +256,15 @@ private fun NavGraphBuilder.addComponentsScreens(
         //Badge
         composable(ComponentsScreen.ComponentsBadge.route) {
             BadgeScreen(
+                goBack = {
+                    navController.popBackStack()
+                }
+            )
+        }
+
+        //Slider
+        composable(ComponentsScreen.ComponentsSlider.route) {
+            SliderScreen(
                 goBack = {
                     navController.popBackStack()
                 }

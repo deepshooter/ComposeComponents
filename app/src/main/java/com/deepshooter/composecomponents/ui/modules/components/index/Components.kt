@@ -6,6 +6,7 @@ import com.deepshooter.composecomponents.utils.AppConstant.BUTTON
 import com.deepshooter.composecomponents.utils.AppConstant.CARD
 import com.deepshooter.composecomponents.utils.AppConstant.FLOATING_ACTION_BUTTON
 import com.deepshooter.composecomponents.utils.AppConstant.NAVIGATION_BAR
+import com.deepshooter.composecomponents.utils.AppConstant.SLIDER
 import com.deepshooter.composecomponents.utils.AppConstant.TEXT
 import com.deepshooter.composecomponents.utils.AppConstant.TEXT_FIELD
 import com.deepshooter.composecomponents.utils.AppConstant.TOP_APP_BAR
@@ -47,6 +48,10 @@ data class Components(
             Components(
                 name = BADGE,
                 route = ComponentsScreen.ComponentsBadge
+            ),
+            Components(
+                name = SLIDER,
+                route = ComponentsScreen.ComponentsSlider
             )
         )
     }
