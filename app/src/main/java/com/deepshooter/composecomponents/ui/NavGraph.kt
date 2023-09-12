@@ -36,7 +36,7 @@ import com.deepshooter.composecomponents.utils.AppConstant.ANIMATIONS_BUBBLES_SC
 import com.deepshooter.composecomponents.utils.AppConstant.ANIMATIONS_INDEX_SCREEN
 import com.deepshooter.composecomponents.utils.AppConstant.ANIMATION_SCREEN
 import com.deepshooter.composecomponents.utils.AppConstant.CLICK_SCREEN
-import com.deepshooter.composecomponents.utils.AppConstant.COMPONENTS_BADGE
+import com.deepshooter.composecomponents.utils.AppConstant.COMPONENTS_BADGE_SCREEN
 import com.deepshooter.composecomponents.utils.AppConstant.COMPONENTS_BUTTON_SCREEN
 import com.deepshooter.composecomponents.utils.AppConstant.COMPONENTS_CARD_SCREEN
 import com.deepshooter.composecomponents.utils.AppConstant.COMPONENTS_CHECKBOX_SCREEN
@@ -45,7 +45,7 @@ import com.deepshooter.composecomponents.utils.AppConstant.COMPONENTS_TOP_APPBAR
 import com.deepshooter.composecomponents.utils.AppConstant.COMPONENTS_INDEX_SCREEN
 import com.deepshooter.composecomponents.utils.AppConstant.COMPONENTS_NAVIGATION_BAR_SCREEN
 import com.deepshooter.composecomponents.utils.AppConstant.COMPONENTS_SCREEN
-import com.deepshooter.composecomponents.utils.AppConstant.COMPONENTS_SLIDER
+import com.deepshooter.composecomponents.utils.AppConstant.COMPONENTS_SLIDER_SCREEN
 import com.deepshooter.composecomponents.utils.AppConstant.COMPONENTS_TEXT_FIELD_SCREEN
 import com.deepshooter.composecomponents.utils.AppConstant.COMPONENTS_TEXT_SCREEN
 import com.deepshooter.composecomponents.utils.AppConstant.GITHUB_INDEX_SCREEN
@@ -80,8 +80,8 @@ sealed class ComponentsScreen(val route: String) {
     object ComponentsCheckBox : ComponentsScreen(COMPONENTS_CHECKBOX_SCREEN)
     object ComponentsTopAppBar : ComponentsScreen(COMPONENTS_TOP_APPBAR_SCREEN)
     object ComponentsNavigationBar : ComponentsScreen(COMPONENTS_NAVIGATION_BAR_SCREEN)
-    object ComponentsBadge : ComponentsScreen(COMPONENTS_BADGE)
-    object ComponentsSlider : ComponentsScreen(COMPONENTS_SLIDER)
+    object ComponentsBadge : ComponentsScreen(COMPONENTS_BADGE_SCREEN)
+    object ComponentsSlider : ComponentsScreen(COMPONENTS_SLIDER_SCREEN)
 
 }
 

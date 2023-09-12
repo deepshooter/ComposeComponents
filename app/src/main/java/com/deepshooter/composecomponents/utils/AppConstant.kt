@@ -36,8 +36,8 @@ object AppConstant {
     const val COMPONENTS_CHECKBOX_SCREEN = "components/checkbox"
     const val COMPONENTS_TOP_APPBAR_SCREEN = "components/top_appbar"
     const val COMPONENTS_NAVIGATION_BAR_SCREEN = "components/navigation_bar"
-    const val COMPONENTS_BADGE = "components/badge"
-    const val COMPONENTS_SLIDER = "components/slider"
+    const val COMPONENTS_BADGE_SCREEN = "components/badge"
+    const val COMPONENTS_SLIDER_SCREEN = "components/slider"
 
     /*Github Sub Screens*/
     const val GITHUB_INDEX_SCREEN = "github/index"
