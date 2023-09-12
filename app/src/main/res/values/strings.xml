@@ -44,4 +44,9 @@
     <string name="you_clicked_this_card">You Clicked This Card</string>
     <string name="s">s</string>
     <string name="_2f">%.2f</string>
+    <string name="simple_check_box">Simple CheckBox</string>
+    <string name="love_your_life">Love Your Life</string>
+    <string name="love_what_you_do">Love What You Do</string>
+    <string name="do_what_you_love">Do What You Love</string>
+    <string name="tri_state_checkbox">Tri-State CheckBox</string>
 </resources>
