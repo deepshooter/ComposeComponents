@@ -22,6 +22,7 @@ import com.deepshooter.composecomponents.ui.modules.animations.index.AnimationIn
 import com.deepshooter.composecomponents.ui.modules.components.badge.BadgeScreen
 import com.deepshooter.composecomponents.ui.modules.components.button.ButtonScreen
 import com.deepshooter.composecomponents.ui.modules.components.card.CardScreen
+import com.deepshooter.composecomponents.ui.modules.components.checkbox.CheckBoxScreen
 import com.deepshooter.composecomponents.ui.modules.components.floatingactionbutton.FloatingActionButtonScreen
 import com.deepshooter.composecomponents.ui.modules.components.navigationbar.NavigationBarScreen
 import com.deepshooter.composecomponents.ui.modules.components.slider.SliderScreen
@@ -38,10 +39,11 @@ import com.deepshooter.composecomponents.utils.AppConstant.CLICK_SCREEN
 import com.deepshooter.composecomponents.utils.AppConstant.COMPONENTS_BADGE
 import com.deepshooter.composecomponents.utils.AppConstant.COMPONENTS_BUTTON_SCREEN
 import com.deepshooter.composecomponents.utils.AppConstant.COMPONENTS_CARD_SCREEN
+import com.deepshooter.composecomponents.utils.AppConstant.COMPONENTS_CHECKBOX_SCREEN
 import com.deepshooter.composecomponents.utils.AppConstant.COMPONENTS_FLOATING_ACTION_BUTTON_SCREEN
 import com.deepshooter.composecomponents.utils.AppConstant.COMPONENTS_TOP_APPBAR_SCREEN
 import com.deepshooter.composecomponents.utils.AppConstant.COMPONENTS_INDEX_SCREEN
-import com.deepshooter.composecomponents.utils.AppConstant.COMPONENTS_NAVIGATION_BAR
+import com.deepshooter.composecomponents.utils.AppConstant.COMPONENTS_NAVIGATION_BAR_SCREEN
 import com.deepshooter.composecomponents.utils.AppConstant.COMPONENTS_SCREEN
 import com.deepshooter.composecomponents.utils.AppConstant.COMPONENTS_SLIDER
 import com.deepshooter.composecomponents.utils.AppConstant.COMPONENTS_TEXT_FIELD_SCREEN
@@ -75,8 +77,9 @@ sealed class ComponentsScreen(val route: String) {
     object ComponentsButton : ComponentsScreen(COMPONENTS_BUTTON_SCREEN)
     object ComponentsFloatingActionButton : ComponentsScreen(COMPONENTS_FLOATING_ACTION_BUTTON_SCREEN)
     object ComponentsCard : ComponentsScreen(COMPONENTS_CARD_SCREEN)
+    object ComponentsCheckBox : ComponentsScreen(COMPONENTS_CHECKBOX_SCREEN)
     object ComponentsTopAppBar : ComponentsScreen(COMPONENTS_TOP_APPBAR_SCREEN)
-    object ComponentsNavigationBar : ComponentsScreen(COMPONENTS_NAVIGATION_BAR)
+    object ComponentsNavigationBar : ComponentsScreen(COMPONENTS_NAVIGATION_BAR_SCREEN)
     object ComponentsBadge : ComponentsScreen(COMPONENTS_BADGE)
     object ComponentsSlider : ComponentsScreen(COMPONENTS_SLIDER)
 
@@ -229,6 +232,15 @@ private fun NavGraphBuilder.addComponentsScreens(
         //Card
         composable(ComponentsScreen.ComponentsCard.route) {
             CardScreen(
+                goBack = {
+                    navController.popBackStack()
+                }
+            )
+        }
+
+        //CheckBox
+        composable(ComponentsScreen.ComponentsCheckBox.route) {
+            CheckBoxScreen(
                 goBack = {
                     navController.popBackStack()
                 }

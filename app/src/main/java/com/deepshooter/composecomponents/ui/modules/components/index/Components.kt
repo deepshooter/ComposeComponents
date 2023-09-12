@@ -4,6 +4,7 @@ import com.deepshooter.composecomponents.ui.ComponentsScreen
 import com.deepshooter.composecomponents.utils.AppConstant.BADGE
 import com.deepshooter.composecomponents.utils.AppConstant.BUTTON
 import com.deepshooter.composecomponents.utils.AppConstant.CARD
+import com.deepshooter.composecomponents.utils.AppConstant.CHECKBOX
 import com.deepshooter.composecomponents.utils.AppConstant.FLOATING_ACTION_BUTTON
 import com.deepshooter.composecomponents.utils.AppConstant.NAVIGATION_BAR
 import com.deepshooter.composecomponents.utils.AppConstant.SLIDER
@@ -36,6 +37,10 @@ data class Components(
             Components(
                 name = CARD,
                 route = ComponentsScreen.ComponentsCard
+            ),
+            Components(
+                name = CHECKBOX,
+                route = ComponentsScreen.ComponentsCheckBox
             ),
             Components(
                 name = TOP_APP_BAR,
