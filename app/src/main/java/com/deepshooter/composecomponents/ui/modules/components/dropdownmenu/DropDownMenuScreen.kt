@@ -15,7 +15,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.deepshooter.composecomponents.ui.theme.ComposeComponentsTheme
 import com.deepshooter.composecomponents.utils.AppComponent
-import com.deepshooter.composecomponents.utils.AppConstant.DROP_DOWN_MENU
+import com.deepshooter.composecomponents.utils.AppConstant.DROPDOWN_MENU
 
 private val ELEMENT_HEIGHT = 48.dp
 
@@ -46,7 +46,7 @@ fun DropDownMenuScreenSkeleton(
                 .fillMaxSize()
         ) {
             AppComponent.Header(
-                DROP_DOWN_MENU,
+                DROPDOWN_MENU,
                 goBack = goBack
             )
 
