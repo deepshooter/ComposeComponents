@@ -60,6 +60,7 @@ object AppConstant {
     const val FLOATING_ACTION_BUTTON = "FloatingActionButton"
     const val CARD = "Card"
     const val CHECKBOX = "CheckBox"
+    const val DIALOG = "Dialog"
     const val DROPDOWN_MENU = "DropDownMenu"
     const val TOP_APP_BAR = "TopAppBar"
     const val NAVIGATION_BAR = "NavigationBar"
