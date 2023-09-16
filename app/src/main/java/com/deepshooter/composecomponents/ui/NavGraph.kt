@@ -23,6 +23,7 @@ import com.deepshooter.composecomponents.ui.modules.components.badge.BadgeScreen
 import com.deepshooter.composecomponents.ui.modules.components.button.ButtonScreen
 import com.deepshooter.composecomponents.ui.modules.components.card.CardScreen
 import com.deepshooter.composecomponents.ui.modules.components.checkbox.CheckBoxScreen
+import com.deepshooter.composecomponents.ui.modules.components.dialog.DialogScreen
 import com.deepshooter.composecomponents.ui.modules.components.dropdownmenu.DropDownMenuScreen
 import com.deepshooter.composecomponents.ui.modules.components.floatingactionbutton.FloatingActionButtonScreen
 import com.deepshooter.composecomponents.ui.modules.components.navigationbar.NavigationBarScreen
@@ -41,6 +42,7 @@ import com.deepshooter.composecomponents.utils.AppConstant.COMPONENTS_BADGE_SCRE
 import com.deepshooter.composecomponents.utils.AppConstant.COMPONENTS_BUTTON_SCREEN
 import com.deepshooter.composecomponents.utils.AppConstant.COMPONENTS_CARD_SCREEN
 import com.deepshooter.composecomponents.utils.AppConstant.COMPONENTS_CHECKBOX_SCREEN
+import com.deepshooter.composecomponents.utils.AppConstant.COMPONENTS_DIALOG_SCREEN
 import com.deepshooter.composecomponents.utils.AppConstant.COMPONENTS_DROPDOWN_MENU_SCREEN
 import com.deepshooter.composecomponents.utils.AppConstant.COMPONENTS_FLOATING_ACTION_BUTTON_SCREEN
 import com.deepshooter.composecomponents.utils.AppConstant.COMPONENTS_TOP_APPBAR_SCREEN
@@ -81,6 +83,7 @@ sealed class ComponentsScreen(val route: String) {
     object ComponentsCard : ComponentsScreen(COMPONENTS_CARD_SCREEN)
     object ComponentsDropDownMenu : ComponentsScreen(COMPONENTS_DROPDOWN_MENU_SCREEN)
     object ComponentsCheckBox : ComponentsScreen(COMPONENTS_CHECKBOX_SCREEN)
+    object ComponentsDialog : ComponentsScreen(COMPONENTS_DIALOG_SCREEN)
     object ComponentsTopAppBar : ComponentsScreen(COMPONENTS_TOP_APPBAR_SCREEN)
     object ComponentsNavigationBar : ComponentsScreen(COMPONENTS_NAVIGATION_BAR_SCREEN)
     object ComponentsBadge : ComponentsScreen(COMPONENTS_BADGE_SCREEN)
@@ -253,6 +256,15 @@ private fun NavGraphBuilder.addComponentsScreens(
         //CheckBox
         composable(ComponentsScreen.ComponentsCheckBox.route) {
             CheckBoxScreen(
+                goBack = {
+                    navController.popBackStack()
+                }
+            )
+        }
+
+        //CheckBox
+        composable(ComponentsScreen.ComponentsDialog.route) {
+            DialogScreen(
                 goBack = {
                     navController.popBackStack()
                 }

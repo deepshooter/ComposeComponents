@@ -1,5 +1,6 @@
 package com.deepshooter.composecomponents.ui.modules.components.dialog
 
+import android.annotation.SuppressLint
 import android.content.res.Configuration
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -12,6 +13,8 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Divider
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.deepshooter.composecomponents.ui.theme.ComposeComponentsTheme
@@ -24,9 +27,24 @@ fun DialogScreen(
     goBack: () -> Unit
 ) {
 
+    val openDefaultDialog = remember { mutableStateOf(false) }
+
+    val openCustomDialog = remember { mutableStateOf(false) }
+
+    DialogScreenSkeleton(
+        goBack = goBack,
+        showDefaultDialog = {
+            openDefaultDialog.value = true
+        },
+        showCustomDialog = {
+            openCustomDialog.value = true
+        }
+    )
+
 }
 
 
+@SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
 fun DialogScreenSkeleton(
     goBack: () -> Unit = {},
@@ -39,10 +57,9 @@ fun DialogScreenSkeleton(
             .navigationBarsPadding()
             .imePadding()
             .statusBarsPadding()
-    ) { innerPadding ->
+    ) {
         Column(
             Modifier
-                .padding(innerPadding)
                 .fillMaxSize()
                 .verticalScroll(rememberScrollState())
         ) {
