@@ -1,4 +1,4 @@
-package com.deepshooter.composecomponents.ui.modules.components.loadingindicator
+package com.deepshooter.composecomponents.ui.modules.components.progressindicator
 
 import android.annotation.SuppressLint
 import androidx.compose.foundation.layout.Column
@@ -19,22 +19,22 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.deepshooter.composecomponents.ui.theme.ComposeComponentsTheme
 import com.deepshooter.composecomponents.utils.AppComponent
-import com.deepshooter.composecomponents.utils.AppConstant.LOADING_INDICATOR
+import com.deepshooter.composecomponents.utils.AppConstant.PROGRESS_INDICATOR
 
 
 @Composable
-fun LoadingIndicatorScreen(
+fun ProgressIndicatorScreen(
     goBack: () -> Unit
 ) {
 
-    LoadingIndicatorScreenSkeleton(
+    ProgressIndicatorScreenSkeleton(
         goBack = goBack
     )
 }
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
-fun LoadingIndicatorScreenSkeleton(
+fun ProgressIndicatorScreenSkeleton(
     goBack: () -> Unit = {}
 ) {
 
@@ -53,7 +53,7 @@ fun LoadingIndicatorScreenSkeleton(
                 .verticalScroll(rememberScrollState())
         ) {
             AppComponent.Header(
-                LOADING_INDICATOR,
+                PROGRESS_INDICATOR,
                 goBack = goBack
             )
 
@@ -66,18 +66,18 @@ fun LoadingIndicatorScreenSkeleton(
 
 @Preview
 @Composable
-fun LoadingIndicatorScreenSkeletonPreview() {
+fun ProgressIndicatorScreenSkeletonPreview() {
     ComposeComponentsTheme {
-        LoadingIndicatorScreenSkeleton()
+        ProgressIndicatorScreenSkeleton()
     }
 }
 
 @Preview
 @Composable
-fun LoadingIndicatorScreenSkeletonPreviewDark() {
+fun ProgressIndicatorScreenSkeletonPreviewDark() {
     ComposeComponentsTheme(
         darkTheme = true
     ) {
-        LoadingIndicatorScreenSkeleton()
+        ProgressIndicatorScreenSkeleton()
     }
 }
