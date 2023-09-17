@@ -67,5 +67,6 @@ object AppConstant {
     const val NAVIGATION_BAR = "NavigationBar"
     const val BADGE = "Badge"
     const val SLIDER = "Slider"
+    const val LOADING_INDICATOR = "Loading Indicator"
 
 }
