@@ -9,6 +9,7 @@ import com.deepshooter.composecomponents.utils.AppConstant.DIALOG
 import com.deepshooter.composecomponents.utils.AppConstant.DROPDOWN_MENU
 import com.deepshooter.composecomponents.utils.AppConstant.FLOATING_ACTION_BUTTON
 import com.deepshooter.composecomponents.utils.AppConstant.NAVIGATION_BAR
+import com.deepshooter.composecomponents.utils.AppConstant.PROGRESS_INDICATOR
 import com.deepshooter.composecomponents.utils.AppConstant.SLIDER
 import com.deepshooter.composecomponents.utils.AppConstant.TEXT
 import com.deepshooter.composecomponents.utils.AppConstant.TEXT_FIELD
@@ -67,6 +68,11 @@ data class Components(
             Components(
                 name = SLIDER,
                 route = ComponentsScreen.ComponentsSlider
+            )
+            ,
+            Components(
+                name = PROGRESS_INDICATOR,
+                route = ComponentsScreen.ComponentsProgressIndicator
             )
         )
     }

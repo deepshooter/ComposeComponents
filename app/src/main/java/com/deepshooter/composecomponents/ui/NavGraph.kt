@@ -27,6 +27,7 @@ import com.deepshooter.composecomponents.ui.modules.components.dialog.DialogScre
 import com.deepshooter.composecomponents.ui.modules.components.dropdownmenu.DropDownMenuScreen
 import com.deepshooter.composecomponents.ui.modules.components.floatingactionbutton.FloatingActionButtonScreen
 import com.deepshooter.composecomponents.ui.modules.components.navigationbar.NavigationBarScreen
+import com.deepshooter.composecomponents.ui.modules.components.progressindicator.ProgressIndicatorScreen
 import com.deepshooter.composecomponents.ui.modules.components.slider.SliderScreen
 import com.deepshooter.composecomponents.ui.modules.components.text.TextScreen
 import com.deepshooter.composecomponents.ui.modules.components.textfield.TextFieldScreen
@@ -48,6 +49,7 @@ import com.deepshooter.composecomponents.utils.AppConstant.COMPONENTS_FLOATING_A
 import com.deepshooter.composecomponents.utils.AppConstant.COMPONENTS_TOP_APPBAR_SCREEN
 import com.deepshooter.composecomponents.utils.AppConstant.COMPONENTS_INDEX_SCREEN
 import com.deepshooter.composecomponents.utils.AppConstant.COMPONENTS_NAVIGATION_BAR_SCREEN
+import com.deepshooter.composecomponents.utils.AppConstant.COMPONENTS_PROGRESS_INDICATOR_SCREEN
 import com.deepshooter.composecomponents.utils.AppConstant.COMPONENTS_SCREEN
 import com.deepshooter.composecomponents.utils.AppConstant.COMPONENTS_SLIDER_SCREEN
 import com.deepshooter.composecomponents.utils.AppConstant.COMPONENTS_TEXT_FIELD_SCREEN
@@ -88,6 +90,7 @@ sealed class ComponentsScreen(val route: String) {
     object ComponentsNavigationBar : ComponentsScreen(COMPONENTS_NAVIGATION_BAR_SCREEN)
     object ComponentsBadge : ComponentsScreen(COMPONENTS_BADGE_SCREEN)
     object ComponentsSlider : ComponentsScreen(COMPONENTS_SLIDER_SCREEN)
+    object ComponentsProgressIndicator : ComponentsScreen(COMPONENTS_PROGRESS_INDICATOR_SCREEN)
 
 }
 
@@ -262,7 +265,7 @@ private fun NavGraphBuilder.addComponentsScreens(
             )
         }
 
-        //CheckBox
+        //Dialog
         composable(ComponentsScreen.ComponentsDialog.route) {
             DialogScreen(
                 goBack = {
@@ -301,6 +304,15 @@ private fun NavGraphBuilder.addComponentsScreens(
         //Slider
         composable(ComponentsScreen.ComponentsSlider.route) {
             SliderScreen(
+                goBack = {
+                    navController.popBackStack()
+                }
+            )
+        }
+
+        //Slider
+        composable(ComponentsScreen.ComponentsProgressIndicator.route) {
+            ProgressIndicatorScreen(
                 goBack = {
                     navController.popBackStack()
                 }
