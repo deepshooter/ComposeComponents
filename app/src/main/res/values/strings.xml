@@ -61,4 +61,8 @@
     <string name="netherlands">Netherlands</string>
     <string name="france">France</string>
     <string name="usa">USA</string>
+    <string name="are_you_sure">Are you sure?</string>
+    <string name="this_cannot_be_undone">This cannot be undone.</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
 </resources>
