@@ -30,6 +30,7 @@ import androidx.compose.foundation.progressSemantics
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Divider
 import androidx.compose.material3.LinearProgressIndicator
 import androidx.compose.material3.MaterialTheme
@@ -171,6 +172,51 @@ fun ProgressIndicatorScreenSkeleton(
                     OutlinedButton(
                         onClick = {
                             if (progress3 < 1f) progress3 += 0.1f
+                        }
+                    ) {
+                        Text(stringResource(R.string.increase))
+                    }
+                }
+
+                AppComponent.MediumSpacer()
+
+            }
+
+            Divider()
+
+            Column(
+                Modifier.padding(start = 16.dp, end = 16.dp),
+                horizontalAlignment = Alignment.CenterHorizontally
+            ) {
+
+                AppComponent.SubHeader(stringResource(R.string.circular_progress_indicator))
+
+                Column(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalAlignment = Alignment.CenterHorizontally
+                ) {
+                    CircularProgressIndicator()
+                }
+
+                AppComponent.MediumSpacer()
+
+                var progress2 by remember { mutableFloatStateOf(0.1f) }
+                val animatedProgress2 by animateFloatAsState(
+                    targetValue = progress2,
+                    animationSpec = ProgressIndicatorDefaults.ProgressAnimationSpec
+                )
+
+                Column(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalAlignment = Alignment.CenterHorizontally
+                ) {
+                    CircularProgressIndicator(progress = animatedProgress2)
+
+                    Spacer(Modifier.requiredHeight(32.dp))
+
+                    OutlinedButton(
+                        onClick = {
+                            if (progress2 < 1f) progress2 += 0.1f
                         }
                     ) {
                         Text(stringResource(R.string.increase))

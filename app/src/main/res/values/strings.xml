@@ -74,4 +74,5 @@
     <string name="linear_progress_indicator">Linear Progress Indicator</string>
     <string name="increase">Increase</string>
     <string name="rounded_linear_progress_indicator">Rounded Linear Progress Indicator</string>
+    <string name="circular_progress_indicator">Circular Progress Indicator</string>
 </resources>
