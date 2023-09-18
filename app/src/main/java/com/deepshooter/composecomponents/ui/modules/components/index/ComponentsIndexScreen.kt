@@ -36,7 +36,6 @@ import com.deepshooter.composecomponents.ui.theme.Bluish
 import com.deepshooter.composecomponents.ui.theme.ComposeComponentsTheme
 import com.deepshooter.composecomponents.ui.theme.Reddish
 import com.deepshooter.composecomponents.ui.theme.Teal300
-import com.deepshooter.composecomponents.utils.AppComponent
 import com.deepshooter.composecomponents.utils.AppComponent.Header
 import com.deepshooter.composecomponents.utils.AppConstant.COMPONENTS_TITLE
 import com.deepshooter.composecomponents.utils.UIThemeController
