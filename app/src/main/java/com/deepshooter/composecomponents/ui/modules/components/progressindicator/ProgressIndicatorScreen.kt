@@ -14,6 +14,7 @@ import androidx.compose.animation.core.tween
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.Column
@@ -33,7 +34,11 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.progressSemantics
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material3.Button
+import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Divider
 import androidx.compose.material3.LinearProgressIndicator
@@ -43,6 +48,7 @@ import androidx.compose.material3.ProgressIndicatorDefaults
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableFloatStateOf
 import androidx.compose.runtime.mutableStateOf
@@ -63,6 +69,7 @@ import com.deepshooter.composecomponents.R
 import com.deepshooter.composecomponents.ui.theme.ComposeComponentsTheme
 import com.deepshooter.composecomponents.utils.AppComponent
 import com.deepshooter.composecomponents.utils.AppConstant.PROGRESS_INDICATOR
+import kotlinx.coroutines.delay
 
 
 @Composable
@@ -257,7 +264,43 @@ fun ProgressIndicatorScreenSkeleton(
 
             Divider()
 
+            Column(
+                Modifier.padding(start = 16.dp, end = 16.dp),
+                horizontalAlignment = Alignment.CenterHorizontally
+            ) {
+
+                AppComponent.SubHeader(stringResource(R.string.loading_indicator))
+
+                AppComponent.MediumSpacer()
+
+                // Auto hide the loading.
+                LaunchedEffect(showLoading) {
+                    if (showLoading) {
+                        delay(3000)
+
+                        showLoading = false
+                    }
+                }
+
+                Button(
+                    modifier = Modifier.align(Alignment.CenterHorizontally),
+                    onClick = {
+                        showLoading = true
+                    }
+                ) {
+                    Text(stringResource(R.string.show_loading))
+                }
+
+            }
+
+            AppComponent.BigSpacer()
+
         }
+
+        FullscreenLoadingIndicator(
+            show = showLoading
+        )
+
     }
 }
 
@@ -396,10 +439,54 @@ private fun CapsuleLoadingIndicator(
             )
             Text(
                 modifier = Modifier.padding(end = 12.dp),
-                text = "Loading...",
+                text = stringResource(R.string.loading),
                 fontSize = 14.sp,
                 color = MaterialTheme.colorScheme.onSurface.copy(alpha = .75f)
             )
+        }
+    }
+}
+
+@Composable
+fun FullscreenLoadingIndicator(
+    show: Boolean = true
+) {
+    AnimatedVisibility(
+        visible = show,
+        enter = fadeIn(),
+        exit = fadeOut()
+    ) {
+        Box(
+            Modifier
+                .fillMaxSize()
+                .background(Color.Black.copy(alpha = .6f))
+        ) {
+            Card(
+                Modifier
+                    .size(200.dp, 180.dp)
+                    .align(Alignment.Center),
+                shape = RoundedCornerShape(8.dp),
+                elevation = CardDefaults.cardElevation(
+                    defaultElevation = 8.dp,
+                )
+            ) {
+                Column(
+                    Modifier.fillMaxSize(),
+                    horizontalAlignment = Alignment.CenterHorizontally,
+                    verticalArrangement = Arrangement.Center
+                ) {
+                    CircularProgressIndicator(
+                        Modifier.size(76.dp),
+                        strokeWidth = 8.dp
+                    )
+
+                    Text(
+                        modifier = Modifier.padding(top = 16.dp),
+                        text = stringResource(R.string.loading),
+                        fontSize = 26.sp
+                    )
+                }
+            }
         }
     }
 }
@@ -420,5 +507,27 @@ fun ProgressIndicatorScreenSkeletonPreviewDark() {
         darkTheme = true
     ) {
         ProgressIndicatorScreenSkeleton()
+    }
+}
+
+@Preview
+@Composable
+fun FullscreenLoadingIndicatorPreview() {
+    ComposeComponentsTheme {
+        FullscreenLoadingIndicator(
+            show = true
+        )
+    }
+}
+
+@Preview
+@Composable
+fun FullscreenLoadingIndicatorPreviewDark() {
+    ComposeComponentsTheme(
+        darkTheme = true
+    ) {
+        FullscreenLoadingIndicator(
+            show = true
+        )
     }
 }
