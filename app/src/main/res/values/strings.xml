@@ -71,4 +71,6 @@
     <string name="this_area_typically_contains_the_supportive_text_which_presents_the_details_regarding_the_dialog_s_purpose">This area typically contains the supportive text which presents the details regarding the Dialog\'s purpose.</string>
     <string name="show_default_dialog">Show Default Dialog</string>
     <string name="show_custom_dialog">Show Custom Dialog</string>
+    <string name="linear_progress_indicator">Linear Progress Indicator</string>
+    <string name="increase">Increase</string>
 </resources>
