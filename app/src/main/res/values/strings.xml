@@ -73,4 +73,5 @@
     <string name="show_custom_dialog">Show Custom Dialog</string>
     <string name="linear_progress_indicator">Linear Progress Indicator</string>
     <string name="increase">Increase</string>
+    <string name="rounded_linear_progress_indicator">Rounded Linear Progress Indicator</string>
 </resources>
