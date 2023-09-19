@@ -11,6 +11,7 @@ import com.deepshooter.composecomponents.utils.AppConstant.FLOATING_ACTION_BUTTO
 import com.deepshooter.composecomponents.utils.AppConstant.NAVIGATION_BAR
 import com.deepshooter.composecomponents.utils.AppConstant.PROGRESS_INDICATOR
 import com.deepshooter.composecomponents.utils.AppConstant.SLIDER
+import com.deepshooter.composecomponents.utils.AppConstant.SNACKBAR
 import com.deepshooter.composecomponents.utils.AppConstant.TEXT
 import com.deepshooter.composecomponents.utils.AppConstant.TEXT_FIELD
 import com.deepshooter.composecomponents.utils.AppConstant.TOP_APP_BAR
@@ -73,6 +74,10 @@ data class Components(
             Components(
                 name = PROGRESS_INDICATOR,
                 route = ComponentsScreen.ComponentsProgressIndicator
+            ),
+            Components(
+                name = SNACKBAR,
+                route = ComponentsScreen.ComponentsSnackBar
             )
         )
     }

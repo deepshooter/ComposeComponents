@@ -29,6 +29,7 @@ import com.deepshooter.composecomponents.ui.modules.components.floatingactionbut
 import com.deepshooter.composecomponents.ui.modules.components.navigationbar.NavigationBarScreen
 import com.deepshooter.composecomponents.ui.modules.components.progressindicator.ProgressIndicatorScreen
 import com.deepshooter.composecomponents.ui.modules.components.slider.SliderScreen
+import com.deepshooter.composecomponents.ui.modules.components.snackbar.SnackBarScreen
 import com.deepshooter.composecomponents.ui.modules.components.text.TextScreen
 import com.deepshooter.composecomponents.ui.modules.components.textfield.TextFieldScreen
 import com.deepshooter.composecomponents.ui.modules.tictactoe.TicTacToeIndexScreen
@@ -52,6 +53,7 @@ import com.deepshooter.composecomponents.utils.AppConstant.COMPONENTS_NAVIGATION
 import com.deepshooter.composecomponents.utils.AppConstant.COMPONENTS_PROGRESS_INDICATOR_SCREEN
 import com.deepshooter.composecomponents.utils.AppConstant.COMPONENTS_SCREEN
 import com.deepshooter.composecomponents.utils.AppConstant.COMPONENTS_SLIDER_SCREEN
+import com.deepshooter.composecomponents.utils.AppConstant.COMPONENTS_SNACKBAR_SCREEN
 import com.deepshooter.composecomponents.utils.AppConstant.COMPONENTS_TEXT_FIELD_SCREEN
 import com.deepshooter.composecomponents.utils.AppConstant.COMPONENTS_TEXT_SCREEN
 import com.deepshooter.composecomponents.utils.AppConstant.GITHUB_INDEX_SCREEN
@@ -91,6 +93,7 @@ sealed class ComponentsScreen(val route: String) {
     object ComponentsBadge : ComponentsScreen(COMPONENTS_BADGE_SCREEN)
     object ComponentsSlider : ComponentsScreen(COMPONENTS_SLIDER_SCREEN)
     object ComponentsProgressIndicator : ComponentsScreen(COMPONENTS_PROGRESS_INDICATOR_SCREEN)
+    object ComponentsSnackBar : ComponentsScreen(COMPONENTS_SNACKBAR_SCREEN)
 
 }
 
@@ -310,11 +313,23 @@ private fun NavGraphBuilder.addComponentsScreens(
             )
         }
 
-        //Slider
+        //ProgressIndicator
         composable(ComponentsScreen.ComponentsProgressIndicator.route) {
             ProgressIndicatorScreen(
                 goBack = {
                     navController.popBackStack()
+                }
+            )
+        }
+
+        //SnackBar
+        composable(ComponentsScreen.ComponentsSnackBar.route) {
+            SnackBarScreen(
+                goBack = {
+                    navController.popBackStack()
+                },
+                navigate = { route ->
+                    navController.navigate(route)
                 }
             )
         }
