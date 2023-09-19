@@ -42,6 +42,7 @@ object AppConstant {
     const val COMPONENTS_SLIDER_SCREEN = "components/slider"
     const val COMPONENTS_PROGRESS_INDICATOR_SCREEN = "components/progress_indicator"
     const val COMPONENTS_SNACKBAR_SCREEN = "components/snackbar"
+    const val COMPONENTS_SCAFFOLD_INDEX_SCREEN = "components/scaffold"
 
     /*Github Sub Screens*/
     const val GITHUB_INDEX_SCREEN = "github/index"
@@ -71,5 +72,6 @@ object AppConstant {
     const val SLIDER = "Slider"
     const val PROGRESS_INDICATOR = "ProgressIndicator"
     const val SNACKBAR = "SnackBar"
+    const val SCAFFOLD = "Scaffold"
 
 }

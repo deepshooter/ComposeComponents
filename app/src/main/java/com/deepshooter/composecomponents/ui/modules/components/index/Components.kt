@@ -10,6 +10,7 @@ import com.deepshooter.composecomponents.utils.AppConstant.DROPDOWN_MENU
 import com.deepshooter.composecomponents.utils.AppConstant.FLOATING_ACTION_BUTTON
 import com.deepshooter.composecomponents.utils.AppConstant.NAVIGATION_BAR
 import com.deepshooter.composecomponents.utils.AppConstant.PROGRESS_INDICATOR
+import com.deepshooter.composecomponents.utils.AppConstant.SCAFFOLD
 import com.deepshooter.composecomponents.utils.AppConstant.SLIDER
 import com.deepshooter.composecomponents.utils.AppConstant.SNACKBAR
 import com.deepshooter.composecomponents.utils.AppConstant.TEXT
@@ -78,6 +79,10 @@ data class Components(
             Components(
                 name = SNACKBAR,
                 route = ComponentsScreen.ComponentsSnackBar
+            ),
+            Components(
+                name = SCAFFOLD,
+                route = ComponentsScreen.ComponentsScaffoldIndex
             )
         )
     }

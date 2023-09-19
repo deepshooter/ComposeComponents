@@ -28,6 +28,7 @@ import com.deepshooter.composecomponents.ui.modules.components.dropdownmenu.Drop
 import com.deepshooter.composecomponents.ui.modules.components.floatingactionbutton.FloatingActionButtonScreen
 import com.deepshooter.composecomponents.ui.modules.components.navigationbar.NavigationBarScreen
 import com.deepshooter.composecomponents.ui.modules.components.progressindicator.ProgressIndicatorScreen
+import com.deepshooter.composecomponents.ui.modules.components.scaffold.ScaffoldIndexScreen
 import com.deepshooter.composecomponents.ui.modules.components.slider.SliderScreen
 import com.deepshooter.composecomponents.ui.modules.components.snackbar.SnackBarScreen
 import com.deepshooter.composecomponents.ui.modules.components.text.TextScreen
@@ -51,6 +52,7 @@ import com.deepshooter.composecomponents.utils.AppConstant.COMPONENTS_TOP_APPBAR
 import com.deepshooter.composecomponents.utils.AppConstant.COMPONENTS_INDEX_SCREEN
 import com.deepshooter.composecomponents.utils.AppConstant.COMPONENTS_NAVIGATION_BAR_SCREEN
 import com.deepshooter.composecomponents.utils.AppConstant.COMPONENTS_PROGRESS_INDICATOR_SCREEN
+import com.deepshooter.composecomponents.utils.AppConstant.COMPONENTS_SCAFFOLD_INDEX_SCREEN
 import com.deepshooter.composecomponents.utils.AppConstant.COMPONENTS_SCREEN
 import com.deepshooter.composecomponents.utils.AppConstant.COMPONENTS_SLIDER_SCREEN
 import com.deepshooter.composecomponents.utils.AppConstant.COMPONENTS_SNACKBAR_SCREEN
@@ -94,6 +96,8 @@ sealed class ComponentsScreen(val route: String) {
     object ComponentsSlider : ComponentsScreen(COMPONENTS_SLIDER_SCREEN)
     object ComponentsProgressIndicator : ComponentsScreen(COMPONENTS_PROGRESS_INDICATOR_SCREEN)
     object ComponentsSnackBar : ComponentsScreen(COMPONENTS_SNACKBAR_SCREEN)
+    object ComponentsScaffoldIndex : ComponentsScreen(COMPONENTS_SCAFFOLD_INDEX_SCREEN)
+
 
 }
 
@@ -330,6 +334,18 @@ private fun NavGraphBuilder.addComponentsScreens(
                 },
                 navigate = { route ->
                     navController.navigate(route)
+                }
+            )
+        }
+
+        //Scaffold
+        composable(ComponentsScreen.ComponentsScaffoldIndex.route) {
+            ScaffoldIndexScreen(
+                goBack = {
+                    navController.popBackStack()
+                },
+                navigate = { screen ->
+                    navController.navigate(screen.route)
                 }
             )
         }
