@@ -52,7 +52,12 @@ import com.deepshooter.composecomponents.utils.AppConstant.COMPONENTS_TOP_APPBAR
 import com.deepshooter.composecomponents.utils.AppConstant.COMPONENTS_INDEX_SCREEN
 import com.deepshooter.composecomponents.utils.AppConstant.COMPONENTS_NAVIGATION_BAR_SCREEN
 import com.deepshooter.composecomponents.utils.AppConstant.COMPONENTS_PROGRESS_INDICATOR_SCREEN
+import com.deepshooter.composecomponents.utils.AppConstant.COMPONENTS_SCAFFOLD_FIVE_SCREEN
+import com.deepshooter.composecomponents.utils.AppConstant.COMPONENTS_SCAFFOLD_FOUR_SCREEN
 import com.deepshooter.composecomponents.utils.AppConstant.COMPONENTS_SCAFFOLD_INDEX_SCREEN
+import com.deepshooter.composecomponents.utils.AppConstant.COMPONENTS_SCAFFOLD_ONE_SCREEN
+import com.deepshooter.composecomponents.utils.AppConstant.COMPONENTS_SCAFFOLD_THREE_SCREEN
+import com.deepshooter.composecomponents.utils.AppConstant.COMPONENTS_SCAFFOLD_TWO_SCREEN
 import com.deepshooter.composecomponents.utils.AppConstant.COMPONENTS_SCREEN
 import com.deepshooter.composecomponents.utils.AppConstant.COMPONENTS_SLIDER_SCREEN
 import com.deepshooter.composecomponents.utils.AppConstant.COMPONENTS_SNACKBAR_SCREEN
@@ -97,6 +102,11 @@ sealed class ComponentsScreen(val route: String) {
     object ComponentsProgressIndicator : ComponentsScreen(COMPONENTS_PROGRESS_INDICATOR_SCREEN)
     object ComponentsSnackBar : ComponentsScreen(COMPONENTS_SNACKBAR_SCREEN)
     object ComponentsScaffoldIndex : ComponentsScreen(COMPONENTS_SCAFFOLD_INDEX_SCREEN)
+    object ComponentsScaffoldOne : ComponentsScreen(COMPONENTS_SCAFFOLD_ONE_SCREEN)
+    object ComponentsScaffoldTwo : ComponentsScreen(COMPONENTS_SCAFFOLD_TWO_SCREEN)
+    object ComponentsScaffoldThree : ComponentsScreen(COMPONENTS_SCAFFOLD_THREE_SCREEN)
+    object ComponentsScaffoldFour : ComponentsScreen(COMPONENTS_SCAFFOLD_FOUR_SCREEN)
+    object ComponentsScaffoldFive : ComponentsScreen(COMPONENTS_SCAFFOLD_FIVE_SCREEN)
 
 
 }
