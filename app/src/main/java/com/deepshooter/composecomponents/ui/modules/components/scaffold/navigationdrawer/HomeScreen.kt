@@ -10,7 +10,9 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
+import com.deepshooter.composecomponents.R
 import com.deepshooter.composecomponents.ui.theme.Yellow700
 
 @Composable
@@ -26,9 +28,12 @@ fun HomeScreen() {
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            Text(text = "Home Screen", style = MaterialTheme.typography.headlineMedium)
             Text(
-                text = "This place will soon have a design",
+                text = stringResource(R.string.home_screen),
+                style = MaterialTheme.typography.headlineMedium
+            )
+            Text(
+                text = stringResource(R.string.this_place_will_soon_have_a_design),
                 style = MaterialTheme.typography.bodyLarge
             )
         }

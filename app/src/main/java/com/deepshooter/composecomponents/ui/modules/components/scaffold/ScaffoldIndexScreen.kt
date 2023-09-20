@@ -1,5 +1,6 @@
 package com.deepshooter.composecomponents.ui.modules.components.scaffold
 
+import android.annotation.SuppressLint
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -34,6 +35,7 @@ fun ScaffoldIndexScreen(
     )
 }
 
+@SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
 fun ScaffoldIndexSkeleton(
     goBack: () -> Unit = {},
@@ -45,10 +47,9 @@ fun ScaffoldIndexSkeleton(
             .navigationBarsPadding()
             .imePadding()
             .statusBarsPadding()
-    ) { innerPadding ->
+    ) {
         Column(
             Modifier
-                .padding(innerPadding)
                 .fillMaxSize()
         ) {
             AppComponent.Header(

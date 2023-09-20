@@ -80,4 +80,7 @@
     <string name="loading_indicator">Loading Indicator</string>
     <string name="show_loading">Show Loading</string>
     <string name="extended_fab">Extended FAB</string>
+    <string name="home_screen">Home Screen</string>
+    <string name="this_place_will_soon_have_a_design">This place will soon have a design</string>
+    <string name="settings_screen">Settings Screen</string>
 </resources>
