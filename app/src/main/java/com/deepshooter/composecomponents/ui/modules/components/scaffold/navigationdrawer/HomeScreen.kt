@@ -1,6 +1,8 @@
 package com.deepshooter.composecomponents.ui.modules.components.scaffold.navigationdrawer
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
@@ -9,19 +11,27 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import com.deepshooter.composecomponents.ui.theme.Yellow700
 
 @Composable
 fun HomeScreen() {
-    Column(
-        modifier = Modifier.fillMaxSize(),
-        verticalArrangement = Arrangement.Center,
-        horizontalAlignment = Alignment.CenterHorizontally
+
+    Box(
+        modifier = Modifier
+            .fillMaxSize()
+            .background(color = Yellow700)
     ) {
-        Text(text = "Home Screen",  style = MaterialTheme.typography.headlineMedium)
-        Text(
-            text = "This place will soon have a design",
-            style = MaterialTheme.typography.bodyLarge
-        )
+        Column(
+            modifier = Modifier.fillMaxSize(),
+            verticalArrangement = Arrangement.Center,
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+            Text(text = "Home Screen", style = MaterialTheme.typography.headlineMedium)
+            Text(
+                text = "This place will soon have a design",
+                style = MaterialTheme.typography.bodyLarge
+            )
+        }
     }
 }
 

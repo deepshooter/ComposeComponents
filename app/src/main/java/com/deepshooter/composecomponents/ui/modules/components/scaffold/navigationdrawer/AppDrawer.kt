@@ -8,6 +8,7 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.Person
+import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -21,6 +22,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.deepshooter.composecomponents.R
 import com.deepshooter.composecomponents.ui.modules.components.scaffold.navigationdrawer.AllDestinations.HOME
+import com.deepshooter.composecomponents.ui.theme.Teal700
 
 @Composable
 fun AppDrawer(
@@ -61,7 +63,7 @@ fun AppDrawer(
                 navigateToSettings()
                 closeDrawer()
             },
-            icon = { Icon(imageVector = Icons.Default.Person, contentDescription = null) },
+            icon = { Icon(imageVector = Icons.Default.Settings, contentDescription = null) },
             shape = MaterialTheme.shapes.small
         )
     }
@@ -74,13 +76,13 @@ fun DrawerHeader(modifier: Modifier) {
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.Start,
         modifier = modifier
-            .background(MaterialTheme.colorScheme.secondary)
+            .background(Teal700)
             .padding(15.dp)
             .fillMaxWidth()
     ) {
 
         Image(
-            painterResource(id = R.drawable.ic_android_logo),
+            painterResource(id = R.drawable.profile_pic),
             contentDescription = null,
             contentScale = ContentScale.Crop,
             modifier = modifier
