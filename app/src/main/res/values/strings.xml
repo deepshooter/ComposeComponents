@@ -79,4 +79,5 @@
     <string name="loading">Loading...</string>
     <string name="loading_indicator">Loading Indicator</string>
     <string name="show_loading">Show Loading</string>
+    <string name="extended_fab">Extended FAB</string>
 </resources>
