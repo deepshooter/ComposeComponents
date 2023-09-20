@@ -1,4 +1,4 @@
-package com.deepshooter.composecomponents.ui.modules.components.scaffold.drawer
+package com.deepshooter.composecomponents.ui.modules.components.scaffold.navigationdrawer
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column

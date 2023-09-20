@@ -31,11 +31,11 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.deepshooter.composecomponents.R
-import com.deepshooter.composecomponents.ui.modules.components.scaffold.drawer.AllDestinations
-import com.deepshooter.composecomponents.ui.modules.components.scaffold.drawer.AppDrawer
-import com.deepshooter.composecomponents.ui.modules.components.scaffold.drawer.AppNavigationActions
-import com.deepshooter.composecomponents.ui.modules.components.scaffold.drawer.HomeScreen
-import com.deepshooter.composecomponents.ui.modules.components.scaffold.drawer.SettingsScreen
+import com.deepshooter.composecomponents.ui.modules.components.scaffold.navigationdrawer.AllDestinations
+import com.deepshooter.composecomponents.ui.modules.components.scaffold.navigationdrawer.AppDrawer
+import com.deepshooter.composecomponents.ui.modules.components.scaffold.navigationdrawer.AppNavigationActions
+import com.deepshooter.composecomponents.ui.modules.components.scaffold.navigationdrawer.HomeScreen
+import com.deepshooter.composecomponents.ui.modules.components.scaffold.navigationdrawer.SettingsScreen
 import com.deepshooter.composecomponents.ui.theme.ComposeComponentsTheme
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch

@@ -1,8 +1,8 @@
-package com.deepshooter.composecomponents.ui.modules.components.scaffold.drawer
+package com.deepshooter.composecomponents.ui.modules.components.scaffold.navigationdrawer
 
 import androidx.navigation.NavHostController
-import com.deepshooter.composecomponents.ui.modules.components.scaffold.drawer.AllDestinations.HOME
-import com.deepshooter.composecomponents.ui.modules.components.scaffold.drawer.AllDestinations.SETTINGS
+import com.deepshooter.composecomponents.ui.modules.components.scaffold.navigationdrawer.AllDestinations.HOME
+import com.deepshooter.composecomponents.ui.modules.components.scaffold.navigationdrawer.AllDestinations.SETTINGS
 
 object AllDestinations {
     const val HOME = "Home"

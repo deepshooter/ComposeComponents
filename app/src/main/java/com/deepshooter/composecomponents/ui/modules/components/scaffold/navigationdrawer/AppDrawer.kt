@@ -1,4 +1,4 @@
-package com.deepshooter.composecomponents.ui.modules.components.scaffold.drawer
+package com.deepshooter.composecomponents.ui.modules.components.scaffold.navigationdrawer
 
 
 import androidx.compose.foundation.Image
@@ -20,7 +20,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.deepshooter.composecomponents.R
-import com.deepshooter.composecomponents.ui.modules.components.scaffold.drawer.AllDestinations.HOME
+import com.deepshooter.composecomponents.ui.modules.components.scaffold.navigationdrawer.AllDestinations.HOME
 
 @Composable
 fun AppDrawer(
