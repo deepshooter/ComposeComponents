@@ -83,4 +83,8 @@
     <string name="home_screen">Home Screen</string>
     <string name="this_place_will_soon_have_a_design">This place will soon have a design</string>
     <string name="settings_screen">Settings Screen</string>
+    <string name="call_contact">Call contact</string>
+    <string name="mark_as_favorite">Mark as favorite</string>
+    <string name="email_contact">Email contact</string>
+    <string name="share_contact">Share contact</string>
 </resources>

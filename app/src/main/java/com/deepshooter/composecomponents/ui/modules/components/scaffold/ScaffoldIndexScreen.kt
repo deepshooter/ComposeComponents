@@ -57,6 +57,8 @@ fun ScaffoldIndexSkeleton(
                 goBack = goBack
             )
 
+            Divider()
+
             LazyColumn(Modifier.fillMaxSize()) {
                 itemsIndexed(ScaffoldComponent.scaffoldCompositionList) { index, item ->
 

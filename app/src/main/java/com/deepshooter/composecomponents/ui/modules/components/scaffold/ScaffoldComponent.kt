@@ -1,7 +1,7 @@
 package com.deepshooter.composecomponents.ui.modules.components.scaffold
 
 import com.deepshooter.composecomponents.ui.ComponentsScreen
-import com.deepshooter.composecomponents.utils.AppConstant.SCAFFOLD_WITH_BOTTOM_BAR_AND_CUTOUT
+import com.deepshooter.composecomponents.utils.AppConstant.SCAFFOLD_WITH_BOTTOM_BAR
 import com.deepshooter.composecomponents.utils.AppConstant.SCAFFOLD_WITH_COROUTINES_SNACKBAR
 import com.deepshooter.composecomponents.utils.AppConstant.SCAFFOLD_WITH_CUSTOM_SNACKBAR
 import com.deepshooter.composecomponents.utils.AppConstant.SCAFFOLD_WITH_SIMPLE_SNACKBAR
@@ -18,7 +18,7 @@ data class ScaffoldComponent(
                 route = ComponentsScreen.ComponentsScaffoldOne
             ),
             ScaffoldComponent(
-                name = SCAFFOLD_WITH_BOTTOM_BAR_AND_CUTOUT,
+                name = SCAFFOLD_WITH_BOTTOM_BAR,
                 route = ComponentsScreen.ComponentsScaffoldTwo
             ),
             ScaffoldComponent(

@@ -82,8 +82,7 @@ object AppConstant {
 
     /*Components Scaffold Screens Constant*/
     const val SIMPLE_SCAFFOLD_WITH_TOP_BAR = "Simple Scaffold With Top Bar"
-    const val SCAFFOLD_WITH_BOTTOM_BAR_AND_CUTOUT =
-        "Scaffold With Bottom Bar And Cutout"
+    const val SCAFFOLD_WITH_BOTTOM_BAR = "Scaffold With Bottom Bar"
     const val SCAFFOLD_WITH_SIMPLE_SNACKBAR = "Scaffold With Simple Snackbar"
     const val SCAFFOLD_WITH_CUSTOM_SNACKBAR = "Scaffold With Custom Snackbar"
     const val SCAFFOLD_WITH_COROUTINES_SNACKBAR = "Scaffold With Coroutines Snackbar"
