@@ -87,4 +87,6 @@
     <string name="mark_as_favorite">Mark as favorite</string>
     <string name="email_contact">Email contact</string>
     <string name="share_contact">Share contact</string>
+    <string name="show_snackbar">Show Snackbar</string>
+    <string name="body_content">Body Content</string>
 </resources>

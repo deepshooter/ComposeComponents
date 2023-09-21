@@ -30,6 +30,7 @@ import com.deepshooter.composecomponents.ui.modules.components.navigationbar.Nav
 import com.deepshooter.composecomponents.ui.modules.components.progressindicator.ProgressIndicatorScreen
 import com.deepshooter.composecomponents.ui.modules.components.scaffold.ScaffoldIndexScreen
 import com.deepshooter.composecomponents.ui.modules.components.scaffold.ScaffoldWithBottomBarScreen
+import com.deepshooter.composecomponents.ui.modules.components.scaffold.ScaffoldWithSimpleSnackbarScreen
 import com.deepshooter.composecomponents.ui.modules.components.scaffold.SimpleScaffoldWithTopBarScreen
 import com.deepshooter.composecomponents.ui.modules.components.slider.SliderScreen
 import com.deepshooter.composecomponents.ui.modules.components.snackbar.SnackBarScreen
@@ -367,10 +368,16 @@ private fun NavGraphBuilder.addComponentsScreens(
             SimpleScaffoldWithTopBarScreen()
         }
 
-        //ScaffoldWithBottomBarAndCutout
+        //ScaffoldWithBottomBar
         composable(ComponentsScreen.ComponentsScaffoldTwo.route) {
             ScaffoldWithBottomBarScreen()
         }
+
+        //ScaffoldWithSimpleSnackbar
+        composable(ComponentsScreen.ComponentsScaffoldThree.route) {
+            ScaffoldWithSimpleSnackbarScreen()
+        }
+
 
     }
 }
