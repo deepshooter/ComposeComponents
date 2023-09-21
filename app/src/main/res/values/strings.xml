@@ -90,4 +90,5 @@
     <string name="show_snackbar">Show Snackbar</string>
     <string name="body_content">Body Content</string>
     <string name="custom_snackbar_demo">Custom Snackbar Demo</string>
+    <string name="snackbar_demo">Snackbar Demo</string>
 </resources>
