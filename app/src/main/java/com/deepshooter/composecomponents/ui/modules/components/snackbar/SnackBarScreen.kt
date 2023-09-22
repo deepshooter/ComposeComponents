@@ -23,6 +23,11 @@ import androidx.compose.material3.SnackbarHostState
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -34,11 +39,13 @@ import androidx.compose.ui.unit.dp
 import com.deepshooter.composecomponents.R
 import com.deepshooter.composecomponents.ui.ComponentsScreen
 import com.deepshooter.composecomponents.ui.theme.ComposeComponentsTheme
+import com.deepshooter.composecomponents.ui.theme.Teal700
 import com.deepshooter.composecomponents.utils.AppComponent
 import com.deepshooter.composecomponents.utils.AppConstant.SCAFFOLD_WITH_COROUTINES_SNACKBAR
 import com.deepshooter.composecomponents.utils.AppConstant.SCAFFOLD_WITH_CUSTOM_SNACKBAR
 import com.deepshooter.composecomponents.utils.AppConstant.SCAFFOLD_WITH_SIMPLE_SNACKBAR
 import com.deepshooter.composecomponents.utils.AppConstant.SNACKBAR
+import com.deepshooter.composecomponents.utils.Event
 
 
 @Composable
@@ -62,11 +69,14 @@ fun SnackBarScreenSkeleton(
     navigate: (String) -> Unit = {}
 ) {
 
+    val snackBarHostState = remember { SnackbarHostState() }
+
     Scaffold(
         Modifier
             .navigationBarsPadding()
             .imePadding()
-            .statusBarsPadding()
+            .statusBarsPadding(),
+        snackbarHost = { CustomSnackBarHost(snackBarHostState) },
     ) {
         Column(
             Modifier
@@ -114,6 +124,32 @@ fun SnackBarScreenSkeleton(
 
             }
 
+            Divider()
+
+            Column(
+                Modifier.padding(start = 16.dp, end = 16.dp),
+                horizontalAlignment = Alignment.CenterHorizontally
+            ) {
+
+                AppComponent.SubHeader(stringResource(R.string.custom_snackbar))
+
+                var showMessage by remember { mutableStateOf<Event<String>?>(null) }
+
+                LaunchedEffect(showMessage) {
+                    showMessage?.let { message ->
+                        snackBarHostState.showSnackbar(message.value)
+                    }
+                }
+
+                OutlinedButton(onClick = {
+                    showMessage = Event("Hi! I am a SnackBar!")
+                }) {
+                    Text(stringResource(id = R.string.show_snackbar))
+                }
+            }
+
+            AppComponent.BigSpacer()
+
         }
     }
 }
@@ -134,7 +170,7 @@ fun CustomSnackBar(
     modifier: Modifier = Modifier,
     actionOnNewLine: Boolean = false,
     shape: Shape = MaterialTheme.shapes.small,
-    backgroundColor: Color = SnackbarDefaults.contentColor,
+    backgroundColor: Color = Teal700,
     contentColor: Color = MaterialTheme.colorScheme.surface,
     actionColor: Color = SnackbarDefaults.actionColor
 ) {
