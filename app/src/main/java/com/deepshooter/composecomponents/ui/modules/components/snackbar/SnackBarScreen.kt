@@ -13,6 +13,7 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Divider
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Snackbar
 import androidx.compose.material3.SnackbarData
@@ -22,14 +23,21 @@ import androidx.compose.material3.SnackbarHostState
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shape
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.deepshooter.composecomponents.R
+import com.deepshooter.composecomponents.ui.ComponentsScreen
 import com.deepshooter.composecomponents.ui.theme.ComposeComponentsTheme
 import com.deepshooter.composecomponents.utils.AppComponent
+import com.deepshooter.composecomponents.utils.AppConstant.SCAFFOLD_WITH_COROUTINES_SNACKBAR
+import com.deepshooter.composecomponents.utils.AppConstant.SCAFFOLD_WITH_CUSTOM_SNACKBAR
+import com.deepshooter.composecomponents.utils.AppConstant.SCAFFOLD_WITH_SIMPLE_SNACKBAR
 import com.deepshooter.composecomponents.utils.AppConstant.SNACKBAR
 
 
@@ -72,6 +80,39 @@ fun SnackBarScreenSkeleton(
 
             Divider()
 
+            Column(
+                Modifier.padding(start = 16.dp, end = 16.dp),
+                horizontalAlignment = Alignment.CenterHorizontally
+            ) {
+
+                AppComponent.SubHeader(stringResource(id = R.string.official_samples))
+
+                OutlinedButton(onClick = {
+                    navigate(ComponentsScreen.ComponentsScaffoldThree.route)
+                }) {
+                    Text(SCAFFOLD_WITH_SIMPLE_SNACKBAR)
+                }
+
+                AppComponent.MediumSpacer()
+
+                OutlinedButton(onClick = {
+                    navigate(ComponentsScreen.ComponentsScaffoldFour.route)
+                }) {
+                    Text(SCAFFOLD_WITH_CUSTOM_SNACKBAR)
+                }
+
+
+                AppComponent.MediumSpacer()
+
+                OutlinedButton(onClick = {
+                    navigate(ComponentsScreen.ComponentsScaffoldFive.route)
+                }) {
+                    Text(SCAFFOLD_WITH_COROUTINES_SNACKBAR)
+                }
+
+                AppComponent.MediumSpacer()
+
+            }
 
         }
     }
