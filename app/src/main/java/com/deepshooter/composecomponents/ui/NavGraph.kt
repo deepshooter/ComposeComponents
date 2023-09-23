@@ -57,7 +57,11 @@ import com.deepshooter.composecomponents.utils.AppConstant.COMPONENTS_FLOATING_A
 import com.deepshooter.composecomponents.utils.AppConstant.COMPONENTS_TOP_APPBAR_SCREEN
 import com.deepshooter.composecomponents.utils.AppConstant.COMPONENTS_INDEX_SCREEN
 import com.deepshooter.composecomponents.utils.AppConstant.COMPONENTS_LIST_COLUMN_SCREEN
+import com.deepshooter.composecomponents.utils.AppConstant.COMPONENTS_LIST_GRID_VERTICAL_SCREEN
 import com.deepshooter.composecomponents.utils.AppConstant.COMPONENTS_LIST_INDEX_SCREEN
+import com.deepshooter.composecomponents.utils.AppConstant.COMPONENTS_LIST_LAZY_COLUMN_INDEX_SCREEN
+import com.deepshooter.composecomponents.utils.AppConstant.COMPONENTS_LIST_LAZY_ROW_SCREEN
+import com.deepshooter.composecomponents.utils.AppConstant.COMPONENTS_LIST_ROW_SCREEN
 import com.deepshooter.composecomponents.utils.AppConstant.COMPONENTS_NAVIGATION_BAR_SCREEN
 import com.deepshooter.composecomponents.utils.AppConstant.COMPONENTS_PROGRESS_INDICATOR_SCREEN
 import com.deepshooter.composecomponents.utils.AppConstant.COMPONENTS_SCAFFOLD_FIVE_SCREEN
@@ -117,6 +121,10 @@ sealed class ComponentsScreen(val route: String) {
     object ComponentsScaffoldFive : ComponentsScreen(COMPONENTS_SCAFFOLD_FIVE_SCREEN)
     object ComponentsListIndex : ComponentsScreen(COMPONENTS_LIST_INDEX_SCREEN)
     object ComponentsListColumn : ComponentsScreen(COMPONENTS_LIST_COLUMN_SCREEN)
+    object ComponentsListRow : ComponentsScreen(COMPONENTS_LIST_ROW_SCREEN)
+    object ComponentsListLazyColumnIndex : ComponentsScreen(COMPONENTS_LIST_LAZY_COLUMN_INDEX_SCREEN)
+    object ComponentsListLazyRow : ComponentsScreen(COMPONENTS_LIST_LAZY_ROW_SCREEN)
+    object ComponentsListGridVertical : ComponentsScreen(COMPONENTS_LIST_GRID_VERTICAL_SCREEN)
 
 
 }
