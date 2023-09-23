@@ -26,6 +26,7 @@ import com.deepshooter.composecomponents.ui.modules.components.checkbox.CheckBox
 import com.deepshooter.composecomponents.ui.modules.components.dialog.DialogScreen
 import com.deepshooter.composecomponents.ui.modules.components.dropdownmenu.DropDownMenuScreen
 import com.deepshooter.composecomponents.ui.modules.components.floatingactionbutton.FloatingActionButtonScreen
+import com.deepshooter.composecomponents.ui.modules.components.list.ListIndexScreen
 import com.deepshooter.composecomponents.ui.modules.components.navigationbar.NavigationBarScreen
 import com.deepshooter.composecomponents.ui.modules.components.progressindicator.ProgressIndicatorScreen
 import com.deepshooter.composecomponents.ui.modules.components.scaffold.ScaffoldIndexScreen
@@ -55,6 +56,8 @@ import com.deepshooter.composecomponents.utils.AppConstant.COMPONENTS_DROPDOWN_M
 import com.deepshooter.composecomponents.utils.AppConstant.COMPONENTS_FLOATING_ACTION_BUTTON_SCREEN
 import com.deepshooter.composecomponents.utils.AppConstant.COMPONENTS_TOP_APPBAR_SCREEN
 import com.deepshooter.composecomponents.utils.AppConstant.COMPONENTS_INDEX_SCREEN
+import com.deepshooter.composecomponents.utils.AppConstant.COMPONENTS_LIST_COLUMN_SCREEN
+import com.deepshooter.composecomponents.utils.AppConstant.COMPONENTS_LIST_INDEX_SCREEN
 import com.deepshooter.composecomponents.utils.AppConstant.COMPONENTS_NAVIGATION_BAR_SCREEN
 import com.deepshooter.composecomponents.utils.AppConstant.COMPONENTS_PROGRESS_INDICATOR_SCREEN
 import com.deepshooter.composecomponents.utils.AppConstant.COMPONENTS_SCAFFOLD_FIVE_SCREEN
@@ -112,6 +115,8 @@ sealed class ComponentsScreen(val route: String) {
     object ComponentsScaffoldThree : ComponentsScreen(COMPONENTS_SCAFFOLD_THREE_SCREEN)
     object ComponentsScaffoldFour : ComponentsScreen(COMPONENTS_SCAFFOLD_FOUR_SCREEN)
     object ComponentsScaffoldFive : ComponentsScreen(COMPONENTS_SCAFFOLD_FIVE_SCREEN)
+    object ComponentsListIndex : ComponentsScreen(COMPONENTS_LIST_INDEX_SCREEN)
+    object ComponentsListColumn : ComponentsScreen(COMPONENTS_LIST_COLUMN_SCREEN)
 
 
 }
@@ -390,6 +395,14 @@ private fun NavGraphBuilder.addComponentsScreens(
             ScaffoldWithCoroutinesSnackbarScreen()
         }
 
+        //List
+        composable(ComponentsScreen.ComponentsListIndex.route) {
+            ListIndexScreen(goBack = {
+                navController.popBackStack()
+            }, navigate = { screen ->
+                navController.navigate(screen.route)
+            })
+        }
 
     }
 }

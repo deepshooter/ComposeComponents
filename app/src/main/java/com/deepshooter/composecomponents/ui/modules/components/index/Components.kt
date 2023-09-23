@@ -8,6 +8,7 @@ import com.deepshooter.composecomponents.utils.AppConstant.CHECKBOX
 import com.deepshooter.composecomponents.utils.AppConstant.DIALOG
 import com.deepshooter.composecomponents.utils.AppConstant.DROPDOWN_MENU
 import com.deepshooter.composecomponents.utils.AppConstant.FLOATING_ACTION_BUTTON
+import com.deepshooter.composecomponents.utils.AppConstant.LIST
 import com.deepshooter.composecomponents.utils.AppConstant.NAVIGATION_BAR
 import com.deepshooter.composecomponents.utils.AppConstant.PROGRESS_INDICATOR
 import com.deepshooter.composecomponents.utils.AppConstant.SCAFFOLD
@@ -83,6 +84,10 @@ data class Components(
             Components(
                 name = SCAFFOLD,
                 route = ComponentsScreen.ComponentsScaffoldIndex
+            ),
+            Components(
+                name = LIST,
+                route = ComponentsScreen.ComponentsListIndex
             )
         )
     }
