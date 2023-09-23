@@ -26,6 +26,7 @@ import com.deepshooter.composecomponents.ui.modules.components.checkbox.CheckBox
 import com.deepshooter.composecomponents.ui.modules.components.dialog.DialogScreen
 import com.deepshooter.composecomponents.ui.modules.components.dropdownmenu.DropDownMenuScreen
 import com.deepshooter.composecomponents.ui.modules.components.floatingactionbutton.FloatingActionButtonScreen
+import com.deepshooter.composecomponents.ui.modules.components.list.ListColumnScreen
 import com.deepshooter.composecomponents.ui.modules.components.list.ListIndexScreen
 import com.deepshooter.composecomponents.ui.modules.components.navigationbar.NavigationBarScreen
 import com.deepshooter.composecomponents.ui.modules.components.progressindicator.ProgressIndicatorScreen
@@ -411,6 +412,16 @@ private fun NavGraphBuilder.addComponentsScreens(
                 navController.navigate(screen.route)
             })
         }
+
+        //ListWithColumn
+        composable(ComponentsScreen.ComponentsListColumn.route) {
+            ListColumnScreen(
+                goBack = {
+                    navController.popBackStack()
+                }
+            )
+        }
+
 
     }
 }
