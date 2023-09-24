@@ -31,6 +31,7 @@ import com.deepshooter.composecomponents.ui.modules.components.list.LazyVertical
 import com.deepshooter.composecomponents.ui.modules.components.list.ListColumnScreen
 import com.deepshooter.composecomponents.ui.modules.components.list.ListIndexScreen
 import com.deepshooter.composecomponents.ui.modules.components.list.ListRowScreen
+import com.deepshooter.composecomponents.ui.modules.components.list.lazycolumn.LazyColumnIndexScreen
 import com.deepshooter.composecomponents.ui.modules.components.navigationbar.NavigationBarScreen
 import com.deepshooter.composecomponents.ui.modules.components.progressindicator.ProgressIndicatorScreen
 import com.deepshooter.composecomponents.ui.modules.components.scaffold.ScaffoldIndexScreen
@@ -64,6 +65,8 @@ import com.deepshooter.composecomponents.utils.AppConstant.COMPONENTS_LIST_COLUM
 import com.deepshooter.composecomponents.utils.AppConstant.COMPONENTS_LIST_GRID_VERTICAL_SCREEN
 import com.deepshooter.composecomponents.utils.AppConstant.COMPONENTS_LIST_INDEX_SCREEN
 import com.deepshooter.composecomponents.utils.AppConstant.COMPONENTS_LIST_LAZY_COLUMN_INDEX_SCREEN
+import com.deepshooter.composecomponents.utils.AppConstant.COMPONENTS_LIST_LAZY_COLUMN_ONE_SCREEN
+import com.deepshooter.composecomponents.utils.AppConstant.COMPONENTS_LIST_LAZY_COLUMN_TWO_SCREEN
 import com.deepshooter.composecomponents.utils.AppConstant.COMPONENTS_LIST_LAZY_ROW_SCREEN
 import com.deepshooter.composecomponents.utils.AppConstant.COMPONENTS_LIST_ROW_SCREEN
 import com.deepshooter.composecomponents.utils.AppConstant.COMPONENTS_NAVIGATION_BAR_SCREEN
@@ -126,9 +129,12 @@ sealed class ComponentsScreen(val route: String) {
     object ComponentsListIndex : ComponentsScreen(COMPONENTS_LIST_INDEX_SCREEN)
     object ComponentsListColumn : ComponentsScreen(COMPONENTS_LIST_COLUMN_SCREEN)
     object ComponentsListRow : ComponentsScreen(COMPONENTS_LIST_ROW_SCREEN)
-    object ComponentsListLazyColumnIndex : ComponentsScreen(COMPONENTS_LIST_LAZY_COLUMN_INDEX_SCREEN)
     object ComponentsListLazyRow : ComponentsScreen(COMPONENTS_LIST_LAZY_ROW_SCREEN)
     object ComponentsListGridVertical : ComponentsScreen(COMPONENTS_LIST_GRID_VERTICAL_SCREEN)
+    object ComponentsListLazyColumnIndex : ComponentsScreen(COMPONENTS_LIST_LAZY_COLUMN_INDEX_SCREEN)
+    object ComponentsListLazyColumnOne : ComponentsScreen(COMPONENTS_LIST_LAZY_COLUMN_ONE_SCREEN)
+    object ComponentsListLazyColumnTwo : ComponentsScreen(COMPONENTS_LIST_LAZY_COLUMN_TWO_SCREEN)
+
 
 
 }
@@ -448,6 +454,18 @@ private fun NavGraphBuilder.addComponentsScreens(
             LazyVerticalGridScreen(
                 goBack = {
                     navController.popBackStack()
+                }
+            )
+        }
+
+        //LazyColumn
+        composable(ComponentsScreen.ComponentsListLazyColumnIndex.route) {
+            LazyColumnIndexScreen(
+                goBack = {
+                    navController.popBackStack()
+                },
+                navigate = { screen ->
+                    navController.navigate(screen.route)
                 }
             )
         }

@@ -1,4 +1,4 @@
-package com.deepshooter.composecomponents.ui.modules.components.list
+package com.deepshooter.composecomponents.ui.modules.components.list.lazycolumn
 
 import android.annotation.SuppressLint
 import androidx.compose.foundation.clickable
@@ -16,28 +16,32 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.deepshooter.composecomponents.R
 import com.deepshooter.composecomponents.ui.ComponentsScreen
 import com.deepshooter.composecomponents.ui.theme.ComposeComponentsTheme
 import com.deepshooter.composecomponents.utils.AppComponent
-import com.deepshooter.composecomponents.utils.AppConstant.LIST
 
 
 @Composable
-fun ListIndexScreen(
+fun LazyColumnIndexScreen(
     goBack: () -> Unit,
     navigate: (ComponentsScreen) -> Unit
 ) {
-    ListIndexSkeleton(
+
+    LazyColumnIndexScreenSkeleton(
         goBack = goBack,
         navigate = navigate
     )
+
 }
+
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
-fun ListIndexSkeleton(
+fun LazyColumnIndexScreenSkeleton(
     goBack: () -> Unit = {},
     navigate: (ComponentsScreen) -> Unit = {}
 ) {
@@ -52,16 +56,15 @@ fun ListIndexSkeleton(
             Modifier
                 .fillMaxSize()
         ) {
-
             AppComponent.Header(
-                LIST,
+                stringResource(R.string.lazycolumn),
                 goBack = goBack
             )
 
             Divider()
 
             LazyColumn(Modifier.fillMaxSize()) {
-                itemsIndexed(ListComponents.listComponentsList) { index, item ->
+                itemsIndexed(LazyColumnComponents.layColumnComponentsList) { index, item ->
 
                     if (index != 0) {
                         Divider(Modifier.padding(16.dp, 0.dp))
@@ -87,11 +90,20 @@ fun ListIndexSkeleton(
     }
 }
 
+@Preview
+@Composable
+fun LazyColumnIndexScreenSkeletonPreview() {
+    ComposeComponentsTheme {
+        LazyColumnIndexScreenSkeleton()
+    }
+}
 
 @Preview
 @Composable
-fun ListIndexSkeletonPreview() {
-    ComposeComponentsTheme {
-        ListIndexSkeleton()
+fun LazyColumnIndexScreenSkeletonPreviewDark() {
+    ComposeComponentsTheme(
+        darkTheme = true
+    ) {
+        LazyColumnIndexScreenSkeleton()
     }
 }

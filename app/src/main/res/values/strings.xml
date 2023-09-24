@@ -94,4 +94,5 @@
     <string name="custom_snackbar">Custom SnackBar</string>
     <string name="adaptive_columns">Adaptive Columns</string>
     <string name="fixed_columns">Fixed Columns</string>
+    <string name="lazycolumn">LazyColumn</string>
 </resources>

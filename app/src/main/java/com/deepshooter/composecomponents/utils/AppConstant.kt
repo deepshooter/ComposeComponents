@@ -53,9 +53,13 @@ object AppConstant {
     const val COMPONENTS_LIST_INDEX_SCREEN = "components/list"
     const val COMPONENTS_LIST_COLUMN_SCREEN = "components/list/column"
     const val COMPONENTS_LIST_ROW_SCREEN = "components/list/row"
-    const val COMPONENTS_LIST_LAZY_COLUMN_INDEX_SCREEN = "components/list/lazy_column"
     const val COMPONENTS_LIST_LAZY_ROW_SCREEN = "components/list/lazy_row"
     const val COMPONENTS_LIST_GRID_VERTICAL_SCREEN = "components/list/grid/vertical"
+
+    const val COMPONENTS_LIST_LAZY_COLUMN_INDEX_SCREEN = "components/list/lazy_column"
+    const val COMPONENTS_LIST_LAZY_COLUMN_ONE_SCREEN = "components/list/lazy_column/1"
+    const val COMPONENTS_LIST_LAZY_COLUMN_TWO_SCREEN = "components/list/lazy_column/2"
+
 
     /*Github Sub Screens*/
     const val GITHUB_INDEX_SCREEN = "github/index"
@@ -102,5 +106,7 @@ object AppConstant {
     const val LIST_WITH_LAZY_COLUMN = "List With LazyColumn"
     const val LIST_WITH_LAZY_ROW = "List With LazyRow"
     const val GRID_WITH_LAZY_VERTICAL_GRID = "Grid With LazyVerticalGrid"
+    const val BASIC_SAMPLE = "Basic Sample"
+    const val STICKY_HEADER_SAMPLE = "Sticky Header Sample"
 
 }

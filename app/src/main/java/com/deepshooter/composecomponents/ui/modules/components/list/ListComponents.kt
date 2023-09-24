@@ -13,7 +13,7 @@ data class ListComponents(
 ) {
 
     companion object {
-        val listCompositionList = listOf(
+        val listComponentsList = listOf(
             ListComponents(
                 name = LIST_WITH_COLUMN,
                 route = ComponentsScreen.ComponentsListColumn
