@@ -33,6 +33,7 @@ import com.deepshooter.composecomponents.ui.modules.components.list.ListIndexScr
 import com.deepshooter.composecomponents.ui.modules.components.list.ListRowScreen
 import com.deepshooter.composecomponents.ui.modules.components.list.lazycolumn.LazyColumnIndexScreen
 import com.deepshooter.composecomponents.ui.modules.components.list.lazycolumn.LazyColumnSampleOneScreen
+import com.deepshooter.composecomponents.ui.modules.components.list.lazycolumn.LazyColumnSampleTwoScreen
 import com.deepshooter.composecomponents.ui.modules.components.navigationbar.NavigationBarScreen
 import com.deepshooter.composecomponents.ui.modules.components.progressindicator.ProgressIndicatorScreen
 import com.deepshooter.composecomponents.ui.modules.components.scaffold.ScaffoldIndexScreen
@@ -474,6 +475,15 @@ private fun NavGraphBuilder.addComponentsScreens(
         //LazyColumnSampleOne
         composable(ComponentsScreen.ComponentsListLazyColumnOne.route) {
             LazyColumnSampleOneScreen(
+                goBack = {
+                    navController.popBackStack()
+                }
+            )
+        }
+
+        //LazyColumnSampleTwo
+        composable(ComponentsScreen.ComponentsListLazyColumnTwo.route) {
+            LazyColumnSampleTwoScreen(
                 goBack = {
                     navController.popBackStack()
                 }
