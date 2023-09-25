@@ -95,4 +95,7 @@
     <string name="adaptive_columns">Adaptive Columns</string>
     <string name="fixed_columns">Fixed Columns</string>
     <string name="lazycolumn">LazyColumn</string>
+    <string name="delete">Delete</string>
+    <string name="archive">Archive</string>
+    <string name="person_icon">Person Icon</string>
 </resources>
