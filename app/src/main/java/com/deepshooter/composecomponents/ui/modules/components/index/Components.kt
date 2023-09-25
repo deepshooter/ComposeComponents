@@ -14,6 +14,7 @@ import com.deepshooter.composecomponents.utils.AppConstant.PROGRESS_INDICATOR
 import com.deepshooter.composecomponents.utils.AppConstant.SCAFFOLD
 import com.deepshooter.composecomponents.utils.AppConstant.SLIDER
 import com.deepshooter.composecomponents.utils.AppConstant.SNACKBAR
+import com.deepshooter.composecomponents.utils.AppConstant.SWIPE_TO_DISMISS
 import com.deepshooter.composecomponents.utils.AppConstant.TEXT
 import com.deepshooter.composecomponents.utils.AppConstant.TEXT_FIELD
 import com.deepshooter.composecomponents.utils.AppConstant.TOP_APP_BAR
@@ -88,6 +89,10 @@ data class Components(
             Components(
                 name = LIST,
                 route = ComponentsScreen.ComponentsListIndex
+            ),
+            Components(
+                name = SWIPE_TO_DISMISS,
+                route = ComponentsScreen.ComponentsSwipeToDismiss
             )
         )
     }

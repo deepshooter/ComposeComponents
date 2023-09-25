@@ -44,6 +44,7 @@ import com.deepshooter.composecomponents.ui.modules.components.scaffold.Scaffold
 import com.deepshooter.composecomponents.ui.modules.components.scaffold.SimpleScaffoldWithTopBarScreen
 import com.deepshooter.composecomponents.ui.modules.components.slider.SliderScreen
 import com.deepshooter.composecomponents.ui.modules.components.snackbar.SnackBarScreen
+import com.deepshooter.composecomponents.ui.modules.components.swipetodismiss.SwipeToDismissScreen
 import com.deepshooter.composecomponents.ui.modules.components.text.TextScreen
 import com.deepshooter.composecomponents.ui.modules.components.textfield.TextFieldScreen
 import com.deepshooter.composecomponents.ui.modules.tictactoe.TicTacToeIndexScreen
@@ -82,6 +83,7 @@ import com.deepshooter.composecomponents.utils.AppConstant.COMPONENTS_SCAFFOLD_T
 import com.deepshooter.composecomponents.utils.AppConstant.COMPONENTS_SCREEN
 import com.deepshooter.composecomponents.utils.AppConstant.COMPONENTS_SLIDER_SCREEN
 import com.deepshooter.composecomponents.utils.AppConstant.COMPONENTS_SNACKBAR_SCREEN
+import com.deepshooter.composecomponents.utils.AppConstant.COMPONENTS_SWIPE_TO_DISMISS_SCREEN
 import com.deepshooter.composecomponents.utils.AppConstant.COMPONENTS_TEXT_FIELD_SCREEN
 import com.deepshooter.composecomponents.utils.AppConstant.COMPONENTS_TEXT_SCREEN
 import com.deepshooter.composecomponents.utils.AppConstant.GITHUB_INDEX_SCREEN
@@ -136,6 +138,7 @@ sealed class ComponentsScreen(val route: String) {
     object ComponentsListLazyColumnIndex : ComponentsScreen(COMPONENTS_LIST_LAZY_COLUMN_INDEX_SCREEN)
     object ComponentsListLazyColumnOne : ComponentsScreen(COMPONENTS_LIST_LAZY_COLUMN_ONE_SCREEN)
     object ComponentsListLazyColumnTwo : ComponentsScreen(COMPONENTS_LIST_LAZY_COLUMN_TWO_SCREEN)
+    object ComponentsSwipeToDismiss : ComponentsScreen(COMPONENTS_SWIPE_TO_DISMISS_SCREEN)
 
 
 
@@ -484,6 +487,15 @@ private fun NavGraphBuilder.addComponentsScreens(
         //LazyColumnSampleTwo
         composable(ComponentsScreen.ComponentsListLazyColumnTwo.route) {
             LazyColumnSampleTwoScreen(
+                goBack = {
+                    navController.popBackStack()
+                }
+            )
+        }
+
+        //SwipeToDismiss
+        composable(ComponentsScreen.ComponentsSwipeToDismiss.route) {
+            SwipeToDismissScreen(
                 goBack = {
                     navController.popBackStack()
                 }
