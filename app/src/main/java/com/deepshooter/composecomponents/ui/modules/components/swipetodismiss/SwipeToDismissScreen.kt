@@ -28,6 +28,7 @@ import androidx.compose.animation.fadeOut
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.Person
 import androidx.compose.material.icons.filled.Refresh
 import androidx.compose.runtime.*
@@ -35,6 +36,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.lifecycle.viewmodel.compose.viewModel
+import com.deepshooter.composecomponents.ui.theme.Teal700
 import kotlinx.coroutines.delay
 
 
@@ -52,12 +54,12 @@ fun SwipeToDismissScreen(
 fun SwipeToDismissScreenSkeleton(
     goBack: () -> Unit = {},
 ) {
-    EmailList()
+    EmailList(goBack = goBack)
 }
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun EmailList(emailViewModel: EmailViewModel = viewModel()) {
+fun EmailList(emailViewModel: EmailViewModel = viewModel(), goBack: () -> Unit) {
     // Collect the state of messages from the view model
     val messages by emailViewModel.messagesState.collectAsState()
 
@@ -74,15 +76,23 @@ fun EmailList(emailViewModel: EmailViewModel = viewModel()) {
                                 contentDescription = stringResource(id = R.string.refresh)
                             )
                         }
-                    }
+                    },
+                    navigationIcon = {
+                        IconButton(onClick = goBack) {
+                            Icon(
+                                Icons.Filled.ArrowBack,
+                                contentDescription = stringResource(R.string.back_button)
+                            )
+                        }
+                    },
+                    colors = TopAppBarDefaults.topAppBarColors(containerColor = Teal700)
                 )
             }
         ) { paddingValues ->
             LazyColumn(
                 modifier = Modifier
                     .padding(paddingValues)
-                    .fillMaxSize(),
-                contentPadding = PaddingValues(vertical = 12.dp),
+                    .fillMaxSize()
             ) {
                 itemsIndexed(
                     items = messages,

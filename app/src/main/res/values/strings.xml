@@ -98,4 +98,5 @@
     <string name="delete">Delete</string>
     <string name="archive">Archive</string>
     <string name="person_icon">Person Icon</string>
+    <string name="back_button">Back Button</string>
 </resources>
