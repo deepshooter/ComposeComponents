@@ -23,20 +23,20 @@ import com.deepshooter.composecomponents.R
 import com.deepshooter.composecomponents.ui.theme.ComposeComponentsTheme
 import com.deepshooter.composecomponents.ui.theme.Teal700
 import com.deepshooter.composecomponents.utils.AppComponent
-import com.deepshooter.composecomponents.utils.AppConstant.SWIPE_REFRESH
+import com.deepshooter.composecomponents.utils.AppConstant.PULL_REFRESH
 
 @Composable
-fun SwipeRefreshScreen(
+fun PullRefreshScreen(
     goBack: () -> Unit
 ) {
 
-    SwipeRefreshScreenSkeleton(goBack = goBack)
+    PullRefreshScreenSkeleton(goBack = goBack)
 
 }
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
-fun SwipeRefreshScreenSkeleton(
+fun PullRefreshScreenSkeleton(
     goBack: () -> Unit = {},
 ) {
 
@@ -51,7 +51,7 @@ fun SwipeRefreshScreenSkeleton(
                 .fillMaxSize()
         ) {
             AppComponent.Header(
-                SWIPE_REFRESH,
+                PULL_REFRESH,
                 goBack = goBack
             )
 
@@ -64,7 +64,7 @@ fun SwipeRefreshScreenSkeleton(
                     .padding(top = 64.dp, start = 12.dp, end = 12.dp),
             ) {
 
-                Text(text = stringResource(R.string.pull_to_refresh_not_available))
+                Text(text = stringResource(R.string.pull_refresh_not_available))
 
                 AppComponent.MediumSpacer()
 
@@ -81,16 +81,16 @@ fun SwipeRefreshScreenSkeleton(
 
 @Preview
 @Composable
-fun SwipeRefreshScreenSkeletonPreview() {
+fun PullRefreshScreenSkeletonPreview() {
     ComposeComponentsTheme {
-        SwipeRefreshScreenSkeleton()
+        PullRefreshScreenSkeleton()
     }
 }
 
 @Preview(uiMode = Configuration.UI_MODE_NIGHT_YES)
 @Composable
-fun SwipeRefreshScreenSkeletonPreviewDark() {
+fun PullRefreshScreenSkeletonPreviewDark() {
     ComposeComponentsTheme {
-        SwipeRefreshScreenSkeleton()
+        PullRefreshScreenSkeleton()
     }
 }

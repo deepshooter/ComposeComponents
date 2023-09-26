@@ -44,7 +44,7 @@ import com.deepshooter.composecomponents.ui.modules.components.scaffold.Scaffold
 import com.deepshooter.composecomponents.ui.modules.components.scaffold.SimpleScaffoldWithTopBarScreen
 import com.deepshooter.composecomponents.ui.modules.components.slider.SliderScreen
 import com.deepshooter.composecomponents.ui.modules.components.snackbar.SnackBarScreen
-import com.deepshooter.composecomponents.ui.modules.components.swiperefresh.SwipeRefreshScreen
+import com.deepshooter.composecomponents.ui.modules.components.swiperefresh.PullRefreshScreen
 import com.deepshooter.composecomponents.ui.modules.components.swipetodismiss.SwipeToDismissScreen
 import com.deepshooter.composecomponents.ui.modules.components.text.TextScreen
 import com.deepshooter.composecomponents.ui.modules.components.textfield.TextFieldScreen
@@ -84,7 +84,7 @@ import com.deepshooter.composecomponents.utils.AppConstant.COMPONENTS_SCAFFOLD_T
 import com.deepshooter.composecomponents.utils.AppConstant.COMPONENTS_SCREEN
 import com.deepshooter.composecomponents.utils.AppConstant.COMPONENTS_SLIDER_SCREEN
 import com.deepshooter.composecomponents.utils.AppConstant.COMPONENTS_SNACKBAR_SCREEN
-import com.deepshooter.composecomponents.utils.AppConstant.COMPONENTS_SWIPE_REFRESH_SCREEN
+import com.deepshooter.composecomponents.utils.AppConstant.COMPONENTS_PULL_REFRESH_SCREEN
 import com.deepshooter.composecomponents.utils.AppConstant.COMPONENTS_SWIPE_TO_DISMISS_SCREEN
 import com.deepshooter.composecomponents.utils.AppConstant.COMPONENTS_TEXT_FIELD_SCREEN
 import com.deepshooter.composecomponents.utils.AppConstant.COMPONENTS_TEXT_SCREEN
@@ -141,7 +141,7 @@ sealed class ComponentsScreen(val route: String) {
     object ComponentsListLazyColumnOne : ComponentsScreen(COMPONENTS_LIST_LAZY_COLUMN_ONE_SCREEN)
     object ComponentsListLazyColumnTwo : ComponentsScreen(COMPONENTS_LIST_LAZY_COLUMN_TWO_SCREEN)
     object ComponentsSwipeToDismiss : ComponentsScreen(COMPONENTS_SWIPE_TO_DISMISS_SCREEN)
-    object ComponentsSwipeRefresh : ComponentsScreen(COMPONENTS_SWIPE_REFRESH_SCREEN)
+    object ComponentsPullRefresh : ComponentsScreen(COMPONENTS_PULL_REFRESH_SCREEN)
 
 
 
@@ -506,8 +506,8 @@ private fun NavGraphBuilder.addComponentsScreens(
         }
 
         //SwipeRefresh
-        composable(ComponentsScreen.ComponentsSwipeRefresh.route) {
-            SwipeRefreshScreen(
+        composable(ComponentsScreen.ComponentsPullRefresh.route) {
+            PullRefreshScreen(
                 goBack = {
                     navController.popBackStack()
                 }
