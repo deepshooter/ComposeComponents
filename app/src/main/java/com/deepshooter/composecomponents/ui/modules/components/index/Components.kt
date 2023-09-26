@@ -15,6 +15,7 @@ import com.deepshooter.composecomponents.utils.AppConstant.SCAFFOLD
 import com.deepshooter.composecomponents.utils.AppConstant.SLIDER
 import com.deepshooter.composecomponents.utils.AppConstant.SNACKBAR
 import com.deepshooter.composecomponents.utils.AppConstant.PULL_REFRESH
+import com.deepshooter.composecomponents.utils.AppConstant.RADIO_BUTTON
 import com.deepshooter.composecomponents.utils.AppConstant.SWIPE_TO_DISMISS
 import com.deepshooter.composecomponents.utils.AppConstant.TEXT
 import com.deepshooter.composecomponents.utils.AppConstant.TEXT_FIELD
@@ -98,6 +99,10 @@ data class Components(
             Components(
                 name = PULL_REFRESH,
                 route = ComponentsScreen.ComponentsPullRefresh
+            ),
+            Components(
+                name = RADIO_BUTTON,
+                route = ComponentsScreen.ComponentsRadioButton
             )
         )
     }

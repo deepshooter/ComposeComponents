@@ -1,5 +1,6 @@
 package com.deepshooter.composecomponents.ui
 
+import android.provider.MediaStore.Audio.Radio
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.hilt.navigation.compose.hiltViewModel
@@ -45,6 +46,7 @@ import com.deepshooter.composecomponents.ui.modules.components.scaffold.SimpleSc
 import com.deepshooter.composecomponents.ui.modules.components.slider.SliderScreen
 import com.deepshooter.composecomponents.ui.modules.components.snackbar.SnackBarScreen
 import com.deepshooter.composecomponents.ui.modules.components.pullrefresh.PullRefreshScreen
+import com.deepshooter.composecomponents.ui.modules.components.radiobutton.RadioButtonScreen
 import com.deepshooter.composecomponents.ui.modules.components.swipetodismiss.SwipeToDismissScreen
 import com.deepshooter.composecomponents.ui.modules.components.text.TextScreen
 import com.deepshooter.composecomponents.ui.modules.components.textfield.TextFieldScreen
@@ -85,6 +87,7 @@ import com.deepshooter.composecomponents.utils.AppConstant.COMPONENTS_SCREEN
 import com.deepshooter.composecomponents.utils.AppConstant.COMPONENTS_SLIDER_SCREEN
 import com.deepshooter.composecomponents.utils.AppConstant.COMPONENTS_SNACKBAR_SCREEN
 import com.deepshooter.composecomponents.utils.AppConstant.COMPONENTS_PULL_REFRESH_SCREEN
+import com.deepshooter.composecomponents.utils.AppConstant.COMPONENTS_RADIO_BUTTON_SCREEN
 import com.deepshooter.composecomponents.utils.AppConstant.COMPONENTS_SWIPE_TO_DISMISS_SCREEN
 import com.deepshooter.composecomponents.utils.AppConstant.COMPONENTS_TEXT_FIELD_SCREEN
 import com.deepshooter.composecomponents.utils.AppConstant.COMPONENTS_TEXT_SCREEN
@@ -142,8 +145,7 @@ sealed class ComponentsScreen(val route: String) {
     object ComponentsListLazyColumnTwo : ComponentsScreen(COMPONENTS_LIST_LAZY_COLUMN_TWO_SCREEN)
     object ComponentsSwipeToDismiss : ComponentsScreen(COMPONENTS_SWIPE_TO_DISMISS_SCREEN)
     object ComponentsPullRefresh : ComponentsScreen(COMPONENTS_PULL_REFRESH_SCREEN)
-
-
+    object ComponentsRadioButton : ComponentsScreen(COMPONENTS_RADIO_BUTTON_SCREEN)
 
 }
 
@@ -508,6 +510,15 @@ private fun NavGraphBuilder.addComponentsScreens(
         //SwipeRefresh
         composable(ComponentsScreen.ComponentsPullRefresh.route) {
             PullRefreshScreen(
+                goBack = {
+                    navController.popBackStack()
+                }
+            )
+        }
+
+        //RadioButton
+        composable(ComponentsScreen.ComponentsRadioButton.route) {
+            RadioButtonScreen(
                 goBack = {
                     navController.popBackStack()
                 }
