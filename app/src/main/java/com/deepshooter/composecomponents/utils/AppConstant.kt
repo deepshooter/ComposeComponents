@@ -97,7 +97,7 @@ object AppConstant {
     const val LIST = "List"
     const val SWIPE_TO_DISMISS = "SwipeToDismiss"
     const val PULL_REFRESH = "PullRefresh"
-    const val RADIO_BUTTON = "Radio Button"
+    const val RADIO_BUTTON = "RadioButton"
 
 
     /*Components Scaffold Screens Constant*/
