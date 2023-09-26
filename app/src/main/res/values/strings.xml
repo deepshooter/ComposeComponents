@@ -99,4 +99,5 @@
     <string name="archive">Archive</string>
     <string name="person_icon">Person Icon</string>
     <string name="back_button">Back Button</string>
+    <string name="pull_to_refresh_not_available">Material3 library does not have Pull to refresh functionality and it isn\'t coming any time soon. Google said that they will consider bringing it to material3 only after completing remaining core Material 3 components.</string>
 </resources>
