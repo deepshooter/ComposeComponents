@@ -1,4 +1,4 @@
-package com.deepshooter.composecomponents.ui.modules.components.swiperefresh
+package com.deepshooter.composecomponents.ui.modules.components.pullrefresh
 
 import android.annotation.SuppressLint
 import android.content.res.Configuration

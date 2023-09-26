@@ -44,7 +44,7 @@ import com.deepshooter.composecomponents.ui.modules.components.scaffold.Scaffold
 import com.deepshooter.composecomponents.ui.modules.components.scaffold.SimpleScaffoldWithTopBarScreen
 import com.deepshooter.composecomponents.ui.modules.components.slider.SliderScreen
 import com.deepshooter.composecomponents.ui.modules.components.snackbar.SnackBarScreen
-import com.deepshooter.composecomponents.ui.modules.components.swiperefresh.PullRefreshScreen
+import com.deepshooter.composecomponents.ui.modules.components.pullrefresh.PullRefreshScreen
 import com.deepshooter.composecomponents.ui.modules.components.swipetodismiss.SwipeToDismissScreen
 import com.deepshooter.composecomponents.ui.modules.components.text.TextScreen
 import com.deepshooter.composecomponents.ui.modules.components.textfield.TextFieldScreen
