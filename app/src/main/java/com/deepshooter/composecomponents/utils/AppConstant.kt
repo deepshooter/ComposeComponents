@@ -61,6 +61,7 @@ object AppConstant {
     const val COMPONENTS_LIST_LAZY_COLUMN_TWO_SCREEN = "components/list/lazy_column/2"
 
     const val COMPONENTS_SWIPE_TO_DISMISS_SCREEN = "components/swipe_to_dismiss"
+    const val COMPONENTS_SWIPE_REFRESH_SCREEN = "components/swipe_refresh"
 
 
     /*Github Sub Screens*/
@@ -94,6 +95,7 @@ object AppConstant {
     const val SCAFFOLD = "Scaffold"
     const val LIST = "List"
     const val SWIPE_TO_DISMISS = "SwipeToDismiss"
+    const val SWIPE_REFRESH = "SwipeRefresh"
 
 
     /*Components Scaffold Screens Constant*/
