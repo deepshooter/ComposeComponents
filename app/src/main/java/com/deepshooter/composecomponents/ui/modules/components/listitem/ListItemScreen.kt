@@ -10,15 +10,22 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.selection.toggleable
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Favorite
+import androidx.compose.material3.Checkbox
 import androidx.compose.material3.Divider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.ListItem
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Switch
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
@@ -267,6 +274,44 @@ fun ListItemScreenSkeleton(
                     trailingContent = { Text(stringResource(id = R.string.free)) }
                 )
                 Divider()
+
+
+                /** ListItem With CheckBox or Switch */
+
+                var switched by remember { mutableStateOf(false) }
+                val onSwitchedChange: (Boolean) -> Unit = { switched = it }
+                ListItem(
+                    headlineContent = { Text(stringResource(R.string.switch_listitem)) },
+                    trailingContent = {
+                        Switch(
+                            checked = switched,
+                            onCheckedChange = null
+                        )
+                    },
+                    modifier = Modifier.toggleable(
+                        value = switched,
+                        onValueChange = onSwitchedChange
+                    )
+                )
+                Divider()
+
+                var checked by remember { mutableStateOf(true) }
+                val onCheckedChange: (Boolean) -> Unit = { checked = it }
+                ListItem(
+                    headlineContent = { Text(stringResource(R.string.checkbox_listitem)) },
+                    trailingContent = {
+                        Checkbox(
+                            checked = checked,
+                            onCheckedChange = null
+                        )
+                    },
+                    modifier = Modifier.toggleable(
+                        value = checked,
+                        onValueChange = onCheckedChange
+                    )
+                )
+                Divider()
+
 
 
             }
