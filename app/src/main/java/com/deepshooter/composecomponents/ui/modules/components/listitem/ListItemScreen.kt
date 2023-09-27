@@ -69,8 +69,6 @@ fun ListItemScreenSkeleton(
             Divider()
 
 
-            /** One-line items */
-
             val scrollState = rememberScrollState()
 
             Column(
@@ -79,6 +77,11 @@ fun ListItemScreenSkeleton(
                     .verticalScroll(scrollState)
                     .padding(0.dp)
             ) {
+
+                /** One-line items */
+
+                AppComponent.SubHeader(stringResource(R.string.one_line_items))
+                Divider()
 
                 ListItem(headlineContent = { Text(stringResource(R.string.one_line_list_item_with_no_icon)) })
                 Divider()
@@ -162,6 +165,9 @@ fun ListItemScreenSkeleton(
 
                 /** Two-line items */
 
+                AppComponent.SubHeader(stringResource(R.string.two_line_items))
+                Divider()
+
                 ListItem(
                     headlineContent = { Text(stringResource(R.string.two_line_list_item)) },
                     supportingContent = { Text(stringResource(R.string.secondary_text)) }
@@ -213,6 +219,9 @@ fun ListItemScreenSkeleton(
                 Divider()
 
                 /** Three-line items */
+
+                AppComponent.SubHeader(stringResource(R.string.three_line_items))
+                Divider()
 
                 ListItem(
                     headlineContent = { Text(stringResource(R.string.three_line_list_item)) },
@@ -277,6 +286,9 @@ fun ListItemScreenSkeleton(
 
 
                 /** ListItem With CheckBox or Switch */
+
+                AppComponent.SubHeader(stringResource(R.string.listitems_with_switch_and_checkbox))
+                Divider()
 
                 var switched by remember { mutableStateOf(false) }
                 val onSwitchedChange: (Boolean) -> Unit = { switched = it }
