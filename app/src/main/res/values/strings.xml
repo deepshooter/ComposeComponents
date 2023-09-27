@@ -101,4 +101,22 @@
     <string name="back_button">Back Button</string>
     <string name="pull_refresh_not_available">Material3 library does not have Pull to refresh functionality and it isn\'t coming any time soon. Google said that they will consider bringing it to material3 only after completing remaining core Material 3 components.</string>
     <string name="simple_radio_button">Simple RadioButton</string>
+    <string name="one_line_list_item_with_no_icon">One line list item with no icon</string>
+    <string name="one_line_list_item_with_24x24_icon">One line list item with 24x24 icon</string>
+    <string name="one_line_list_item_with_40x40_icon">One line list item with 40x40 icon</string>
+    <string name="one_line_list_item_with_56x56_icon">One line list item with 56x56 icon</string>
+    <string name="one_line_clickable_list_item">One line clickable list item</string>
+    <string name="one_line_list_item_with_trailing_icon">One line list item with trailing icon</string>
+    <string name="one_line_list_item">One line list item</string>
+    <string name="two_line_list_item">Two line list item</string>
+    <string name="secondary_text">Secondary Text</string>
+    <string name="overline">OVERLINE</string>
+    <string name="two_line_list_item_with_24x24_icon">Two line list item with 24x24 icon</string>
+    <string name="two_line_list_item_with_40x40_icon">Two line list item with 40x40 icon</string>
+    <string name="free">Free</string>
+    <string name="three_line_list_item">Three line list item</string>
+    <string name="this_is_a_long_secondary_text_for_the_current_list_item">"This is a long secondary text for the current list item, "</string>
+    <string name="displayed_on_two_lines">displayed on two lines</string>
+    <string name="three_line_list_item_with_24x24_icon">Three line list item with 24x24 icon</string>
+    <string name="three_line_list_item_with_trailing_icon">Three line list item with trailing icon</string>
 </resources>

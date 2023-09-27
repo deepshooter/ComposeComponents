@@ -35,6 +35,7 @@ import com.deepshooter.composecomponents.ui.modules.components.list.ListRowScree
 import com.deepshooter.composecomponents.ui.modules.components.list.lazycolumn.LazyColumnIndexScreen
 import com.deepshooter.composecomponents.ui.modules.components.list.lazycolumn.LazyColumnSampleOneScreen
 import com.deepshooter.composecomponents.ui.modules.components.list.lazycolumn.LazyColumnSampleTwoScreen
+import com.deepshooter.composecomponents.ui.modules.components.listitem.ListItemScreen
 import com.deepshooter.composecomponents.ui.modules.components.navigationbar.NavigationBarScreen
 import com.deepshooter.composecomponents.ui.modules.components.progressindicator.ProgressIndicatorScreen
 import com.deepshooter.composecomponents.ui.modules.components.scaffold.ScaffoldIndexScreen
@@ -70,6 +71,7 @@ import com.deepshooter.composecomponents.utils.AppConstant.COMPONENTS_INDEX_SCRE
 import com.deepshooter.composecomponents.utils.AppConstant.COMPONENTS_LIST_COLUMN_SCREEN
 import com.deepshooter.composecomponents.utils.AppConstant.COMPONENTS_LIST_GRID_VERTICAL_SCREEN
 import com.deepshooter.composecomponents.utils.AppConstant.COMPONENTS_LIST_INDEX_SCREEN
+import com.deepshooter.composecomponents.utils.AppConstant.COMPONENTS_LIST_ITEM_SCREEN
 import com.deepshooter.composecomponents.utils.AppConstant.COMPONENTS_LIST_LAZY_COLUMN_INDEX_SCREEN
 import com.deepshooter.composecomponents.utils.AppConstant.COMPONENTS_LIST_LAZY_COLUMN_ONE_SCREEN
 import com.deepshooter.composecomponents.utils.AppConstant.COMPONENTS_LIST_LAZY_COLUMN_TWO_SCREEN
@@ -143,6 +145,7 @@ sealed class ComponentsScreen(val route: String) {
     object ComponentsListLazyColumnIndex : ComponentsScreen(COMPONENTS_LIST_LAZY_COLUMN_INDEX_SCREEN)
     object ComponentsListLazyColumnOne : ComponentsScreen(COMPONENTS_LIST_LAZY_COLUMN_ONE_SCREEN)
     object ComponentsListLazyColumnTwo : ComponentsScreen(COMPONENTS_LIST_LAZY_COLUMN_TWO_SCREEN)
+    object ComponentsListItem : ComponentsScreen(COMPONENTS_LIST_ITEM_SCREEN)
     object ComponentsSwipeToDismiss : ComponentsScreen(COMPONENTS_SWIPE_TO_DISMISS_SCREEN)
     object ComponentsPullRefresh : ComponentsScreen(COMPONENTS_PULL_REFRESH_SCREEN)
     object ComponentsRadioButton : ComponentsScreen(COMPONENTS_RADIO_BUTTON_SCREEN)
@@ -492,6 +495,15 @@ private fun NavGraphBuilder.addComponentsScreens(
         //LazyColumnSampleTwo
         composable(ComponentsScreen.ComponentsListLazyColumnTwo.route) {
             LazyColumnSampleTwoScreen(
+                goBack = {
+                    navController.popBackStack()
+                }
+            )
+        }
+
+        //ListItem
+        composable(ComponentsScreen.ComponentsListItem.route) {
+            ListItemScreen(
                 goBack = {
                     navController.popBackStack()
                 }

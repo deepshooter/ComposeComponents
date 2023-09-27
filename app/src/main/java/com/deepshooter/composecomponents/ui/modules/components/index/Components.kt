@@ -9,6 +9,7 @@ import com.deepshooter.composecomponents.utils.AppConstant.DIALOG
 import com.deepshooter.composecomponents.utils.AppConstant.DROPDOWN_MENU
 import com.deepshooter.composecomponents.utils.AppConstant.FLOATING_ACTION_BUTTON
 import com.deepshooter.composecomponents.utils.AppConstant.LIST
+import com.deepshooter.composecomponents.utils.AppConstant.LIST_ITEM
 import com.deepshooter.composecomponents.utils.AppConstant.NAVIGATION_BAR
 import com.deepshooter.composecomponents.utils.AppConstant.PROGRESS_INDICATOR
 import com.deepshooter.composecomponents.utils.AppConstant.SCAFFOLD
@@ -91,6 +92,10 @@ data class Components(
             Components(
                 name = LIST,
                 route = ComponentsScreen.ComponentsListIndex
+            ),
+            Components(
+                name = LIST_ITEM,
+                route = ComponentsScreen.ComponentsListItem
             ),
             Components(
                 name = SWIPE_TO_DISMISS,

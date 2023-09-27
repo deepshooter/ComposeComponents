@@ -60,6 +60,7 @@ object AppConstant {
     const val COMPONENTS_LIST_LAZY_COLUMN_ONE_SCREEN = "components/list/lazy_column/1"
     const val COMPONENTS_LIST_LAZY_COLUMN_TWO_SCREEN = "components/list/lazy_column/2"
 
+    const val COMPONENTS_LIST_ITEM_SCREEN = "components/list_item"
     const val COMPONENTS_SWIPE_TO_DISMISS_SCREEN = "components/swipe_to_dismiss"
     const val COMPONENTS_PULL_REFRESH_SCREEN = "components/pull_refresh"
     const val COMPONENTS_RADIO_BUTTON_SCREEN = "components/radio_button"
@@ -95,6 +96,7 @@ object AppConstant {
     const val SNACKBAR = "SnackBar"
     const val SCAFFOLD = "Scaffold"
     const val LIST = "List"
+    const val LIST_ITEM = "ListItem"
     const val SWIPE_TO_DISMISS = "SwipeToDismiss"
     const val PULL_REFRESH = "PullRefresh"
     const val RADIO_BUTTON = "RadioButton"
