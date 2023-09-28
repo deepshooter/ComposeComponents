@@ -64,6 +64,7 @@ object AppConstant {
     const val COMPONENTS_SWIPE_TO_DISMISS_SCREEN = "components/swipe_to_dismiss"
     const val COMPONENTS_PULL_REFRESH_SCREEN = "components/pull_refresh"
     const val COMPONENTS_RADIO_BUTTON_SCREEN = "components/radio_button"
+    const val COMPONENTS_SWITCH_SCREEN = "components/switch"
 
 
     /*Github Sub Screens*/
@@ -100,6 +101,7 @@ object AppConstant {
     const val SWIPE_TO_DISMISS = "SwipeToDismiss"
     const val PULL_REFRESH = "PullRefresh"
     const val RADIO_BUTTON = "RadioButton"
+    const val SWITCH = "Switch"
 
 
     /*Components Scaffold Screens Constant*/

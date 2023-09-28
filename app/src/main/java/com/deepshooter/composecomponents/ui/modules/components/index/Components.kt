@@ -18,6 +18,7 @@ import com.deepshooter.composecomponents.utils.AppConstant.SNACKBAR
 import com.deepshooter.composecomponents.utils.AppConstant.PULL_REFRESH
 import com.deepshooter.composecomponents.utils.AppConstant.RADIO_BUTTON
 import com.deepshooter.composecomponents.utils.AppConstant.SWIPE_TO_DISMISS
+import com.deepshooter.composecomponents.utils.AppConstant.SWITCH
 import com.deepshooter.composecomponents.utils.AppConstant.TEXT
 import com.deepshooter.composecomponents.utils.AppConstant.TEXT_FIELD
 import com.deepshooter.composecomponents.utils.AppConstant.TOP_APP_BAR
@@ -108,6 +109,10 @@ data class Components(
             Components(
                 name = RADIO_BUTTON,
                 route = ComponentsScreen.ComponentsRadioButton
+            ),
+            Components(
+                name = SWITCH,
+                route = ComponentsScreen.ComponentsSwitch
             )
         )
     }

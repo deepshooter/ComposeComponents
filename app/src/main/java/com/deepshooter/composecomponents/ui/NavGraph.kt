@@ -49,6 +49,7 @@ import com.deepshooter.composecomponents.ui.modules.components.snackbar.SnackBar
 import com.deepshooter.composecomponents.ui.modules.components.pullrefresh.PullRefreshScreen
 import com.deepshooter.composecomponents.ui.modules.components.radiobutton.RadioButtonScreen
 import com.deepshooter.composecomponents.ui.modules.components.swipetodismiss.SwipeToDismissScreen
+import com.deepshooter.composecomponents.ui.modules.components.switchscreen.SwitchScreen
 import com.deepshooter.composecomponents.ui.modules.components.text.TextScreen
 import com.deepshooter.composecomponents.ui.modules.components.textfield.TextFieldScreen
 import com.deepshooter.composecomponents.ui.modules.tictactoe.TicTacToeIndexScreen
@@ -91,6 +92,7 @@ import com.deepshooter.composecomponents.utils.AppConstant.COMPONENTS_SNACKBAR_S
 import com.deepshooter.composecomponents.utils.AppConstant.COMPONENTS_PULL_REFRESH_SCREEN
 import com.deepshooter.composecomponents.utils.AppConstant.COMPONENTS_RADIO_BUTTON_SCREEN
 import com.deepshooter.composecomponents.utils.AppConstant.COMPONENTS_SWIPE_TO_DISMISS_SCREEN
+import com.deepshooter.composecomponents.utils.AppConstant.COMPONENTS_SWITCH_SCREEN
 import com.deepshooter.composecomponents.utils.AppConstant.COMPONENTS_TEXT_FIELD_SCREEN
 import com.deepshooter.composecomponents.utils.AppConstant.COMPONENTS_TEXT_SCREEN
 import com.deepshooter.composecomponents.utils.AppConstant.GITHUB_INDEX_SCREEN
@@ -149,6 +151,7 @@ sealed class ComponentsScreen(val route: String) {
     object ComponentsSwipeToDismiss : ComponentsScreen(COMPONENTS_SWIPE_TO_DISMISS_SCREEN)
     object ComponentsPullRefresh : ComponentsScreen(COMPONENTS_PULL_REFRESH_SCREEN)
     object ComponentsRadioButton : ComponentsScreen(COMPONENTS_RADIO_BUTTON_SCREEN)
+    object ComponentsSwitch : ComponentsScreen(COMPONENTS_SWITCH_SCREEN)
 
 }
 
@@ -531,6 +534,15 @@ private fun NavGraphBuilder.addComponentsScreens(
         //RadioButton
         composable(ComponentsScreen.ComponentsRadioButton.route) {
             RadioButtonScreen(
+                goBack = {
+                    navController.popBackStack()
+                }
+            )
+        }
+
+        //Switch
+        composable(ComponentsScreen.ComponentsSwitch.route) {
+            SwitchScreen(
                 goBack = {
                     navController.popBackStack()
                 }
