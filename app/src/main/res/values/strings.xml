@@ -125,4 +125,6 @@
     <string name="two_line_items">Two-Line Items</string>
     <string name="three_line_items">Three-Line Items</string>
     <string name="listitems_with_switch_and_checkbox">ListItems With Switch and CheckBox</string>
+    <string name="start_switch">Start Switch</string>
+    <string name="end_switch">End Switch</string>
 </resources>
